@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Acertijo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+class AcertijoController extends Controller
+{
+    public function index()
+    {
+        $acertijo = Acertijo::where('user_id',Auth::id())->paginate(8);
+        return view('acertijo.index', compact('acertijo'));
+        
+    }
+
+    public function create()
+    {
+        return view('acertijo.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'pregunta' => 'required',
+            'respuesta' => 'required',
+        ]);
+        $user = User::find(auth()->id());
+        $acertijo = $request->all();
+        $acertijo['user_id'] = $user->id;
+        Acertijo::create($acertijo);
+        $notification = "El acertijo se creo correctamente";
+        return redirect('/acertijo')->with(compact('notification'));
+    }
+    public function edit(Request $request, $id)
+    {
+        $acertijo = Acertijo::findOrFail($id);
+        return view('acertijo.edit',compact('acertijo'));
+    }
+
+    public function update(Request $request,$id)
+    {
+
+        //mass assigment: asignacion masiva
+        $acertijo = Acertijo::findOrFail($id);
+        $data = $request->only('pregunta','respuesta');
+        
+        $acertijo->fill($data);
+        $acertijo->save();//UPDATE
+        $notification = 'Se edito el acertijo se ha actualizado correctamente';
+        return redirect('/acertijo')->with(compact('notification'));
+    }
+
+    public function destroy(Acertijo $acertijo)
+    {
+        
+        $acertijo->delete();
+        $notification = "El acertijo se ha eliminado correctamente";
+        return redirect('/acertijo')->with(compact('notification'));
+    }
+    public function changeUse(Request $request)
+    {
+        $acertijo = Acertijo::find($request->i_id);
+        $acertijo -> i_uso = $request->i_uso;
+        //dd($acertijo);
+        $acertijo->save();
+        return response()->json(['success' => 'Uso Activo']);
+    }
+    public function getIniciales(){
+        $findUser = User::find(auth()->id());
+        $findUser->name;
+        $explode = explode(' ',$findUser);
+        foreach($explode as $x){
+            $name .=  $x[0];
+        }
+
+    }
+}
