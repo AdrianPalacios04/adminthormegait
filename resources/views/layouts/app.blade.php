@@ -77,7 +77,7 @@
             @yield('content')
         </main>
     </div>
-    <div id="notifDiv"></div>
+    
 
     @stack('scripts')
 </body>

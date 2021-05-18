@@ -25,24 +25,72 @@
         @endif
         <form action="{{url('acertijo')}}" method="post">
             @csrf
-            <div class="form-group">
-                <label for="name">Acertijo</label>
-                <input type="text" name="pregunta" class="form-control"  required>
-            </div>
-            <div class="form-group">
-                <label for="">Repuesta</label>
-                <input type="text" name="respuesta" class="form-control" required>
-            </div>
-            {{-- <div class="custom-control custom-checkbox mb-1">
-                <input class="custom-control-input" id="customCheck1" type="checkbox" name="i_uso" value="1">
-                <label class="custom-control-label" for="customCheck1">USO</label>
-            </div>
-            <div class="custom-control custom-checkbox mb-2">
-                <input class="custom-control-input" id="customCheck2" type="checkbox" name="b_estado" value="1">
-                <label class="custom-control-label" for="customCheck2">ESTADO</label>
-            </div> --}}
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                       <th scope="col">Pregunta</th>
+                        <th scope="col">Respuesta</th>
+                        <th scope="col"><a href="javascript:void(0)" class="btn btn-success addRow">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- @foreach ($workDays as $key => $workDay) --}}
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                
+                                    <input type="text" name="pregunta[]" class="form-control" >
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="respuesta[]" class="form-control">
+                            </div>
+                        </div>          
+                        </td>
+                        <th scope="col"><a href="javascript:void(0)" class="btn btn-danger deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+
+                    </tr>
+                    {{-- @endforeach --}}
+                </tbody>
+               
+            </table>
+            <button>guardar</button>
         </form>
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+        let add;
+    $('thead').on('click','.addRow',function() {
+         add =  "<tr>"+
+                        "<td>"+
+                            "<div class='row'>"+
+                                "<div class='col'>"+
+                                    "<input type='text' name='pregunta[]' class='form-control' >"+
+                            " </div>"+
+                        " </div>"+
+                        "</td>"+
+                        "<td>"+
+                            "<div class='row'>"+
+                                "<div class='col'>"+
+                                "<input type='text' name='respuesta[]' class='form-control'>"+
+                                "</div>"+
+                            " </div>"+          
+                        "</td>"+
+                         "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'><i class='fa fa-trash' aria-hidden='true'></i></a></th>"+
+                    "</tr>"+
+         $('tbody').append(add);
+    });
+    $('tbody').on('click','.deleteRow',function () {
+        $(this).parent().parent().remove();
+    });
+   
+</script>
+    
+@endpush

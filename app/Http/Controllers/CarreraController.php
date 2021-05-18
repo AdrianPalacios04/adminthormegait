@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use DB;
 class CarreraController extends Controller
 {
     public function index()
@@ -25,30 +26,35 @@ class CarreraController extends Controller
 
     public function store(Request $request)
     {        
-        $carbon = new Carbon();
-        $day[] = $carbon->toDateString();
+        // $carbon = new Carbon();
+        // $day[] = $carbon->toDateString();
         // dd($day)
 
         // la -> es para jalar una instancia de cualquier valor
-        $day[] = $request->day;
-        $active[] = $request->active;
-        $time_start[] = $request->time_start;
-        $time_final[] = $request->time_final;
-        $premio[] = $request->premio;
-        $cantidad[] = $request->cantidad;
- 
-        for ($i=0; $i < count($active) ; $i++) {
+        $day = $request->day;
+        $active = $request->active;
+        $time_start = $request->time_start;
+        $time_final = $request->time_final;
+        $premio = $request->premio;
+        $cantidad = $request->cantidad;
+        
+        $data = [];
+        for ($i=0; $i < count($day) ; $i++) {
             $data[] = [
                 'day'       => $day[$i],
-                'active'    =>  $active[$i],
                 'time_start'=> $time_start[$i],
                 'time_final'=>  $time_final[$i],
                 'premio'    =>  $premio[$i],
                 'cantidad'  =>  $cantidad[$i]
             ];
-            dd($data);
+           
         }
-        // $insert = [];
+        //dd($data);
+        
+        Carrera::insert($data);
+        //  $notification = "El acertijo se creo correctamente";
+        //  return view('race',compact('notificacion'));
+        // // // $insert = [];
         // for ($i=0; $i <count(request('day')) ; $i++) { 
         //     $inserts[] =[
         //         'day' => request("day.{$i}"),

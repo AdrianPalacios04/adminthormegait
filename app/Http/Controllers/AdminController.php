@@ -52,7 +52,7 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'username'=>'required|min:3'
+            'username'=>'required|min:3',          
             'name'=>'required|min:3',
             'lastname'=>'required|min:3',
             'email'=>'required|email',

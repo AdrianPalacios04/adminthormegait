@@ -25,12 +25,12 @@
         @endif
         <form action="{{url('/race')}}" method="post">
             @csrf
-            <div class="row align-items-center">
+            {{-- <div class="row align-items-center">
                 <div class=" col text-right col-2"> 
-                    <?php $fcha = date("Y-m-d");?>
-                    <input type="date" name="day[]" class="form-control" value="<?php echo $fcha;?>" required>
+
+                    <input type="date" name="day[]" class="form-control" " required>
                 </div>
-            </div>
+            </div> --}}
             <div class="card shadow">
                 <div class="card-body">
                     @if(session('notification'))
@@ -44,9 +44,8 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                               <th scope="col">Carrera</th>
-                             
-                                <th scope="col">Hora Inicio</th>
+                               <th scope="col">Acertijo</th>
+                                <th scope="col">Respuesta </th>
                                 <th scope="col">Hora Final</th>
                                 <th scope="col">Premio</th>
                                 <th scope="col">Cantidad</th>
@@ -58,7 +57,14 @@
                         <tbody>
                         {{-- @foreach ($workDays as $key => $workDay) --}}
                         <tr>
-                            <td></td>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <?php $fcha = date("Y-m-d");?>
+                                        <input type="date" name="day[]" class="form-control" value="<?php echo $fcha;?>">
+                                    </div>
+                                </div>
+                            </td>
                            
                             <td>
                             <div class="row">
@@ -92,12 +98,12 @@
                             <td>
                                 <input type="text" class="form-control" name="cantidad[]">
                             </td>
-                            <td> 
+                            {{-- <td> 
                                 <label class="custom-toggle">
                                     <input type="checkbox" name="active[]" checked>
-                                    <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                                    <span class="custom-toggle-slider rounded-circle" value="1"></span>
                                 </label>
-                            </td>
+                            </td> --}}
                             <th scope="col"><a href="javascript:void(0)" class="btn btn-danger deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
         
                         </tr>
@@ -116,6 +122,12 @@
     $('thead').on('click','.addRow',function() {
         const tr =    "<tr>"+
                        " <td>"+
+                        "<div class='row'>"+
+                                    "<div class='col'>"+
+                                        "<?php $fcha = date('Y-m-d');?>"+
+                                        "<input type='date' name='day[]' class='form-control' value='<?php echo $fcha;?>'>"+
+                                    "</div>"+
+                                "</div>"+
                         "</td>"+
                         
                         "<td>"+
@@ -151,12 +163,7 @@
                         "<td>"+
                             "<input type='text' class='form-control' name='cantidad[]' >"+
                         "</td>"+
-                        "<td>" +
-                            "<label class='custom-toggle'>"+
-                                "<input type='checkbox' name='active[]'' checked>"+
-                                "<span class='custom-toggle-slider rounded-circle' data-label-off='No' data-label-on='Yes'></span>"+
-                            "</label>"+
-                        "</td>"+
+                        
                         "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'><i class='fa fa-trash aria-hidden='true'></i></a></th>"+
                     "</tr>"
                     $('tbody').append(tr);

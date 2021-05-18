@@ -14,7 +14,6 @@ class Acertijo extends Model
     // protected $fillable = [
     //     "t_pregunta","t_respuesta","t_pista","t_kword1","t_kword2","t_kword3","i_uso","b_estado"
     // ];
-
     protected $fillable =[
         'pregunta','respuesta','user_id'
     ];

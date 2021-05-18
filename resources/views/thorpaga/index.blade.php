@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">EQUILICUA</h3>
+            <h3 class="mb-0">Acertijos Thor Paga</h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('acertijo/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a>
+            <a href="{{url('cash/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a>
             
         </div>
         </div>
@@ -27,45 +27,77 @@
             <thead class="thead-light">
                 <tr>
                 
-                <th scope="col">Pregunta</th>
-                <th scope="col">Respuesta</th>
-                @if (auth()->user()->role == 'admin' or 'supacertijero')
+                <th scope="col">Nombre</th>
+                <th scope="col">Pregunta N°1</th>
+                {{-- <th scope="col">Respuesta N°1</th> --}}
+                <th scope="col">Pregunta N°2</th>
+                {{-- <th scope="col">Respuesta N°2</th> --}}
+                <th scope="col">Pregunta N°3</th>
+                {{-- <th scope="col">Respuesta N°3</th> --}}
+                <th scope="col">Llave N°1</th>
+                <th scope="col">Llave N°2</th>
+                <th scope="col">Llave N°3</th>
+
+                {{-- @if (auth()->user()->role == 'admin' or 'supacertijero') --}}
                 <th scope="col">Usuario</th>
                 <th scope="col">Uso</th>
-                 @endif 
+                 {{-- @endif  --}}
                 <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($acertijo as $acertijos)
+                @foreach ($thorpaga as $thorpagas)
                     
                 <tr>
+                    <td>
+                        {{$thorpagas->t_nombre}}
+                    </td>
                     <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
-                        {{$acertijos->pregunta}}
+                        {{$thorpagas->t_pregunta1}}
+                    </td>
+                    {{-- <td>
+                        {{$thorpagas->t_respuesta1}}
+                    </td> --}}
+                    <td>
+                        {{$thorpagas->t_pregunta2}}
+                    </td>
+                    {{-- <td>
+                        {{$thorpagas->t_respuesta2}}
+                    </td> --}}
+                    <td>
+                        {{$thorpagas->t_pregunta3}}
+                    </td>
+                    {{-- <td>
+                        {{$thorpagas->t_respuesta3}}
+                    </td> --}}
+                    <td>
+                        {{$thorpagas->t_llave1}}
                     </td>
                     <td>
-                        {{$acertijos->respuesta}}
+                        {{$thorpagas->t_llave2}}
                     </td>
-                    @if (auth()->user()->role == 'admin' or 'supacertijero')
+                    
                     <td>
-                    {{$acertijos->user->name}}
+                        {{$thorpagas->t_llave3}}
                     </td>
                     <td>
+                     {{-- nombre del usuario  --}}
+                    </td>
+                    {{-- <td>
                         <label class="custom-toggle">
-                        <input type="checkbox" class="toggle-class" data-id="{{ $acertijos->id }}" 
-                        data-toggle="toggle" data-style="slow" data-label-off="No" data-label-on="Yes" {{ $acertijos->i_uso == true ? 'checked' : ''}}>
+                        <input type="checkbox" class="toggle-class" data-id="{{ $thorpagas->i_id }}" 
+                        data-toggle="toggle" data-style="slow" data-label-off="No" data-label-on="Yes" {{ $thorpagas->i_uso == true ? 'checked' : ''}}>
                         <span class="custom-toggle-slider rounded-circle"></span>
                         </label>
-                    </td>
-                    @endif
+                    </td> --}}
                     <td>
-                        <form action="{{url('/acertijo/'.$acertijos->id)}}" method="post">
+                        <form action="{{url('/cash/'.$thorpagas->i_id)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" 
-                            data-target="#exampleModal{{$acertijos->id}}" >
+                            data-target="#exampleModal{{$thorpagas->i_id}}" >
                             <i class="fa fa-eye text-black" aria-hidden="true"></i></button>
-                        <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{{url('/cash/'.$thorpagas->i_id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
                         <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
@@ -76,7 +108,7 @@
         
         <!-- Modal -->
         
-        @include('acertijo.show')
+         @include('thorpaga.modal')
         {{-- {{ $acertijo->links() }} --}}
     </div>
 </div>

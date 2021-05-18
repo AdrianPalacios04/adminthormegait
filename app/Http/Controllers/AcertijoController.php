@@ -11,11 +11,19 @@ class AcertijoController extends Controller
 {
     public function index()
     {
-        $acertijo = Acertijo::where('user_id',Auth::id())->paginate(8);
-        return view('acertijo.index', compact('acertijo'));
+        //$findUser = User::find(auth()->id());
+         if (auth()->user()->role == 'admin') {
+            $acertijo = Acertijo::paginate(8);
+         }elseif(auth()->user()->role == 'supacertijero') {
+            $acertijo = Acertijo::paginate(8);
+        }else{
+            $acertijo = Acertijo::where('user_id',Auth::id())->paginate(8);
+         }
+        
+        return view('acertijo.index',compact('acertijo'));
         
     }
-
+    
     public function create()
     {
         return view('acertijo.create');
@@ -23,17 +31,36 @@ class AcertijoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'pregunta' => 'required',
-            'respuesta' => 'required',
-        ]);
-        $user = User::find(auth()->id());
-        $acertijo = $request->all();
-        $acertijo['user_id'] = $user->id;
-        Acertijo::create($acertijo);
+        // $request->validate([
+        //     'pregunta' => 'required',
+        //     'respuesta' => 'required',
+        // ]);
+
+         $user = User::find(auth()->id());
+         $pregunta = $request->pregunta;
+         $respuesta = $request->respuesta;
+
+         $data = [];
+         for ($i=0; $i < count($pregunta) ; $i++) {
+             $data[] = [
+                 'pregunta' => $pregunta[$i],
+                 'respuesta'=> $respuesta[$i],
+                 'user_id'=> $user->id
+                 
+                //  'time_final'=>  $time_final[$i],
+                //  'premio'    =>  $premio[$i],
+                //  'cantidad'  =>  $cantidad[$i]
+             ];
+         
+        // $acertijo = $request->all();
+        // $acertijo['user_id'] = $user->id;
+        }
+           // dd($data);
+         Acertijo::insert($data);
         $notification = "El acertijo se creo correctamente";
         return redirect('/acertijo')->with(compact('notification'));
     }
+    
     public function edit(Request $request, $id)
     {
         $acertijo = Acertijo::findOrFail($id);

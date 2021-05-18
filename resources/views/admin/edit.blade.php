@@ -8,7 +8,7 @@
             <h3 class="mb-0">Editar Medico</h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('doctors/')}}" class="btn btn-sm btn-default">
+            <a href="{{url('client')}}" class="btn btn-sm btn-default">
             Cancelar y Volver</a>
         </div>
         </div>
