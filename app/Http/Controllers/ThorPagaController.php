@@ -14,7 +14,7 @@ class ThorPagaController extends Controller
      */
     public function index()
     {
-        $thorpaga = ThorPaga::all();
+        $thorpaga = ThorPaga::paginate(8);
         return view('thorpaga.index',compact('thorpaga'));
     }
 

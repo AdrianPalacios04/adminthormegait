@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcertijoController;
 use App\Http\Controllers\CarreraController;
-use App\Http\Controllers\SupAcertijoController;
+use App\Http\Controllers\SupAcertijoController; 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ThorTicketController;
 use App\Http\Controllers\ThorPagaController;
@@ -38,8 +38,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:admin|acertijero|supacertijero']);
 
-   Route::resource('ticket', ThorTicketController::class);
-   Route::resource('cash', ThorPagaController::class);
+
+   
+   Route::resource('ticket', ThorTicketController::class)->middleware('auth');
+   Route::resource('cash', ThorPagaController::class)->middleware('auth');
 
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:supacertijero']);
 
@@ -60,7 +62,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
   //  Route::resource('acertijo', AcertijoController::class);
    Route::get('changeUse',[AcertijoController::class,'changeUse'])->name('changeUse');
 
-   Route::get('changeUse',[ThorTicketController::class,'changeUse'])->name('changeUse');
+   // Route::get('changeUse',[ThorTicketController::class,'changeUse'])->name('changeUse');
    
 
 //    Route::resource('acertijo', AcertijoController::class);

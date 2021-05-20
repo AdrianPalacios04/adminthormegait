@@ -14,7 +14,7 @@ class AcertijoController extends Controller
         //$findUser = User::find(auth()->id());
          if (auth()->user()->role == 'admin') {
             $acertijo = Acertijo::paginate(8);
-         }elseif(auth()->user()->role == 'supacertijero') {
+          }elseif(auth()->user()->role == 'supacertijero') {
             $acertijo = Acertijo::paginate(8);
         }else{
             $acertijo = Acertijo::where('user_id',Auth::id())->paginate(8);

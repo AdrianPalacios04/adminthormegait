@@ -47,25 +47,11 @@
                 <i class="ni ni-air-baloon text-yellow"></i> EQUILICUA
             </a>
         </li>
-        <div class="nav-item">
-            <div class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
-                    <i class="fa fa-gavel" aria-hidden="true" ></i>  JUEGO THOR 
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <li>
-                        <a class="dropdown-item" href="/ticket">
-                            <i class="fas fa-ticket-alt"></i> Tickets
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="/cash">
-                            <i class="far fa-money-bill-alt"></i> Cash
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="/cash">
+                <i class="fa fa-gavel" aria-hidden="true" ></i> JUEGO THOR
+            </a>
+        </li>
         {{-- <li class="nav-item">
             <a class="nav-link" href="">
                 <i class="ni ni-tv-2 text-primary"></i> Otros

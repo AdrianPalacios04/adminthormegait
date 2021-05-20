@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Acertijo::class);
     }
+    public function Paga()
+    {
+        return $this->hasMany(ThorPaga::class);
+    }
+    public function Ticket()
+    {
+        return $this->hasMany(ThorTicket::class);
+    }
 }

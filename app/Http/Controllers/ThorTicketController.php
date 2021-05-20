@@ -9,7 +9,9 @@ class ThorTicketController extends Controller
 {
     public function index()
     {
-        $thorticket = ThorTicket::all();
+        $thorticket = ThorTicket::paginate(8);
+
+        // dd($thorticket);
         return view('thorticket.index',compact('thorticket'));
     }
     public function create()
