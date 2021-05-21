@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ThorPaga;
+use App\Models\User;
+use Auth;
 
 class ThorPagaController extends Controller
 {
@@ -14,7 +16,13 @@ class ThorPagaController extends Controller
      */
     public function index()
     {
-        $thorpaga = ThorPaga::paginate(8);
+        if (auth()->user()->role == 'admin') {
+            $thorpaga = ThorPaga::paginate(8);
+          }elseif(auth()->user()->role == 'supacertijero') {
+            $thorpaga = ThorPaga::paginate(8);
+        }else{
+            $thorpaga = ThorPaga::where('user_id',Auth::id())->paginate(8);
+         }
         return view('thorpaga.index',compact('thorpaga'));
     }
 
@@ -36,8 +44,13 @@ class ThorPagaController extends Controller
      */
     public function store(Request $request)
     {
-        ThorPaga::create($request->all());
-        $notificacion = 'El nuevo usuario se ha registrado correctamente';
+        $user = User::find(auth()->id());
+        $acertijo = $request->all();
+        $acertijo['user_id'] = $user->id;
+        ThorPaga::create($acertijo);
+        $notificacion = "El acertijo se creo correctamente";
+
+        
         return redirect('/cash')->with(compact('notificacion'));
     }
 

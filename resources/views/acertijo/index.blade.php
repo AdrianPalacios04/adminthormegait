@@ -41,13 +41,13 @@
                     
                 <tr>
                     <td>
-                        <button class="btn btn-sm" data-toggle="modal" data-target="#exampleModal{{$acertijos->id}}"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                        <button class="btn btn-sm" data-toggle="modal" data-target="#exampleModal{{$acertijos->i_id}}"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
                     </td>
                     <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
-                        {{$acertijos->pregunta}}
+                        {{$acertijos->t_pregunta}}
                     </td>
                     <td>
-                        {{$acertijos->respuesta}}
+                        {{$acertijos->t_respuesta}}
                     </td>
                     {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero') --}}
                     <td>
@@ -55,7 +55,7 @@
                     </td>
                     <td>
                         <label class="custom-toggle">
-                        <input type="checkbox" class="toggle-class" data-id="{{ $acertijos->id }}" 
+                        <input type="checkbox" class="toggle-class" data-id="{{ $acertijos->i_id }}" 
                         data-toggle="toggle" data-style="slow" data-label-off="No" data-label-on="Yes" {{ $acertijos->i_uso == true ? 'checked' : ''}}>
                         <span class="custom-toggle-slider rounded-circle"></span>
                         </label>
@@ -65,11 +65,11 @@
                         
                         
                         {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
-                        <form action="{{url('/acertijo/'.$acertijos->id)}}" method="post">
+                        <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             
-                            <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
                             <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
                             </form>
                         {{-- @endif --}}

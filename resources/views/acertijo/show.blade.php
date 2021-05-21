@@ -1,6 +1,6 @@
 
 @foreach ($acertijo as $acertijos)
-<div class="modal fade" id="exampleModal{{$acertijos->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$acertijos->i_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -10,9 +10,9 @@
         </button>
         </div>
         <div class="modal-body">
-            <p><b>ID : </b><span>{{$acertijos->id}}</span></p>
-            <p><b>Pregunta : </b><span >{{$acertijos->pregunta}}</span></p>
-            <p><b>Respuesta : </b><span >{{$acertijos->respuesta}}</span></p>
+            <p><b>ID : </b><span>{{$acertijos->i_id}}</span></p>
+            <p><b>Pregunta : </b><span >{{$acertijos->t_pregunta}}</span></p>
+            <p><b>Respuesta : </b><span >{{$acertijos->t_respuesta}}</span></p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -6,6 +6,7 @@ use App\Models\Acertijo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use DB;
 
 class AcertijoController extends Controller
 {
@@ -13,6 +14,7 @@ class AcertijoController extends Controller
     {
         //$findUser = User::find(auth()->id());
          if (auth()->user()->role == 'admin') {
+            //$acertijo = DB::connection('mysql_connect_2')->table('tc_equilicua_x')->paginate(8);
             $acertijo = Acertijo::paginate(8);
           }elseif(auth()->user()->role == 'supacertijero') {
             $acertijo = Acertijo::paginate(8);
@@ -21,7 +23,6 @@ class AcertijoController extends Controller
          }
         
         return view('acertijo.index',compact('acertijo'));
-        
     }
     
     public function create()

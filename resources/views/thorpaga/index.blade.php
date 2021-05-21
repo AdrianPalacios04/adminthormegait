@@ -18,9 +18,9 @@
     </div>
     
     <div class="card-body">
-        @if(session('notification'))
+        @if(session('notificacion'))
         <div class="alert alert-success" role="alert">
-            {{session('notification')}}
+            {{session('notificacion')}}
         </div>
         @endif
     </div>
@@ -87,9 +87,11 @@
                     <td>
                         {{$thorpagas->t_llave3}}
                     </td>
+                    @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero')
                     <td>
                      {{$thorpagas->user->name}}
                     </td>
+                    @endif
                     {{-- <td>
                         <label class="custom-toggle">
                         <input type="checkbox" class="toggle-class" data-id="{{ $thorpagas->i_id }}" 
