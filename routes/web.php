@@ -8,6 +8,7 @@ use App\Http\Controllers\SupAcertijoController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ThorTicketController;
 use App\Http\Controllers\ThorPagaController;
+use App\Http\Controllers\PublicidadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +43,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    
    Route::resource('ticket', ThorTicketController::class)->middleware('auth');
    Route::resource('cash', ThorPagaController::class)->middleware('auth');
+
+   Route::resource('imagen', PublicidadController::class);
 
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:supacertijero']);
 
