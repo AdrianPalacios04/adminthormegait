@@ -44,7 +44,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::resource('ticket', ThorTicketController::class)->middleware('auth');
    Route::resource('cash', ThorPagaController::class)->middleware('auth');
 
-   Route::resource('imagen', PublicidadController::class);
+   Route::resource('publicidad', PublicidadController::class);
 
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:supacertijero']);
 

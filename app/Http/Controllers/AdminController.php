@@ -13,6 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         //dd(Auth::user()->role);
+        
          $client = User::all();
          return view('admin.index', compact('client'));
     }

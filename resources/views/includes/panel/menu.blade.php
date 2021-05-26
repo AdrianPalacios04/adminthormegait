@@ -9,7 +9,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/acertijo">
-                <i class="ni ni-air-baloon text-yellow"></i>EQUILICUA
+                <i class="ni ni-air-baloon"></i>EQUILICUA
             </a>
         </li>
         <div class="nav-item">
@@ -33,7 +33,12 @@
         </div>
         <li class="nav-item">
             <a class="nav-link" href="/race">
-                <i class="fab fa-optin-monster"></i> CARRERA
+                <i class="fas fa-flag-checkered"></i> CARRERA
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/publicidad">
+                <i class="fab fa-adversal"></i> PUBLICIDAD
             </a>
         </li>
         <li class="nav-item">

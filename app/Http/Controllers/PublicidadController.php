@@ -28,7 +28,7 @@ class PublicidadController extends Controller
      */
     public function create()
     {
-        //
+        return view('publicidad.create');
     }
 
     /**
@@ -40,17 +40,22 @@ class PublicidadController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        if ($request -> hasFile('image')) {
+        if ($request -> hasFile('horizontal') and $request -> hasFile('vertical')) {
             $destination_path = 'public/imagen/publicidad';
-            $image = $request->file('image');
+            $image = $request->file('horizontal');
+            $image1 = $request->file('vertical');
             $image_name = $image->getClientOriginalName(); // nombre de la imagen
-            $path = $request->file('image')->storeAs($destination_path,$image_name);
+            $image_name1 = $image1->getClientOriginalName(); // nombre de la imagen
+            $path = $request->file('horizontal')->storeAs($destination_path,$image_name);
+            $path1 = $request->file('vertical')->storeAs($destination_path,$image_name1);
 
-            $input['image'] = $image_name;
+            $input['horizontal'] = $image_name;
+            $input['vertical'] = $image_name1;
         }
         Publicidad::create($input);
-        
-        return redirect('imagen');
+        $notificacion = "Se agrego la publicidad correctamente";
+
+        return redirect('/publicidad')->with(compact('notificacion'));
     }
 
     /**

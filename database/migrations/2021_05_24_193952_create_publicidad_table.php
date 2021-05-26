@@ -15,7 +15,12 @@ class CreatePublicidadTable extends Migration
     {
         Schema::create('publicidad', function (Blueprint $table) {
             $table->id();
-            $table->text('url');
+            $table->string('nombre');
+            $table->string('zona');
+            $table->text('horizontal');
+            $table->text('vertical');
+            $table->date('f_inicio');
+            $table->date('f_final');
             $table->timestamps();
         });
     }

@@ -1,27 +1,50 @@
 @extends('layouts.panel')
-
 @section('content')
-<div class="container">
-    <div class="row">
+
+<div class="card shadow">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
         <div class="col">
-            <h1>Subir imagenes</h1>
-            <form action="{{url('imagen')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <input type="file" name="image">
-                </div>
-                <button type="submit" class="btn btn-primary">Subir</button>
-            </form>
+            <h3 class="mb-0">Carreras</h3>
+        </div>
+        <div class="col text-right">
+            <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary">Registro Carreras</a>
+        </div>
         </div>
     </div>
+    <div class="card-body">
+        @if(session('notificacion'))
+        <div class="alert alert-success" role="alert">
+            {{session('notificacion')}}
+        </div>
+        @endif
+    </div>    
+    <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Zona Pertenece</th>
+                <th scope="col">Vesión Horizontal</th>
+                <th scope="col">Versión Vertical</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Final</th>
+             
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($publicidad as $publicidades)
+                <td >{{$publicidades->nombre}}</td>
+                <td>{{$publicidades->zona}}</td>
+                <td>{{$publicidades->horizontal}}</td>
+                <td>{{$publicidades->vertical}}</td>
+                <td>{{$publicidades->f_inicio}}</td>
+                <td>{{$publicidades->f_final}}</td>
+
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
-
-@foreach ($publicidad as $publicidades)
-
-<table>
-    <td><img src="{{asset('storage/imagen/publicidad/'.$publicidades->image)}}" height="100px"></td>
-</table>
-    
-@endforeach
-    
 @endsection

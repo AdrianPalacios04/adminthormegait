@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Publicidad extends Model
 {
     protected $table = 'publicidad';
+    public $timestamps = false;
     protected $fillable = [
-        'image',
+        'nombre','zona','horizontal','vertical','f_inicio','f_final'
     ];
     use HasFactory;
     
