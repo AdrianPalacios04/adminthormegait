@@ -35,12 +35,25 @@
             </thead>
             <tbody>
                 @foreach ($publicidad as $publicidades)
-                <td >{{$publicidades->nombre}}</td>
-                <td>{{$publicidades->zona}}</td>
-                <td>{{$publicidades->horizontal}}</td>
-                <td>{{$publicidades->vertical}}</td>
-                <td>{{$publicidades->f_inicio}}</td>
-                <td>{{$publicidades->f_final}}</td>
+                <tr>
+                    <td >{{$publicidades->nombre}}</td>
+                    <td>{{$publicidades->zona}}</td>
+                    <td><img src="{{asset('storage/imagen/publicidad/'.$publicidades->horizontal)}}" height="40"></td>
+                    <td><img src="{{asset('storage/imagen/publicidad/'.$publicidades->vertical)}}" height="40"></td>
+                    <td>{{$publicidades->f_inicio}}</td>
+                    <td>{{$publicidades->f_final}}</td>
+                    <td>    
+                        {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
+                        <form action="{{url('/publicidad/'.$publicidades->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            
+                            <a href="{{url('/publicidad/'.$publicidades->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                            <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        {{-- @endif --}}
+                    </td>
+                </tr>
 
                 @endforeach
             </tbody>

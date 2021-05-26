@@ -40,17 +40,17 @@ class PublicidadController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        if ($request -> hasFile('horizontal') and $request -> hasFile('vertical')) {
+        if ($request -> hasFile('horizontal')) {
             $destination_path = 'public/imagen/publicidad';
             $image = $request->file('horizontal');
-            $image1 = $request->file('vertical');
+            // $image1 = $request->file('vertical');
             $image_name = $image->getClientOriginalName(); // nombre de la imagen
-            $image_name1 = $image1->getClientOriginalName(); // nombre de la imagen
-            $path = $request->file('horizontal')->storeAs($destination_path,$image_name);
-            $path1 = $request->file('vertical')->storeAs($destination_path,$image_name1);
+            // $image_name1 = $image1->getClientOriginalName(); // nombre de la imagen
+             $path = $request->file('horizontal')->storeAs($destination_path,$image_name);
+            //$path1 = $request->file('vertical')->storeAs($destination_path,$image_name1);
 
             $input['horizontal'] = $image_name;
-            $input['vertical'] = $image_name1;
+            // $input['vertical'] = $image_name1;
         }
         Publicidad::create($input);
         $notificacion = "Se agrego la publicidad correctamente";
@@ -75,9 +75,10 @@ class PublicidadController extends Controller
      * @param  \App\Models\Publicidad  $publicidad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Publicidad $publicidad)
+    public function edit(Request $request,$id)
     {
-        //
+        $publicidad = Publicidad::findOrFail($id);
+        return view('publicidad.edit',compact('publicidad'));
     }
 
     /**
@@ -87,9 +88,28 @@ class PublicidadController extends Controller
      * @param  \App\Models\Publicidad  $publicidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Publicidad $publicidad)
+    public function update(Request $request,$id)
     {
-        //
+        $publicidad = Publicidad::find($id);
+        $data = $request->all();
+
+        if ($request -> hasFile('horizontal')) {
+            // $destination_path = 'public/imagen/publicidad';
+            $image = $request->file('horizontal');
+            // $image1 = $request->file('vertical');
+            $image_name = $image->getClientOriginalExtension(); // nombre de la imagen
+            // $image_name1 = $image1->getClientOriginalExtension(); // nombre de la imagen
+            $filaname = time(). '.'. $image_name;
+            $image = move('public/imagen/publicidad',$filaname);
+            // $path = $request->file('horizontal')->storeAs($destination_path,$image_name);
+            // $path1 = $request->file('vertical')->storeAs($destination_path,$image_name1);
+            $data['horizontal'] = $image_name;
+            // $data['vertical'] = $image_name1;
+        }
+        //dd($data); 
+         $publicidad->save();//UPDATE
+        // $notification = 'Se edito la publicidad se ha actualizado correctamente';
+         return redirect('/publicidad')->with(compact('publicidad'));
     }
 
     /**
