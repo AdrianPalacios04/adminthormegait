@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{url('publicidad/'.$publicidad->id)}}" method="post">
+        <form action="{{url('publicidad/'.$publicidad->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -44,13 +44,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Versión Horizontal</label>
-                        <input type="file" class="form-control" name="horizontal"  value="{{old('horizontal',$publicidad->horizontal)}}">
+                        <input type="file" class="form-control" name="horizontal"  value="{{$publicidad->horizontal}}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Versión Vertical</label>
-                        <input type="file" class="form-control" name="vertical"  value="{{old('vertical',$publicidad->vertical)}}">
+                        <input type="file" class="form-control" name="vertical"  value="{{$publicidad->vertical}}">
                     </div>
                 </div>
             </div>

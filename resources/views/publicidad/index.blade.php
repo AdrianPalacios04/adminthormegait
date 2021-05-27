@@ -5,10 +5,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">Carreras</h3>
+            <h3 class="mb-0">Publicidad</h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary">Registro Carreras</a>
+            <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary">Registro Publidad</a>
         </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
                 <tr>
                     <td >{{$publicidades->nombre}}</td>
                     <td>{{$publicidades->zona}}</td>
-                    <td><img src="{{asset('storage/imagen/publicidad/'.$publicidades->horizontal)}}" height="40"></td>
-                    <td><img src="{{asset('storage/imagen/publicidad/'.$publicidades->vertical)}}" height="40"></td>
+                    <td><img src="{{asset('imagen/publicidad/'.$publicidades->horizontal)}}" height="200"></td>
+                    <td><img src="{{asset('imagen/publicidad/'.$publicidades->vertical)}}"></td>
                     <td>{{$publicidades->f_inicio}}</td>
                     <td>{{$publicidades->f_final}}</td>
                     <td>    
