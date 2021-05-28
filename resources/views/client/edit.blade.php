@@ -70,9 +70,12 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label> Contraseña</label>
-                        <input type="password" name="t_password" class="form-control" value="{{$client->t_password}}"/>
+                        <label>Ingrese Contraseña</label>
+                    <div class="input-group">
+                        <input id="txtPassword" type="Password" Class="form-control" value="{{$client->t_password}}" onclick="mostrarPassword()">
+                        <div class="input-group-append">
+                            <button id="show_password" class="btn btn-primary"><i class="fa fa-eye icon"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,4 +83,18 @@
         </form>
     </div>
 </div>
+@push('scripts')
+<script type="text/javascript">
+    function mostrarPassword(){
+        var cambio = document.getElementById("txtPassword");
+        if(cambio.type == "password"){
+            cambio.type = "text";
+            $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        }else{
+            cambio.type = "password";
+            $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+        }
+    } 
+</script>
+@endpush
 @endsection

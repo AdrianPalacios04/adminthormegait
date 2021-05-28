@@ -49,7 +49,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:supacertijero']);
 
    // Route::get('acertijo',[AcertijoController::class,'index'])->middleware(['auth','role:superacertijero']);
-   // Route::resource('users', ClientController::class);
+   Route::resource('users', ClientController::class)->middleware(['auth','role:admin']);
    
 
     //Route::get('/acertijos',[AdminController::class,'indexAcertijo']);

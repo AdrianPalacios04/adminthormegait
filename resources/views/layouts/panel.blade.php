@@ -3,12 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  
   <title>THOR ADMIN | {{config('app.name')}}</title>
   <!-- Favicon -->
-  <link href="{{asset('img/brand/favicon.png')}}" rel="icon" type="image/png">
+  {{-- <link href="{{asset('img/brand/favicon.png')}}" rel="icon" type="image/png"> --}}
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
@@ -16,9 +14,10 @@
   <link href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{{asset('css/argon.css?v=1.0.0')}}" rel="stylesheet">
-  <script src="http://code.jquery.com/jquery-3.5.1.js"
+  {{-- <script src="http://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script> --}}
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 
 <body>
@@ -116,7 +115,7 @@
       </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
+    <div class="header bg-gradient-default pb-8 pt-4 pt-md-6">
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
@@ -126,20 +125,20 @@
    
     </div>
   </div>
-  <script src="http://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
+ 
+  
   <!-- JavaScript Bundle with Popper -->
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="{{asset('vendor/jquery/dist/jquery.min.js')}}"></script>
+  
+  {{-- <script src="{{asset('vendor/jquery/dist/jquery.min.js')}}"></script> --}}
   <script src="{{asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <!-- Optional JS -->
-  <script src="{{asset('vendor/chart.js/dist/Chart.min.js')}}"></script>
-  <script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script>
+  {{-- <script src="{{asset('vendor/chart.js/dist/Chart.min.js')}}"></script>
+  <script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script> --}}
   <!-- Argon JS -->
-  <script src="{{asset('js/argon.js?v=1.0.0')}}"></script>
+  {{-- <script src="{{asset('js/argon.js?v=1.0.0')}}"></script> --}}
 </body>
 @stack('scripts')
 

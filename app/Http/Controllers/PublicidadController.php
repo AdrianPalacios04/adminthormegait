@@ -47,7 +47,7 @@ class PublicidadController extends Controller
         $publicidad->f_final = $request->input('f_final');
 
 
-         if ($request->hasfile('horizontal')  $request->hasfile('vertical')) {
+         if ($request->hasfile('horizontal') and $request->hasfile('vertical')) {
             $request->hasfile('horizontal');
             $request->hasfile('vertical');
             $file = $request->file('horizontal');

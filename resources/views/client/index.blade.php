@@ -34,20 +34,22 @@
         <table class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
-                <th scope="col">N°</th>
+               <th></th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Nombre </th>
                 <th scope="col">DNI</th>
 
-                <th scope="col">Acciones</th>
+                <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($client as $clients)
                 <tr>
                     <th scope="row">
-                        {{$clients->i_idusuario}}
+                        <button type="button" class="btn btn-sm" data-toggle="modal" 
+                            data-target="#exampleModal{{$clients->i_idusuario}}" >
+                            <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                     </th>
                     <th scope="row">
                         {{$clients->t_username}}
@@ -75,6 +77,7 @@
             </tbody>
         </table>
         {{ $client->links() }}
+        @include('client.modal')
     </div>
 </div>
 @endsection

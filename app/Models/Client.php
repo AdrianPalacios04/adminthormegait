@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql_connect_3';
+    protected $connection = 'mysql_connect_4';
     protected $table = "tc_usuario";
     protected $primaryKey = 'i_idusuario';
     public $timestamps = false;
@@ -20,6 +20,6 @@ class Client extends Model
 
     public function Persona()
     {
-        return $this->hasOne(Persona::class,"i_idpersona");
+        return $this->belongsTo(Persona::class,"i_idpersona");
     }
 }
