@@ -44,12 +44,12 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                               <th scope="col">Acertijo</th>
-                                <th scope="col">Respuesta </th>
-                                <th scope="col">Hora Final</th>
-                                <th scope="col">Premio</th>
+                               <th scope="col">name</th>
+                                <th scope="col">start </th>
+                                <th scope="col">Final</th>
+                                {{-- <th scope="col">Premio</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Activo</th>
+                                <th scope="col">Activo</th> --}}
                                 <th scope="col"><a href="javascript:void(0)" class="btn btn-success addRow">
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i></a></th>
                             </tr>
@@ -60,8 +60,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <?php $fcha = date("Y-m-d");?>
-                                        <input type="date" name="day[]" class="form-control" value="<?php echo $fcha;?>">
+                                        <input type="text" name="name[]" class="form-control">
                                     </div>
                                 </div>
                             </td>
@@ -69,35 +68,37 @@
                             <td>
                             <div class="row">
                                 <div class="col">
-                                    <select class="form-control" name="time_start[]">
+                                    {{-- <select class="form-control" name="start[]">
                                     @for($i=1; $i<=23; $i++)
                                         <option value="{{$i}}:00">{{$i}}:00 </option>  
                                     @endfor
-                                    </select>
+                                    </select> --}}
+                                    <input type="date" name="start[]">
                                 </div>
                             </div>          
                             </td>
                             <td>
                             <div class="row">
                                 <div class="col">
-                                    <select class="form-control" name="time_final[]">
+                                    {{-- <select class="form-control" name="end[]">
                                     @for($i=1; $i<=23; $i++)
                                         <option value="{{$i}}:00">{{$i}}:00 </option>
                                        
                                     @endfor
-                                    </select>
+                                    </select> --}}
+                                    <input type="date" name="end[]" id="">
                                 </div>
                             </div>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <select class="form-control" name="premio[]">
                                     <option value="ticket">ticket</option>
                                     <option value="cash">cash</option>
                                 </select>
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 <input type="text" class="form-control" name="cantidad[]">
-                            </td>
+                            </td> --}}
                             {{-- <td> 
                                 <label class="custom-toggle">
                                     <input type="checkbox" name="active[]" checked>
@@ -124,8 +125,7 @@
                        " <td>"+
                         "<div class='row'>"+
                                     "<div class='col'>"+
-                                        "<?php $fcha = date('Y-m-d');?>"+
-                                        "<input type='date' name='day[]' class='form-control' value='<?php echo $fcha;?>'>"+
+                                        "<input type='text' name='name[]' class='form-control'>"+
                                     "</div>"+
                                 "</div>"+
                         "</td>"+
@@ -133,7 +133,7 @@
                         "<td>"+
                         "<div class='row'>"+
                             "<div class='col'>"+
-                                "<select class='form-control' name='time_start[]'>"+
+                                "<select class='form-control' name='start[]'>"+
                                 
                                     "@for($i=1; $i<=23; $i++)"+
                                         "<option value='{{$i}}:00'>{{$i}}:00 </option>"+  
@@ -146,22 +146,13 @@
                         "<td>"+
                         "<div class='row'>"+
                             "<div class='col'>"+
-                                "<select class='form-control' name='time_final[]'>"+
+                                "<select class='form-control' name='end[]'>"+
                                     "@for($i=1; $i<=23; $i++)"+
                                         "<option value='{{$i}}:00'>{{$i}}:00 </option>"+  
                                     "@endfor"+
                                 "</select>"+
                             "</div>"+
                         "</div>"+
-                        "</td>"+
-                        "<td>"+
-                            "<select class='form-control' name='premio[]'>"+
-                                "<option value='ticket'>ticket</option>"+
-                                "<option value='cash'>cash</option>"+
-                            "</select>"+
-                        "</td>"+
-                        "<td>"+
-                            "<input type='text' class='form-control' name='cantidad[]' >"+
                         "</td>"+
                         
                         "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'><i class='fa fa-trash aria-hidden='true'></i></a></th>"+

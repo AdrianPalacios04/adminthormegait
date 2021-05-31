@@ -32,7 +32,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //  Route::middleware(['auth', 'admin'])->group(function () {
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
-   Route::resource('race',CarreraController::class)->middleware('admin');
+   Route::resource('/race',CarreraController::class);
+   //Route::get('/race',[CarreraController::class,'index']);
+   Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
 
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:acertijero|admin']);
@@ -50,6 +52,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    // Route::get('acertijo',[AcertijoController::class,'index'])->middleware(['auth','role:superacertijero']);
    Route::resource('users', ClientController::class)->middleware(['auth','role:admin']);
+
    
 
     //Route::get('/acertijos',[AdminController::class,'indexAcertijo']);

@@ -15,12 +15,15 @@ class CreateCarrerasTable extends Migration
     {
         Schema::create('carreras', function (Blueprint $table) {
             $table->id();
-            $table->date('day');
-            $table->boolean('active')->default(1);
-            $table->time('time_start');
-            $table->time('time_final');
-            $table->string('premio');
-            $table->string('cantidad');
+            // $table->date('day');
+            // $table->boolean('active')->default(1);
+            // $table->time('time_start');
+            // $table->time('time_final');
+            // $table->string('premio');
+            // $table->string('cantidad');
+            $table->string('name');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }

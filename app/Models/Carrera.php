@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Carrera extends Model
 {
     protected $fillable = [
-        'name','day','time_start','time_final','premio','cantidad'
+        // 'name','day','time_start','time_final','premio','cantidad'
+        'name','start','end'
     ];
     use HasFactory;
 }
