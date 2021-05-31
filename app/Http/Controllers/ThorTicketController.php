@@ -9,7 +9,7 @@ class ThorTicketController extends Controller
 {
     public function index()
     {
-        $thorticket = ThorTicket::paginate(8);
+        $thorticket = ThorTicket::all();
 
         // dd($thorticket);
         return view('thorticket.index',compact('thorticket'));
@@ -71,8 +71,8 @@ class ThorTicketController extends Controller
         
         $thorticket->fill($data);
         $thorticket->save();//UPDATE
-        $notification = 'Se edito el acertijo se ha actualizado correctamente';
-        return redirect('/ticket')->with(compact('notification'));
+        $notificacion = 'Se edito el acertijo se ha actualizado correctamente';
+        return redirect('/ticket')->with(compact('notificacion'));
     }
 
     /**
@@ -85,9 +85,9 @@ class ThorTicketController extends Controller
     {
         $thorticket = ThorTicket::findOrFail($id);
         $thorticket->delete();
-        $notification = "El acertijo se ha eliminado correctamente";
+        $notificacion = "El acertijo se ha eliminado correctamente";
         
-        return redirect('/ticket')->with(compact('notification'));
+        return redirect('/ticket')->with(compact('notificacion'));
     }
     public function changeUse(Request $request)
     {

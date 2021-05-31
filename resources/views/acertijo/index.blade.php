@@ -24,9 +24,9 @@
     </div>
     <div>
         <div class="card-body">
-            @if(session('notification'))
+            @if(session('notificacion'))
                 <div class="alert alert-success" role="alert">
-            {{session('notification')}}
+            {{session('notificacion')}}
             </div>
             @endif
             <table class="table table-striped" id="usuarios">
