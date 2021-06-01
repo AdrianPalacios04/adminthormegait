@@ -29,14 +29,15 @@
     {{-- <div class="table-responsive">
         <!-- Projects table -->
         <table class="table align-items-center table-flush">
-            <thead class="thead-light">
+            <thead>
                 <tr>
-                <th scope="col">Race</th>
-                <th scope="col">Status</th>
-                <th scope="col">Time Start</th>
-                <th scope="col">Time Final</th>
-                <th scope="col">Premio</th>
-                <th scope="col">cantidad</th>
+                <th scope="col">inicio</th>
+                <th scope="col">final</th>
+                <th scope="col">id acertijo</th>
+                <th scope="col">id premio</th>
+                <th scope="col">cantidad premio 1</th>
+                <th scope="col">cantidad premio 2</th>
+                <th scope="col">Estado</th>
              
                 </tr>
             </thead>
@@ -45,22 +46,25 @@
                     
                 <tr>
                     <th scope="row">
-                        {{$races->name}}
+                        {{$races->inicio}}
                     </th>
                     <td>
-                        {{$races->status}}
+                        {{$races->final}}
                     </td>
                     <td>
-                        {{$races->time_start}}
+                        {{$races->id_ax}}
                     </td>
                     <td>
-                        {{$races->time_final}}
+                        {{$races->id_px}}
                     </td>
                     <td>
-                        {{$races->premio}}
+                        {{$races->px_1}}
                     </td>
                     <td>
-                        {{$races->cantidad}}
+                        {{$races->px_2}}
+                    </td>
+                    <td>
+                        {{$races->race_state}}
                     </td>
                     <td>
                         <form action="{{url('/client/'.$races->id)}}" method="post">
@@ -108,28 +112,27 @@
                 },
                 selectable: true,
                 selectHelper: true,
-                select: function (start, end, allDay) {
+                select: function (inicio, final, allDay) {
                     var name = prompt('Event Name:');
                     if (name) {
-                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                        var inicio = $.fullCalendar.formatDate(inicio, "Y-MM-DD HH:mm:ss");
+                        var final = $.fullCalendar.formatDate(final, "Y-MM-DD HH:mm:ss");
                         $.ajax({
                             url: SITEURL + "/calendar-crud-ajax",
                             data: {
                                 name: name,
-                                start: start,
-                                end: end,
+                                inicio: inicio,
+                                final: final,
                                 type: 'create'
                             },
                             type: "POST",
                             success: function (data) {
-                                displayMessage("evento creado   .");
+                                displayMessage("evento creado.");
 
                                 calendar.fullCalendar('renderEvent', {
                                     id: data.id,
-                                    title:name,
-                                    start:start,
-                                    end:end,
+                                    inicio:inicio,
+                                    final:final,
                                     allDay: allDay
                                 }, true);
                                 calendar.fullCalendar('unselect');
@@ -138,15 +141,15 @@
                     }
                 },
                 eventDrop: function (event, delta) {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                    var inicio = $.fullCalendar.formatDate(event.inicio, "Y-MM-DD");
+                    var final = $.fullCalendar.formatDate(event.final, "Y-MM-DD");
 
                     $.ajax({
                         url: SITEURL + '/calendar-crud-ajax',
                         data: {
-                            title: event.name,
-                            start: start,
-                            end: end,
+                            // title: event.name,
+                            inicio: inicio,
+                            final: final,
                             id: event.id,
                             type: 'edit'
                         },

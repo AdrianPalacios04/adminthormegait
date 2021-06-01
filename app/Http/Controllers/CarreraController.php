@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrera;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use DB;
 class CarreraController extends Controller
 {
     public function index(Request $request)
     {
         if($request->ajax()) {  
-            $data = Carrera::whereDate('start', '>=', $request->start)
-                ->whereDate('end',   '<=', $request->end)
-                ->get(['id', 'name', 'start', 'end']);
+            $data = Carrera::all();
             return response()->json($data);
         }
-        // $race = Carrera::all();
-        return view('race.index');
+        //$race = Carrera::all();
+        //return view('race.index');
     }
     public function calendarEvents(Request $request)
     {
@@ -25,9 +21,9 @@ class CarreraController extends Controller
         switch ($request->type) {
            case 'create':
               $event = Carrera::create([
-                  'name' => $request->name,
-                  'start' => $request->start,
-                  'end' => $request->end,
+                //   'name' => $request->name,
+                  'inicio' => $request->inicio,
+                  'final' => $request->final,
               ]);
  
               return response()->json($event);
@@ -36,8 +32,8 @@ class CarreraController extends Controller
            case 'edit':
               $event = Carrera::find($request->id)->update([
                   'name' => $request->name,
-                  'start' => $request->start,
-                  'end' => $request->end,
+                  'inicio' => $request->inicio,
+                  'final' => $request->final,
               ]);
  
               return response()->json($event);
@@ -72,28 +68,28 @@ class CarreraController extends Controller
         // dd($day)
 
         // la -> es para jalar una instancia de cualquier valor
-        $name = $request->name;
+        // $name = $request->name;
         
-        $start = $request->start;
-        $end = $request->end;
+        // $start = $request->start;
+        // $end = $request->end;
         
         
-        $data = [];
-        for ($i=0; $i < count($name) ; $i++) {
-            $data[] = [
-                'name'  => $name[$i],
-                'start'=> $start[$i],
-                'end'=>  $end[$i],
-                // 'premio'    =>  $premio[$i],
-                // 'cantidad'  =>  $cantidad[$i]
-            ];
+        // $data = [];
+        // for ($i=0; $i < count($name) ; $i++) {
+        //     $data[] = [
+        //         'name'  => $name[$i],
+        //         'start'=> $start[$i],
+        //         'end'=>  $end[$i],
+        //         // 'premio'    =>  $premio[$i],
+        //         // 'cantidad'  =>  $cantidad[$i]
+        //     ];
            
-        }
-        //dd($data);
+        // }
+        // //dd($data);
         
-        Carrera::insert($data);
-        $notification = 'redirect';
-        return redirect('/race')->with(compact('notification'));
+        // Carrera::insert($data);
+        // $notification = 'redirect';
+        // return redirect('/race')->with(compact('notification'));
         //  $notification = "El acertijo se creo correctamente";
         //  return view('race',compact('notificacion'));
         // // // $insert = [];

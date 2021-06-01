@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //  Route::middleware(['auth', 'admin'])->group(function () {
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
    Route::resource('/race',CarreraController::class);
-   //Route::get('/race',[CarreraController::class,'index']);
+   // Route::get('/prueba',[CarreraController::class,'index']);
    Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
 

@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
     public function Acertijo()
     {
-        return $this->hasMany(Acertijo::class);
+        return $this->hasMany(Acertijo::class,'user_id');
     }
     public function Paga()
     {

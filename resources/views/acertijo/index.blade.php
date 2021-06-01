@@ -1,10 +1,4 @@
 @extends('layouts.panel')
-
-{{-- @section('css')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-@endsection --}}
-   
-
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
@@ -15,11 +9,11 @@
             <div class="col">
                 <h3 class="mb-0">EQUILICUA</h3>
             </div>
-             @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero')
+             {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
             <div class="col text-right">
                 <a href="{{url('acertijo/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a>
             </div>
-             @endif
+             {{-- @endif --}}
          </div>
     </div>
     <div>
@@ -38,13 +32,13 @@
                     @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero')
                     <th scope="col">Usuario</th>
                     <th scope="col">Uso</th>
-                    <th></th>
+                    
                     @endif
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($acertijo as $acertijos)
-                        
                     <tr>
                         <td>
                             <button class="btn btn-sm" data-toggle="modal" data-target="#exampleModal{{$acertijos->i_id}}"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
@@ -55,7 +49,7 @@
                         <td>
                             {{$acertijos->t_respuesta}}
                         </td>
-                        {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero') --}}
+                        @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero')
                         <td>
                         {{$acertijos->user->name}}
                         </td>
@@ -66,9 +60,8 @@
                             <span class="custom-toggle-slider rounded-circle"></span>
                             </label>
                         </td>
-                        {{-- @endif --}}
+                        @endif
                         <td>
-    
                             {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
                             <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post">
                                 @csrf
@@ -127,7 +120,12 @@
 
 <script>
     $('.toggle-class').change(function() {
-        var i_uso = $(this).prop('checked') == true ? 1:0  ;
+        if () {
+            
+        } else {
+            
+        }
+        var i_uso = $(this).prop('checked') == true ? 1:0;
     
         var i_id = $(this).data('id');
      

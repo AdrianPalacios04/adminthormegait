@@ -46,6 +46,16 @@
                 <i class="fa fa-gavel" aria-hidden="true" ></i> PLAYER 
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fa fa-gavel" aria-hidden="true" ></i> TICKET 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fa fa-gavel" aria-hidden="true" ></i> RECLAMO
+            </a>
+        </li>
         @elseif(auth()->user()->role == 'acertijero')
         <li class="nav-item">
             <a class="nav-link" href="/acertijo">
@@ -57,11 +67,6 @@
                 <i class="fa fa-gavel" aria-hidden="true" ></i> JUEGO THOR
             </a>
         </li>
-        {{-- <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="ni ni-tv-2 text-primary"></i> Otros
-            </a>
-        </li> --}}
          @elseif(auth()->user()->role == 'supacertijero') 
         <li class="nav-item">
             <a class="nav-link" href="/acertijo">
@@ -93,31 +98,6 @@
                 <i class="fab fa-adversal"></i> PUBLICIDAD
             </a>
         </li>
-        {{-- <div class="nav-item">
-            <div class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
-                    <i class="fa fa-gavel" aria-hidden="true" ></i>  JUEGO THOR 
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <li>
-                        <a class="dropdown-item" href="/ticket">
-                            <i class="fas fa-ticket-alt"></i> Tickets
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="/cash">
-                            <i class="far fa-money-bill-alt"></i> Cash
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div> --}}
-        
-        {{-- <li class="nav-item">
-            <a class="nav-link" href="/specialties">
-                <i class="ni ni-planet text-blue"></i> Mis citas
-            </a>
-        </li> --}}
         @endif
         <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); 

@@ -12,16 +12,15 @@ class AcertijoController extends Controller
 {
     public function index()
     {
-        //$findUser = User::find(auth()->id());
+       //$findUser = User::find(auth()->id());
          if (auth()->user()->role == 'admin') {
-            //$acertijo = DB::connection('mysql_connect_2')->table('tc_equilicua_x')->paginate(8);
             $acertijo = Acertijo::all();
           }elseif(auth()->user()->role == 'supacertijero') {
-            $acertijo = Acertijo::paginate(8);
+            $acertijo = Acertijo::all();
         }else{
-            $acertijo = Acertijo::where('user_id',Auth::id())->paginate(8);
+            $acertijo = Acertijo::where('user_id',Auth::id())->get();
          }
-        
+        // dd($acertijo);
         return view('acertijo.index',compact('acertijo'));
     }
     
