@@ -95,13 +95,4 @@ class AcertijoController extends Controller
         $acertijo->save();
         return response()->json(['success' => 'Uso Activo']);
     }
-    public function getIniciales(){
-        $findUser = User::find(auth()->id());
-        $findUser->name;
-        $explode = explode(' ',$findUser);
-        foreach($explode as $x){
-            $name .=  $x[0];
-        }
-
-    }
 }

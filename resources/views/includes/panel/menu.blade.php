@@ -4,7 +4,7 @@
         @if(auth()->user()->role == 'admin')
         <li class="nav-item">
             <a class="nav-link" href="/client">
-                <i class="fa fa-users" aria-hidden="true"></i>USUARIO PANEL 
+                <i class="fas fa-users-cog"></i>USUARIO PANEL 
             </a>
         </li>
         <li class="nav-item">
@@ -43,17 +43,17 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/users">
-                <i class="fa fa-gavel" aria-hidden="true" ></i> PLAYER 
+                <i class="fas fa-users"></i> PLAYER 
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/users">
-                <i class="fa fa-gavel" aria-hidden="true" ></i> TICKET 
+                <i class="fas fa-ticket-alt"></i> TICKET 
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/users">
-                <i class="fa fa-gavel" aria-hidden="true" ></i> RECLAMO
+                <i class="far fa-handshake"></i> RECLAMO
             </a>
         </li>
         @elseif(auth()->user()->role == 'acertijero')
