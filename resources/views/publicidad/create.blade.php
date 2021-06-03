@@ -25,31 +25,51 @@
         <form action="{{url('publicidad')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <div class="form-group">
-                      <label for="">Nombre</label>
-                    <input type="text" class="form-control" name="nombre">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="">Zona Pertenece (<em><small>Pagina Pertenece</small></em>)</label>
-                    <input type="text" name="zona" class="form-control" />
+                    <input type="file" class="" name="nombre">
                   </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label>Versión Horizontal</label>
-                        <input type="file" class="form-control" name="horizontal">
+                        <label for="">Nombre Publicidad</label>
+                      <input type="text" name="zona" class="form-control" />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label>Versión Vertical</label>
-                        <input type="file" class="form-control" name="vertical">
+                        <label for="">Zona Pertenece (<em><small>Página Pertenece</small></em>)</label>
+                      <input type="text" name="zona" class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Posición</label>
+                        <select class="form-control" name="tienda" id="tienda" onchange="change(this)">
+                            <option value="horizontal" selected>Horizontal</option>
+                            <option value="vertical">Vertical</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" id="posicion">
+                        <label>Lugar</label>
+                        <select class="form-control">
+                            <option value="derecha">Derecha</option>
+                            <option value="izquierda">Izquierda</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="posicion1">
+                        <label>Lugar</label>
+                        <select class="form-control" >
+                            <option value="arriba">Arriba</option>
+                            <option value="abajo">Abajo</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
             <div class="row">
@@ -66,10 +86,11 @@
                   </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-default">Guardar</button>
         </form>
     </div>
 </div>
+<script src="{{asset('js/ocultar.js')}}"></script>
 @endsection
 
 {{-- @push('scripts')

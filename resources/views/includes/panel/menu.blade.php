@@ -47,8 +47,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/users">
-                <i class="fas fa-ticket-alt"></i> TICKET 
+            <a class="nav-link" href="/codes">
+                <i class="fas fa-ticket-alt"></i> CÓDIGOS PROMOCIÓN 
             </a>
         </li>
         <li class="nav-item">

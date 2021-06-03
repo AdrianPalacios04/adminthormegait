@@ -85,7 +85,7 @@
         
         <!-- Modal -->
         
-        @include('acertijo.show')
+        @include('acertijo.modal')
         {{-- {{ $acertijo->links() }} --}}
     </div>
 </div>
@@ -123,7 +123,6 @@
 <script>
     $('.toggle-class').change(function() {
         var i_uso = $(this).prop('checked') == true ? 1:0;
-    
         var i_id = $(this).data('id');
         $.ajax({
             type:'GET',

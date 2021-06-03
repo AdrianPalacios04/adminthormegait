@@ -9,6 +9,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ThorTicketController;
 use App\Http\Controllers\ThorPagaController;
 use App\Http\Controllers\PublicidadController;
+use App\Http\Controllers\CodeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    
    Route::resource('ticket', ThorTicketController::class)->middleware('auth');
+
+   Route::resource('codes', CodeController::class)->middleware('auth');
    Route::resource('cash', ThorPagaController::class)->middleware('auth');
 
    Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
