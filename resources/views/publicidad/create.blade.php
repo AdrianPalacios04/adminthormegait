@@ -4,7 +4,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">Nueva Publicidad </h3>
+            <h3 class="mb-0" >Nueva Publicidad </h3>
         </div>
         <div class="col text-right">
             <a href="{{url('publicidad')}}" class="btn btn-sm btn-default">
@@ -27,15 +27,15 @@
             <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <input type="file" class="" name="nombre">
+                    <input type="file" class="" name="imagen">
                   </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row"> 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Nombre Publicidad</label>
-                      <input type="text" name="zona" class="form-control" />
+                      <input type="text" name="nombre" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -45,34 +45,32 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label>Posición</label>
-                        <select class="form-control" name="tienda" id="tienda" onchange="change(this)">
+                        <select class="form-control" name="posicion" id="tienda" onchange="change(this)">
                             <option value="horizontal" selected>Horizontal</option>
                             <option value="vertical">Vertical</option>
                         </select>
-
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="form-group" id="posicion">
+                    <div class="form-group" id="horizontal">
                         <label>Lugar</label>
-                        <select class="form-control">
+                        <select class="form-control"  name="lugar">
                             <option value="derecha">Derecha</option>
                             <option value="izquierda">Izquierda</option>
                         </select>
                     </div>
-                    <div class="form-group" id="posicion1">
+                    <div class="form-group" id="vertical" style="display: none">
                         <label>Lugar</label>
-                        <select class="form-control" >
+                        <select class="form-control"  name="lugar">
                             <option value="arriba">Arriba</option>
                             <option value="abajo">Abajo</option>
                         </select>
                     </div>
-
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="font-weight: bolder;">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Fecha Inicio</label>

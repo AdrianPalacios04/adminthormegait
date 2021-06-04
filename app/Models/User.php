@@ -45,11 +45,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function scopeClient($query)
-    {
-        return $query->where('role','acertijero');
-    }
     public function Acertijo()
     {
         return $this->hasMany(Acertijo::class,'user_id');

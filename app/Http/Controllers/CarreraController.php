@@ -5,15 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
 class CarreraController extends Controller
+
 {
     public function index(Request $request)
     {
-        if($request->ajax()) {  
-            $data = Carrera::all();
+        
+        if($request->ajax())
+    	{
+            $validated = $request->validate([
+                'inicio' => 'required',
+                'final' => 'required',
+            ]);
+            $carrera = Carrera::all();
+            // $inicio = $carrera->inicio;
+            // $final = $carrera->final;
+            $data = $carrera->where('inicio', '>=', $inicio)
+            ->where('final', '<=', $final)->get();
             return response()->json($data);
-        }
-        //$race = Carrera::all();
-        //return view('race.index');
+            //return  dd($data)->toArray();
+    	}
+       
+     return view('race.index');
     }
     public function calendarEvents(Request $request)
     {

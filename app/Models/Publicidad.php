@@ -10,7 +10,7 @@ class Publicidad extends Model
     protected $table = 'publicidad';
     public $timestamps = false;
     protected $fillable = [
-        'nombre','zona','horizontal','vertical','f_inicio','f_final'
+        'imagen','nombre','zona','posicion','lugar','f_inicio','f_final'
     ];
     use HasFactory;
     

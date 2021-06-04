@@ -1,6 +1,7 @@
 <!-- Navigation -->
 <h6 class="navbar-heading text-muted">Menu</h6>
     <ul class="navbar-nav">
+        {{-- ADMINISTRADOR TOTAL --}}
         @if(auth()->user()->role == 'admin')
         <li class="nav-item">
             <a class="nav-link" href="/client">
@@ -33,7 +34,7 @@
         </div>
         <li class="nav-item">
             <a class="nav-link" href="/race">
-                <i class="fas fa-flag-checkered"></i> CARRERA
+                <i class="fas fa-flag-checkered"></i> CARRERAS
             </a>
         </li>
         <li class="nav-item">
@@ -52,10 +53,11 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/reclamo">
                 <i class="far fa-handshake"></i> RECLAMO
             </a>
         </li>
+        {{-- ACERTIJERO --}}
         @elseif(auth()->user()->role == 'acertijero')
         <li class="nav-item">
             <a class="nav-link" href="/acertijo">
@@ -67,6 +69,7 @@
                 <i class="fa fa-gavel" aria-hidden="true" ></i> JUEGO THOR
             </a>
         </li>
+        {{-- SUPERVISOR DE ACERTIJERO --}}
          @elseif(auth()->user()->role == 'supacertijero') 
         <li class="nav-item">
             <a class="nav-link" href="/acertijo">
@@ -92,10 +95,46 @@
                 </ul>
             </div>
         </div>
+        {{-- ADMINISTRADOR DE PUBLICIDAD  --}}
         @elseif(auth()->user()->role == 'adminpublicidad') 
         <li class="nav-item">
             <a class="nav-link" href="/publicidad">
                 <i class="fab fa-adversal"></i> PUBLICIDAD
+            </a>
+        </li>
+        {{-- ADMINISTRADOR DE USUARIOS DEL JUEGO --}}
+        @elseif(auth()->user()->role == 'adminusuario') 
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fab fa-adversal"></i> PLAYER
+            </a>
+        </li>
+        {{-- ADMINISTRADOR DE CODIGOS TICKET PROMOCION --}}
+        @elseif(auth()->user()->role == 'adminticket') 
+        <li class="nav-item">
+            <a class="nav-link" href="/codes">
+                <i class="fab fa-adversal"></i> CODIGOS PROMOCIÓN
+            </a>
+        </li>
+        {{-- ADMINISTRADOR DE RECLAMOS --}}
+        @elseif(auth()->user()->role == 'adminreclamo') 
+        <li class="nav-item">
+            <a class="nav-link" href="/claim">
+                <i class="fab fa-adversal"></i> RECLAMO
+            </a>
+        </li>
+        {{-- ADMINISTRADOR DE CARRERAS --}}
+        @elseif(auth()->user()->role == 'admincarrera') 
+        <li class="nav-item">
+            <a class="nav-link" href="/race">
+                <i class="fab fa-adversal"></i> CARRERAS
+            </a>
+        </li>
+        {{-- SUPERVISOR DE CARRERAS --}}
+        @elseif(auth()->user()->role == 'supcarrerra') 
+        <li class="nav-item">
+            <a class="nav-link" href="/race">
+                <i class="fab fa-adversal"></i> CARERRAS
             </a>
         </li>
         @endif

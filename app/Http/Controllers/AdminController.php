@@ -45,7 +45,7 @@ class AdminController extends Controller
     }
     public function edit($id)
     {
-        $client = User::client()->findOrFail($id);
+        $client = User::findOrFail($id);
         return view('admin.edit',compact('client'));
     }
 

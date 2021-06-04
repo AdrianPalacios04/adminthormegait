@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carrera extends Model
 {
+    use HasFactory;
     protected $connection = 'mysql_connect_5';
-    protected $table = "config_rices_day";
+    protected $table = "config_races_day";
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
@@ -16,5 +17,5 @@ class Carrera extends Model
         // 'name','start','end'
         'inicio','final','id_ax','id_px','px_1','px_2','race_state'
     ];
-    use HasFactory;
+
 }

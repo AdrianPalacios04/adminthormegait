@@ -88,101 +88,123 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+
         $(document).ready(function () {
-
-            var SITEURL = "{{ url('/') }}";
-
+        
             $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                headers:{
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
+        
             var calendar = $('#full_calendar_events').fullCalendar({
-                editable: true,
-                editable: true,
-                events: SITEURL + "/race",
-                displayEventTime: true,
-                eventRender: function (event, element, view) {
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = true;
-                    }
+                editable:true,
+                header:{
+                    left:'prev,next today',
+                    center:'title',
+                    right:'month,agendaWeek,agendaDay'
                 },
-                selectable: true,
+                events:'/race',
+                selectable:true,
                 selectHelper: true,
-                select: function (inicio, final, allDay) {
-                    var name = prompt('Event Name:');
-                    if (name) {
-                        var inicio = $.fullCalendar.formatDate(inicio, "Y-MM-DD HH:mm:ss");
-                        var final = $.fullCalendar.formatDate(final, "Y-MM-DD HH:mm:ss");
+                select:function(inicio, final, allDay)
+                {
+                    var px_1 = prompt('Event Title:');
+        
+                    if(px_1)
+                    {
+                        var inicio = $.fullCalendar.formatDate(inicio, 'Y-MM-DD HH:mm:ss');
+        
+                        var final = $.fullCalendar.formatDate(final, 'Y-MM-DD HH:mm:ss');
+        
                         $.ajax({
-                            url: SITEURL + "/calendar-crud-ajax",
-                            data: {
-                                name: name,
+                            url:"/full-calender/action",
+                            type:"POST",
+                            data:{
+                                px_1: px_1,
                                 inicio: inicio,
                                 final: final,
-                                type: 'create'
+                                type: 'add'
                             },
-                            type: "POST",
-                            success: function (data) {
-                                displayMessage("evento creado.");
-
-                                calendar.fullCalendar('renderEvent', {
-                                    id: data.id,
-                                    inicio:inicio,
-                                    final:final,
-                                    allDay: allDay
-                                }, true);
-                                calendar.fullCalendar('unselect');
+                            success:function(data)
+                            {
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Created Successfully");
                             }
-                        });
+                        })
                     }
                 },
-                eventDrop: function (event, delta) {
-                    var inicio = $.fullCalendar.formatDate(event.inicio, "Y-MM-DD");
-                    var final = $.fullCalendar.formatDate(event.final, "Y-MM-DD");
-
+                editable:true,
+                eventResize: function(event, delta)
+                {
+                    var inicio = $.fullCalendar.formatDate(event.inicio, 'Y-MM-DD HH:mm:ss');
+                    var final = $.fullCalendar.formatDate(event.final, 'Y-MM-DD HH:mm:ss');
+                    var px_1 = event.px_1;
+                    var id = event.id;
                     $.ajax({
-                        url: SITEURL + '/calendar-crud-ajax',
-                        data: {
-                            // title: event.name,
+                        url:"/full-calender/action",
+                        type:"POST",
+                        data:{
+                            px_1: px_1,
                             inicio: inicio,
                             final: final,
-                            id: event.id,
-                            type: 'edit'
+                            id: id,
+                            type: 'update'
                         },
-                        type: "POST",
-                        success: function (response) {
-                            displayMessage("Event updated");
+                        success:function(response)
+                        {
+                            calendar.fullCalendar('refetchEvents');
+                            alert("Event Updated Successfully");
                         }
-                    });
+                    })
                 },
-                eventClick: function (event) {
-                    var eventDelete = confirm("Are you sure?");
-                    if (eventDelete) {
+                eventDrop: function(event, delta)
+                {
+                    var inicio = $.fullCalendar.formatDate(event.inicio, 'Y-MM-DD HH:mm:ss');
+                    var final = $.fullCalendar.formatDate(event.final, 'Y-MM-DD HH:mm:ss');
+                    var px_1 = event.px_1;
+                    var id = event.id;
+                    $.ajax({
+                        url:"/full-calender/action",
+                        type:"POST",
+                        data:{
+                            px_1: px_1,
+                            inicio: inicio,
+                            final: final,
+                            id: id,
+                            type: 'update'
+                        },
+                        success:function(response)
+                        {
+                            calendar.fullCalendar('refetchEvents');
+                            alert("Event Updated Successfully");
+                        }
+                    })
+                },
+        
+                eventClick:function(event)
+                {
+                    if(confirm("Are you sure you want to remove it?"))
+                    {
+                        var id = event.id;
                         $.ajax({
-                            type: "POST",
-                            url: SITEURL + '/calendar-crud-ajax',
-                            data: {
-                                id: event.id,
-                                type: 'delete'
+                            url:"/full-calender/action",
+                            type:"POST",
+                            data:{
+                                id:id,
+                                type:"delete"
                             },
-                            success: function (response) {
-                                calendar.fullCalendar('removeEvents', event.id);
-                                displayMessage("Event removed");
+                            success:function(response)
+                            {
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Deleted Successfully");
                             }
-                        });
+                        })
                     }
                 }
             });
-        });
-
-        function displayMessage(message) {
-            toastr.success(message, 'Event');            
-        }
         
-
-</script>
+        });
+          
+        </script>
 @endsection

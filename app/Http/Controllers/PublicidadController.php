@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Publicidad;
 use Illuminate\Http\Request;
-
 use file;
 
 
@@ -43,31 +42,27 @@ class PublicidadController extends Controller
 
         $publicidad->nombre = $request->input('nombre');
         $publicidad->zona = $request->input('zona');
+        $publicidad->posicion = $request->input('posicion');
+        $publicidad->lugar = $request->input('lugar');
         $publicidad->f_inicio = $request->input('f_inicio');
         $publicidad->f_final = $request->input('f_final');
 
 
-         if ($request->hasfile('horizontal') and $request->hasfile('vertical')) {
-            $request->hasfile('horizontal');
-            $request->hasfile('vertical');
-            $file = $request->file('horizontal');
-            $file1 = $request->file('vertical');
+         if ($request->hasfile('imagen')) {
+            $request->hasfile('imagen');
+            $file = $request->file('imagen');
             $extension = $file->getClientOriginalExtension();
-            $extension1 = $file1->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $filename1 = time().'.'.$extension1;
             $file->move('imagen/publicidad/',$filename);
-            $file1->move('imagen/publicidad/',$filename1);
-            $publicidad->horizontal = $filename;
-            $publicidad->vertical = $filename1;
+            $publicidad->imagen = $filename;
+            
          }else {
             return $request;
-            $publicidad->horizontal = '';
-            $publicidad->vertical = '';
+            $publicidad->imagen = '';
         }
         //dd($publicidad);
          $publicidad->save();
-          $notificacion = "Se agrego la publicidad correctamente";
+         $notificacion = "Se agrego la publicidad correctamente";
 
          return redirect('/publicidad')->with(compact('notificacion'));
     }

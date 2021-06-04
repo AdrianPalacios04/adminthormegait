@@ -9,6 +9,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ThorTicketController;
 use App\Http\Controllers\ThorPagaController;
 use App\Http\Controllers\PublicidadController;
+use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\CodeController;
 /*
 |--------------------------------------------------------------------------
@@ -29,58 +30,35 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// client
+   // administrador general
 
-//  Route::middleware(['auth', 'admin'])->group(function () {
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
-   Route::resource('/race',CarreraController::class);
-   // Route::get('/prueba',[CarreraController::class,'index']);
-   Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
-
-   // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:acertijero|admin']);
-
+   //acertijero
    Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:admin|acertijero|supacertijero']);
-
-
-   
    Route::resource('ticket', ThorTicketController::class)->middleware('auth');
-
-   Route::resource('codes', CodeController::class)->middleware('auth');
    Route::resource('cash', ThorPagaController::class)->middleware('auth');
 
-   Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
-
-   // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:supacertijero']);
-
-   // Route::get('acertijo',[AcertijoController::class,'index'])->middleware(['auth','role:superacertijero']);
-   Route::resource('users', ClientController::class)->middleware(['auth','role:admin']);
-
-   
-
-    //Route::get('/acertijos',[AdminController::class,'indexAcertijo']);
-   // Route::resource('user', [UserController::class]);
-  // });
-//Route::post('/dashboard',[AdminController::class, 'store']);
-//Route::put('/dashboard/edit',[AdminController::class,'edit']);
-//Route::put('/dashboard/destroy',[AdminController::class,'destroy']);
-//Route::resource('/acertijo', [AcertijoController::class]);
-
-// acertijos vistas
-//  Route::middleware(['auth', 'acertijero'])->group(function () {
-  //  Route::resource('acertijo', AcertijoController::class);
    Route::get('changeUse',[AcertijoController::class,'changeUse'])->name('changeUse');
 
-   // Route::get('changeUse',[ThorTicketController::class,'changeUse'])->name('changeUse');
+   //usuarios
+   Route::resource('users', ClientController::class)->middleware(['auth','role:admin|adminusuario']);
+   // Route::get('users',ClientController::class,'index');
+
+   //carrera
+   Route::resource('/race',CarreraController::class);
+   Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
+   //administrador ticket
+   Route::resource('codes', CodeController::class)->middleware('auth','role:admin|adminticket');
+   // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:acertijero|admin']);
 
-//    Route::resource('acertijo', AcertijoController::class);
-//    // Route::get('/acertijo',[AcertijoController::class, 'index']);
-//    // Route::post('/acertijo',[AcertijoController::class,'store']);
-//    // Route::get('acertijo/create',[AcertijoController::class, 'create']);
-//  });
+  //publicidad
+   
+   Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
 
-// funcion acertijos
-// Route::middleware(['auth', 'admin'])->group(function () {
-//    Route::resource('acertijo', AcertijoController::class);
-// });
+   // reclamos
+
+   Route::resource('reclamo', ReclamoController::class)->middleware(['auth','role:admin|adminreclamo']);
+
+   

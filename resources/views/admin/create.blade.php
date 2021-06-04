@@ -50,11 +50,14 @@
                 <label for="password">Rol Asignado</label>
                 <select class="form-control" data-toggle="select" title="Simple select" name="role" data-placeholder="Select a state" >
                     <option value="admin">Administrador General</option>
-                    {{-- <option value="admincarrera">Administrador de Carrera</option> --}}
-                    {{-- <option value="admin">Supervisor de Carrera</option> --}}
-                    <option value="adminpublicidad">Administrador de Publicidad</option>
                     <option value="acertijero">Acertijero</option>
                     <option value="supacertijero">Supervisor Acertijero</option>
+                    <option value="adminpublicidad">Administrador de Publicidad</option>
+                    <option value="adminusuario">Administrador de Usuarios</option>
+                    <option value="adminticket">Administrador de Ticket</option>
+                    <option value="adminreclamo">Administrador Reclamos</option>
+                    <option value="admincarrera">Administrador de Carrera</option>
+                    <option value="supcarrera">Supervisor de Carrera</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
