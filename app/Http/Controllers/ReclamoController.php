@@ -14,7 +14,8 @@ class ReclamoController extends Controller
      */
     public function index()
     {
-        return view('reclamo.index');
+        $reclamo = Reclamo::all();
+        return view('reclamo.index',compact('reclamo'));
     }
 
     /**

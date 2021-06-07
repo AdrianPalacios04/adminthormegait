@@ -8,25 +8,26 @@
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
-        <div class="col">
-            <h3 class="mb-0">Carreras</h3>
-        </div>
-        <div class="col text-right">
-            <a href="{{url('race/create')}}" class="btn btn-sm btn-primary">Registro Carreras</a>
-        </div>
+            <div class="col">
+                <h3 class="mb-0">Carreras</h3>
+            </div>
+            <div class="col text-right col-md-2">
+                {{-- <a href="{{url('race/create')}}" class="btn btn-sm btn-primary">Registro Carreras</a> --}}
+                <input type="date" class="form-control" name="date">
+            </div>
         </div>
     </div>
         {{-- <div class=" col text-right col-2">
             <input type="date" name="day" class="form-control" value="{{old('name')}}" required>
-        </div> --}}
-        <div class="card-body">
+        </div>  --}}
+         {{-- <div class="card-body">
             <div class="container" >
                 <div id='full_calendar_events'></div>
             </div>
-        </div>
+        </div> --}}
 
         
-    {{-- <div class="table-responsive">
+    <div class="table-responsive">
         <!-- Projects table -->
         <table class="table align-items-center table-flush">
             <thead>
@@ -67,10 +68,10 @@
                         {{$races->race_state}}
                     </td>
                     <td>
-                        <form action="{{url('/client/'.$races->id)}}" method="post">
+                        <form action="{{url('/race/'.$races->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <a href="{{url('/client/'.$races->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{{url('/race/'.$races->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
                         <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
@@ -78,16 +79,16 @@
                 @endforeach
             </tbody>
         </table>
-    </div> --}}
+    </div>
 </div>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+    {{-- <script>
 
         $(document).ready(function () {
         
@@ -206,5 +207,5 @@
         
         });
           
-        </script>
+        </script> --}}
 @endsection

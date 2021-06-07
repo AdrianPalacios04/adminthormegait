@@ -22,4 +22,9 @@ class Client extends Model
     {
         return $this->belongsTo(Persona::class,"i_idpersona");
     }
+
+    public function Reclamo()
+    {
+        return $this->hasMany(Reclamo::class,'user_id');
+    }
 }

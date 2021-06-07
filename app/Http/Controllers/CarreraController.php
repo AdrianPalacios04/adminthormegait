@@ -10,58 +10,26 @@ class CarreraController extends Controller
     public function index(Request $request)
     {
         
-        if($request->ajax())
-    	{
-            $validated = $request->validate([
-                'inicio' => 'required',
-                'final' => 'required',
-            ]);
-            $carrera = Carrera::all();
-            // $inicio = $carrera->inicio;
-            // $final = $carrera->final;
-            $data = $carrera->where('inicio', '>=', $inicio)
-            ->where('final', '<=', $final)->get();
-            return response()->json($data);
-            //return  dd($data)->toArray();
-    	}
+        $race = Carrera::all();
+        
        
-     return view('race.index');
+     return view('race.index',compact('race'));
+    // if($request->ajax())
+    	// {
+        //     $validated = $request->validate([
+        //         'inicio' => 'required',
+        //         'final' => 'required',
+        //     ]);
+        //     $carrera = Carrera::all();
+        //     // $inicio = $carrera->inicio;
+        //     // $final = $carrera->final;
+        //     $data = $carrera->where('inicio', '>=', $inicio)
+        //     ->where('final', '<=', $final)->get();
+        //     return response()->json($data);
+        //     //return  dd($data)->toArray();
+    	// }
     }
-    public function calendarEvents(Request $request)
-    {
- 
-        switch ($request->type) {
-           case 'create':
-              $event = Carrera::create([
-                //   'name' => $request->name,
-                  'inicio' => $request->inicio,
-                  'final' => $request->final,
-              ]);
- 
-              return response()->json($event);
-             break;
-  
-           case 'edit':
-              $event = Carrera::find($request->id)->update([
-                  'name' => $request->name,
-                  'inicio' => $request->inicio,
-                  'final' => $request->final,
-              ]);
- 
-              return response()->json($event);
-             break;
-  
-           case 'delete':
-              $event = Carrera::find($request->id)->delete();
-  
-              return response()->json($event);
-             break;
-             
-           default:
-             # ...
-             break;
-        }
-    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -70,7 +38,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        return view('race.create');
+        // return view('race.create');
     }
 
     public function store(Request $request)
@@ -128,9 +96,10 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carrera $carrera)
+    public function edit(Carrera $carrera,$id)
     {
-        //
+        $race = Carrera::find($id);
+        return view('race.edit',compact('race'));
     }
 
     /**
@@ -140,9 +109,17 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carrera $carrera)
+    public function update(Request $request,$id)
     {
-        //
+      
+        $race = Carrera::findOrFail($id);
+        $data = $request->only('inicio','final','id_ax','id_px','px_1','px_2');
+        
+        $race->fill($data);
+        //dd($race);
+        $race->save();//UPDATE
+        return redirect('/race')->with(compact('race'));
+        
     }
 
     /**
@@ -156,3 +133,39 @@ class CarreraController extends Controller
         //
     }
 }
+
+ // public function calendarEvents(Request $request)
+    // {
+ 
+    //     switch ($request->type) {
+    //        case 'create':
+    //           $event = Carrera::create([
+    //             //   'name' => $request->name,
+    //               'inicio' => $request->inicio,
+    //               'final' => $request->final,
+    //           ]);
+ 
+    //           return response()->json($event);
+    //          break;
+  
+    //        case 'edit':
+    //           $event = Carrera::find($request->id)->update([
+    //               'name' => $request->name,
+    //               'inicio' => $request->inicio,
+    //               'final' => $request->final,
+    //           ]);
+ 
+    //           return response()->json($event);
+    //          break;
+  
+    //        case 'delete':
+    //           $event = Carrera::find($request->id)->delete();
+  
+    //           return response()->json($event);
+    //          break;
+             
+    //        default:
+    //          # ...
+    //          break;
+    //     }
+    // }

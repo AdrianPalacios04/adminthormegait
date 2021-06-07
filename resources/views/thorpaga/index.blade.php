@@ -129,7 +129,7 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
-        "lengthChange": false,
+        
 
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",

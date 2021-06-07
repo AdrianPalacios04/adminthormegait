@@ -7,10 +7,11 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">Codigos Promoción</h3>
+            <h3 class="mb-0">Códigos Promoción</h3>
         </div>
         <div class="col text-right">
-           <button class="btn btn-sm btn-primary" id="addCode">Nuevo Codigo</button>
+           {{-- <button class="btn btn-sm btn-primary" id="addCode">Nuevo Codigo</button> --}}
+           <a href="{{url('codes/create')}}" class="btn btn-sm btn-primary">Nuevo Código</a>
         </div>
         </div>
     </div>
@@ -26,8 +27,12 @@
                 <thead class="thead-light">
                     <tr>
                     <th scope="col">N°</th>
-                    <th scope="col">Codigos</th>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Coódigos</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Final</th>
+                    <th scope="col">Tipo Ticket</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Origen</th>
                     {{-- <th scope="col">Acciones</th> --}}
                     </tr>
                 </thead>
@@ -42,7 +47,19 @@
                             {{$codes->codes}}
                         </td>
                         <td>
-                            {{ \Carbon\Carbon::parse($codes->created_at)->format('d/m/Y')}}
+                            {{ \Carbon\Carbon::parse($codes->f_inicio)->format('d/m/Y')}}
+                        </td>
+                        <td>
+                            {{ \Carbon\Carbon::parse($codes->f_final)->format('d/m/Y')}}
+                        </td>
+                        <td>
+                            {{$codes->tipo_ticket}}
+                        </td>
+                        <td>
+                            {{$codes->cantidad}}
+                        </td>
+                        <td>
+                            {{$codes->origen}}
                         </td>
                         {{-- <td>
                             <form action="{{url('/code/'.$codes->id)}}" method="post">

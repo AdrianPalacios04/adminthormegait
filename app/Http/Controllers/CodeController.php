@@ -25,6 +25,7 @@ class CodeController extends Controller
      */
     public function create()
     {
+        // $this->generateRandomString(6);
         return view('codes.create');
     }
 
@@ -36,10 +37,8 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        $code = new Code();
-        $code->codes = $this->generateRandomString(6);
-        $code->save();
         
+        $code = Code::create($request->all());
         return redirect('/codes')->with(compact('code'));
     }
 
@@ -72,7 +71,7 @@ class CodeController extends Controller
     {
         //
     }
-    public  function generateRandomString($length = 20) {
+    public  static function generateRandomString($length = 20) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';

@@ -8,9 +8,10 @@ use Carbon\Carbon;
 
 class Code extends Model
 {
+    public $timestamps = false;
     // protected $dateFormat = 'U';
     use HasFactory;
     protected $fillable = [
-        'codes','created_at'
+        'codes','f_inicio','f_final','tipo_ticket','cantidad','origen'
     ];
 }
