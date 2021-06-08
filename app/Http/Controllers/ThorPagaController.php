@@ -21,7 +21,7 @@ class ThorPagaController extends Controller
           }elseif(auth()->user()->role == 'supacertijero') {
             $thorpaga = ThorPaga::paginate(8);
         }else{
-            $thorpaga = ThorPaga::where('user_id',Auth::id())->paginate(8);
+            $thorpaga = ThorPaga::where('user_id',Auth::id())->get();
          }
         return view('thorpaga.index',compact('thorpaga'));
     }

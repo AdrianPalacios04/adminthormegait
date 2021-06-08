@@ -13,6 +13,7 @@
                   <div class="form-group">
                     <div class="input-group mb-4">
                       <input class="form-control" placeholder="Search" type="date">
+                      <button>assad</button>
                     </div>
                   </div>
                 </div>
@@ -29,8 +30,8 @@
     </div>
     <div class="table-responsive">
         <!-- Projects table -->
-        <table class="table align-items-center table-flush">
-            <thead class="thead-light">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                 <th scope="col">pregunta</th>
                 <th scope="col">respuesta</th>

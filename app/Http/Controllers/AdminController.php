@@ -61,7 +61,7 @@ class AdminController extends Controller
         $this->validate($request,$rules);
 
         //mass assigment: asignacion masiva
-        $user = User::client()->findOrFail($id);
+        $user = User::findOrFail($id);
         $data = $request->only('username','name','lastname','email');
         $password = $request->input('password');
         if ($password) {

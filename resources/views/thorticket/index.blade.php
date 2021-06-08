@@ -52,7 +52,7 @@
                                 data-target="#exampleModal{{$thortickets->i_id}}" >
                                 <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                         </td>
-                        <td>
+                        <td cellspacing="4" cellpadding="4" border="1" width=400>
                             {{$thortickets->t_nombre}}
                         </td>
                         <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">

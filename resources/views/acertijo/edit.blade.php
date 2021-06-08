@@ -26,13 +26,17 @@
         <form action="{{url('acertijo/'.$acertijo->id)}}" method="post">
             @csrf
             @method('PUT')
-            <div class="form-group">
-                <h4 for="pregunta">Pregunta</h4>
-                <input type="text" name="pregunta" class="form-control" value="{{old('t_pregunta',$acertijo->t_pregunta)}}" required style="width:100%"> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h5>Pregunta</h5>
+                  <input type="text" name="t_pregunta " class="form-control" value="{{old('t_pregunta',$acertijo->pregunta)}}" />
+                </div>
             </div>
-            <div class="form-group">
-                <h4 for="respuesta">Respuesta </h4>
-                <input type="text" name="respuesta" class="form-control" value="{{old('t_respuesta',$acertijo->t_respuesta)}}" required>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h5 for="">Respuesta</h5>
+                  <input type="text" name="t_respuesta" class="form-control" value="{{old('t_respuesta',$acertijo->respuesta)}}" required/>
+                </div>
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>

@@ -22,8 +22,8 @@
         @endif
         <div class="table-responsive">
             <!-- Projects table -->
-            <table class="table align-items-center table-flush" id="usuarios">
-                <thead class="thead-light">
+            <table class="table table-striped" id="usuarios">
+                <thead>
                     <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">E-mail</th>

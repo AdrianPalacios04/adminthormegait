@@ -4,7 +4,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">Nueva Usuario </h3>
+            <h3 class="mb-0">Nueva Acertijo </h3>
         </div>
         <div class="col text-right">
             <a href="{{url('ticket')}}" class="btn btn-sm btn-default">
@@ -24,53 +24,83 @@
         @endif
         <form action="{{url('ticket')}}" method="post">
             @csrf
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5>NOMBRE</h5>
+                      <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">PISTAS</h5>
+                      <input type="text" name="t_nombre" class="form-control" value="{{old('pistas_Ax')}}" required/>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°1</label>
-                <input type="text" name="t_pregunta1" class="form-control" value="{{old('t_pregunta1')}}" required>
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">PREGUNTA N°1</h5>
+                      <input type="text" name="t_pregunta1" class="form-control"  value="{{old('t_pregunta1')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" >
+                        <h5>RESPUESTA N°1</h5>
+                        <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_respuesta1')}}" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Respuesta N°1</label>
-                <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_respuesta1')}}" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">PREGUNTA N°2 </h5>
+                      <input type="text" name="t_pregunta2" class="form-control" value="{{old('t_pregunta2')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">RESPUESTA N°2</h5>
+                      <input type="text" name="t_respuesta2" class="form-control"  value="{{old('t_respuesta2')}}" required/>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°2</label>
-                <input type="text" name="t_pregunta2" class="form-control" value="{{old('t_pregunta2')}}" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">PREGUNTA N°3 </h5>
+                      <input type="text" name="t_pregunta3" class="form-control" value="{{old('t_pregunta3')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">RESPUESTA N°3</h5>
+                      <input type="text" name="t_respuesta3" class="form-control"  value="{{old('t_respuesta3')}}" required/>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label for="name">Respuesta N°2</label>
-                <input type="text" name="t_respuesta2" class="form-control" value="{{old('t_respuesta2')}}" required>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">LLAVE N°1</h5>
+                      <input type="text" name="t_llave1" class="form-control" value="{{old('t_llave1')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">LLAVE N°2</h5>
+                      <input type="text" name="t_llave2" class="form-control"  value="{{old('t_llave2')}}" required/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" >
+                        <h5>LLAVE N°3</h5>
+                        <input type="text" name="t_llave3" class="form-control" value="{{old('t_llave3')}}" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°3</label>
-                <input type="text" name="t_pregunta3" class="form-control" value="{{old('t_pregunta3')}}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="name">Respuesta N°3</label>
-                <input type="text" name="t_respuesta3" class="form-control" value="{{old('t_respuesta3')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°1 </label>
-                <input type="text" name="t_llave1" class="form-control" value="{{old('t_llave1')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°2 </label>
-                <input type="text" name="t_llave2" class="form-control" value="{{old('t_llave2')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°3 </label>
-                <input type="text" name="t_llave3" class="form-control" value="{{old('t_llave3')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Pistas</label>
-                <input type="text" name="pistas_Ax" class="form-control" value="{{old('pistas_Ax')}}" required>
-            </div>
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-default">Guardar</button>
         </form>
     </div>
 </div>

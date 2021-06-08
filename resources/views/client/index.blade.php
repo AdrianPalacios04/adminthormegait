@@ -14,7 +14,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <!-- Projects table -->
-            <table class="table align-items-center table-flush" id="usuarios">
+            <table class="table table-striped" id="usuarios">
                 <thead>
                     <tr>
                    <th></th>
