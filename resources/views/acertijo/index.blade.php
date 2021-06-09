@@ -44,10 +44,10 @@
                             <button class="btn btn-sm" data-toggle="modal" data-target="#exampleModal{{$acertijos->id}}"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
                         </td>
                         <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
-                            {{$acertijos->pregunta}}
+                            {{$acertijos->t_pregunta}}
                         </td>
                         <td>
-                            {{$acertijos->respuesta}}
+                            {{$acertijos->t_respuesta}}
                         </td>
                         @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero')
                         <td>
@@ -55,7 +55,7 @@
                         </td>
                         <td>
                             <label class="custom-toggle">
-                            <input type="checkbox" class="toggle-class" data-id="{{ $acertijos->id }}" 
+                            <input type="checkbox" class="toggle-class" data-id="{{ $acertijos->i_id }}" 
                             data-toggle="toggle" data-style="slow" {{ $acertijos->i_uso == true ? 'checked' : ''}}>
                             <span class="custom-toggle-slider rounded-circle"></span>
                             </label>
@@ -123,14 +123,14 @@
 <script>
     $('.toggle-class').change(function() {
         var i_uso = $(this).prop('checked') == true ? 1:0;
-        var i_id = $(this).data('id');
+        var id = $(this).data('id');
         $.ajax({
             type:'GET',
             dataType:'JSON',
             url: '{{route('changeUse')}}',
             data:{
                 'i_uso':i_uso,
-                'i_id':i_id,
+                'id':id,
             },
             // done:function(data){
 

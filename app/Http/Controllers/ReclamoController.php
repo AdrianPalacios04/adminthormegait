@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reclamo;
 use Illuminate\Http\Request;
+use App\Models\Client;
 
 class ReclamoController extends Controller
 {
@@ -14,6 +15,7 @@ class ReclamoController extends Controller
      */
     public function index()
     {
+        // $reclamo = Reclamo::with('clients')->get();
         $reclamo = Reclamo::all();
         return view('reclamo.index',compact('reclamo'));
     }

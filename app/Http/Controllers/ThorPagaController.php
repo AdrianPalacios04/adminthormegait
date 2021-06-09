@@ -110,7 +110,7 @@ class ThorPagaController extends Controller
         
         return redirect('/cash')->with(compact('notification'));
     }
-    // public function changeUse(Request $request)
+    // public function changeUsePaga(Request $request)
     // {
     //     $acertijo = ThorPaga::find($request->i_id);
     //     $acertijo -> i_uso = $request->i_uso;

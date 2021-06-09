@@ -25,7 +25,31 @@
         @endif
         <form action="{{url('acertijo')}}" method="post">
             @csrf
-            <table class="table align-items-center table-flush">
+            <div class="form-group">
+                <h4 for="pregunta">ACERTIJO</h4>
+                <input type="text" name="t_pregunta" class="form-control" value="{{old('t_pregunta',$acertijo->t_pregunta)}}">
+            </div>
+            <div class="form-group">
+                <h4 for="respuesta">RESPUESTA </h4>
+                <input type="text" name="t_respuesta" class="form-control" value="{{old('t_respuesta',$acertijo->t_respuesta)}}">
+            </div>
+            <div class="form-group">
+                <h4 for="respuesta">PISTAS </h4>
+                <input type="text" name="t_pista" class="form-control" value="{{old('t_pista',$acertijo->t_pista)}}" >
+            </div>
+            <div class="form-group">
+                <h4 for="respuesta">KEY WORD N째1 </h4>
+                <input type="text" name="t_kword1" class="form-control" value="{{old('t_kword1',$acertijo->t_kword1)}}" >
+            </div>
+            <div class="form-group">
+                <h4 for="respuesta">KEY WORD N째2 </h4>
+                <input type="text" name="t_kword2" class="form-control" value="{{old('t_kword2',$acertijo->t_kword2)}}" >
+            </div>
+            <div class="form-group">
+                <h4 for="respuesta">KEY WORD N째3 </h4>
+                <input type="text" name="t_kword3" class="form-control" value="{{old('t_kword3',$acertijo->t_kword3)}}" >
+            </div>
+            {{-- <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                     <tr>
                        <th scope="col">Pregunta</th>
@@ -36,7 +60,7 @@
                 </thead>
                 <tbody>
                     {{-- @foreach ($workDays as $key => $workDay) --}}
-                    <tr>
+                    {{-- <tr>
                         <td>
                             <div class="row">
                                 <div class="col">
@@ -56,16 +80,16 @@
 
                     </tr>
                     {{-- @endforeach --}}
-                </tbody>
+                {{-- </tbody>
                
-            </table>
+            </table> --}} --}} --}}
             <button>guardar</button>
         </form>
     </div>
 </div>
 @endsection
 @push('scripts')
-<script>
+{{-- <script>
         let add;
     $('thead').on('click','.addRow',function() {
          add =  "<tr>"+
@@ -91,6 +115,6 @@
         $(this).parent().parent().remove();
     });
    
-</script>
+</script> --}}
     
 @endpush

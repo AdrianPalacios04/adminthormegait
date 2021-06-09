@@ -17,14 +17,13 @@ class Client extends Model
        "t_password","t_username","t_correoper","n_celular"
     ];
    
-
     public function Persona()
     {
         return $this->belongsTo(Persona::class,"i_idpersona");
     }
 
-    public function Reclamo()
-    {
-        return $this->hasMany(Reclamo::class,'user_id');
-    }
+    // public function Reclamos()
+    // {
+    //     return $this->belongsTo(Reclamo::class,'user_id');
+    // }
 }

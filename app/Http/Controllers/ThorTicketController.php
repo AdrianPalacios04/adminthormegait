@@ -50,7 +50,7 @@ class ThorTicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $thorticket = ThorTicket::findOrFail($id);
         return view('thorticket.edit',compact('thorticket'));
@@ -89,12 +89,12 @@ class ThorTicketController extends Controller
         
         return redirect('/ticket')->with(compact('notificacion'));
     }
-    public function changeUse(Request $request)
+    public function changeUseTicket(Request $request)
     {
-        $thorticket = ThorTicket::find($request->i_id);
-        $thorticket -> i_uso = $request->i_uso;
-        //dd($acertijo);
+        $thorticket = ThorTicket::find($request->id);
+        $thorticket->i_uso = $request->i_uso;
         $thorticket->save();
+        //dd($thorticket);
         return response()->json(['success' => 'Uso Activo']);
     }
 }

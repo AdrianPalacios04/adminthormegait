@@ -4,11 +4,11 @@
     <div class="card-header border-0">
         <div class="row justify-content-end">
         <div class="col">
-            <h3 class="mb-0">Acertijos</h3>
+            <h3 class="mb-0">Reclamo y/o quejas</h3>
         </div>
-         <div class="col text-right">
+         {{-- <div class="col text-right">
             {{-- <a href="{{url('acertijo/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a> --}}
-            <div class="row justify-content-end ">
+            {{-- <div class="row justify-content-end ">
                 <div class="col-md-5">
                   <div class="form-group">
                     <div class="input-group mb-4">
@@ -18,7 +18,7 @@
                   </div>
                 </div>
             </div>
-        </div> 
+        </div>  --}}
         </div>
     </div>
     <div class="card-body">
@@ -33,56 +33,62 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                <th scope="col">pregunta</th>
-                <th scope="col">respuesta</th>
-                <th scope="col">Uso del Acertijo</th>
+                <th scope="col">Usuario</th>
+                
+                <th scope="col">tienda compra</th>
+                <th scope="col">tipo</th>
+                <th scope="col">monto reclamado</th>
+                <th scope="col">categoria</th>
+                <th scope="col">pedido</th>
+                <th scope="col">detalle</th>
+                <th scope="col">Fecha</th>
+
                 </tr>
             </thead>
             <tbody>
                 @foreach ($reclamo as $reclamos)
                     
                 <tr>
-                    <th scope="row">
-                        {{$reclamos->tipo_tienda}}
-                    </th>
                     <td>
-                        {{$reclamos->tipo}}
+                        <button type="button" class="btn btn-sm" data-toggle="modal" 
+                            data-target="#exampleModal{{$reclamos->id_reclamaciones}}" >
+                            <i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                    </td>
+                    <td scope="row">
+                        {{$reclamos->nombres}}
                     </td>
                     <td>
-                        {{$reclamos->monto}}
+                        {{$reclamos->tienda_compra}}
                     </td>
                     <td>
-                        {{$reclamos->categoria}}
+                        {{$reclamos->id_tipo}}
                     </td>
                     <td>
+                        {{$reclamos->monto_reclamado}}
+                    </td>
+                    <td>
+                        {{$reclamos->id_categoria}}
+                    </td>
+                    <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{$reclamos->pedido}}
                     </td>
-                    <td>
+                    <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{$reclamos->detalle}}
                     </td>
                     <td>
-                        {{$reclamos->games}}
-                    </td>
+                        {{$reclamos->fecha_registro}}
+                    </td>                    
                     <td>
-                        <form action="" method="post">
-                            <input data-id="{{$reclamos->i_id}}" class="toggle-class" type="checkbox" data-onstyle="success"
-                         data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $reclamos->i_uso ? 'checked' : '' }}>
-                    
-                        </form>
+                        <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
+                            data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
+                            Responder</button>
                     </td>
-                    {{-- <td>
-                        <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                        <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
-                        </form>
-                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>
         </table>
-            {{-- {{ $reclamo->links() }} --}}
+        @include('reclamo.modal')
+        @include('reclamo.envio')
     </div>
 </div>
     

@@ -40,6 +40,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::resource('cash', ThorPagaController::class)->middleware('auth');
 
    Route::get('changeUse',[AcertijoController::class,'changeUse'])->name('changeUse');
+  Route::get('changeUseTicket',[ThorTicketController::class,'changeUseTicket'])->name('changeUseTicket');
 
    //usuarios
    Route::resource('users', ClientController::class)->middleware(['auth','role:admin|adminusuario']);

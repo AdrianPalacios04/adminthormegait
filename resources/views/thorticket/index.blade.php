@@ -153,20 +153,20 @@
 @push('scripts')
 <script>
     $('.toggle-class').change(function() {
-        var i_uso = $(this).prop('checked') == true ? 1:0  ;
+        var i_uso = $(this).prop('checked') == true ? 1:0;
     
-        var i_id = $(this).data('id');
+        var id = $(this).data('i_id');
      
         $.ajax({
             type:'GET',
             dataType:'JSON',
-            url: '{{route('changeUse')}}',
+            url: '{{route('changeUseTicket')}}',
             data:{
                 'i_uso':i_uso,
-                'i_id':i_id,
+                'i_id':id,
             },
             success:function(data){
-              
+                console.log('error en al envio');
             }
         });
     });

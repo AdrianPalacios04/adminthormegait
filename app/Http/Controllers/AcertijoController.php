@@ -6,7 +6,6 @@ use App\Models\Acertijo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use DB;
 
 class AcertijoController extends Controller
 {
@@ -89,7 +88,7 @@ class AcertijoController extends Controller
     }
     public function changeUse(Request $request)
     {
-        $acertijo = Acertijo::find($request->i_id);
+        $acertijo = Acertijo::find($request->id);
         $acertijo -> i_uso = $request->i_uso;
         //dd($acertijo);
         $acertijo->save();
