@@ -33,6 +33,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th></th>
                 <th scope="col">Usuario</th>
                 
                 <th scope="col">tienda compra</th>
@@ -61,13 +62,13 @@
                         {{$reclamos->tienda_compra}}
                     </td>
                     <td>
-                        {{$reclamos->id_tipo}}
+                        {{$reclamos->tiporeclamo->tipo}}
                     </td>
                     <td>
                         {{$reclamos->monto_reclamado}}
                     </td>
                     <td>
-                        {{$reclamos->id_categoria}}
+                        {{$reclamos->categoria->categoria}}
                     </td>
                     <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{$reclamos->pedido}}

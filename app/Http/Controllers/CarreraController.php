@@ -9,11 +9,8 @@ class CarreraController extends Controller
 {
     public function index(Request $request)
     {
-        
-        $race = Carrera::all();
-        
-       
-     return view('race.index',compact('race'));
+    $race = Carrera::all();
+    return view('race.index',compact('race'));
     // if($request->ajax())
     	// {
         //     $validated = $request->validate([

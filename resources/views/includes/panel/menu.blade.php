@@ -131,7 +131,7 @@
             </a>
         </li>
         {{-- SUPERVISOR DE CARRERAS --}}
-        @elseif(auth()->user()->role == 'supcarrerra') 
+        @elseif(auth()->user()->role == 'supcarrera') 
         <li class="nav-item">
             <a class="nav-link" href="/race">
                 <i class="fab fa-adversal"></i> CARERRAS

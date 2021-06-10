@@ -151,26 +151,29 @@
 
 
 @push('scripts')
+
 <script>
     $('.toggle-class').change(function() {
         var i_uso = $(this).prop('checked') == true ? 1:0;
-    
-        var id = $(this).data('i_id');
-     
+        alert(i_uso);
+        var i_id = $(this).data('id');
+        alert(i_id);
         $.ajax({
             type:'GET',
             dataType:'JSON',
             url: '{{route('changeUseTicket')}}',
             data:{
                 'i_uso':i_uso,
-                'i_id':id,
+                'id':i_id,
             },
-            success:function(data){
-                console.log('error en al envio');
-            }
+            // success:function(data){
+            //     console.log('error en al envio');
+            // }
         });
     });
 </script>
+
+{{-- https://www.youtube.com/watch?v=W8npNTy59oQ cambio de estado del switch checked --}}
     
 @endpush
 

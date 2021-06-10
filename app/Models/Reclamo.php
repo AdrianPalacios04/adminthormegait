@@ -31,4 +31,13 @@ class Reclamo extends Model
     // {
     //     return $this->hasOne(Client::class,'i_idusuario');
     // }
+
+    public function TipoReclamo()
+    {
+        return $this->hasOne(TipoReclamo::class,'id_tipo');
+    }
+    public function Categoria()
+    {
+        return $this->hasOne(TipoCategoria::class,'id_categoria');
+    }
 }

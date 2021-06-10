@@ -13,29 +13,21 @@
             <div class="col">
                 <h3 class="mb-0">Carreras</h3>
             </div>
-            <div class="col text-right">
-                <div class="row justify-content-end ">
-                    <div class="col-md-5">
-                      <div class="form-group">
-                        <div class="input-group">
-                            <input type="date" class="form-control" id="mySearchText">
-                            <button id="mySearchButton" class="btn btn-sm btn-primary">Search</button>
+            <div class="col text-left">
+                <div class="col-md-8">
+                    {{-- <div class="form-group"> --}}
+                      <div class="input-group">
+                        <input type="date" id="mySearchText" class="form-control">
+                        <button id="mySearchButton" class="btn btn-primary" type="button" >Button</button>
+                        <div class="input-group-append">
+                          <button id="mySearchButton" class="btn btn-primary" type="button" >Button</button>
                         </div>
                       </div>
-                    </div>
-                </div>
-                {{-- <a href="{{url('race/create')}}" class="btn btn-sm btn-primary">Registro Carreras</a> --}}      
+                    {{-- </div> --}}
+                  </div>
             </div>
         </div>
     </div>
-        {{-- <div class=" col text-right col-2">
-            <input type="date" name="day" class="form-control" value="{{old('name')}}" required>
-        </div>  --}}
-         {{-- <div class="card-body">
-            <div class="container" >
-                <div id='full_calendar_events'></div>
-            </div>
-        </div> --}}
 
         <div class="card-body">
             <div class="table-responsive">
@@ -50,7 +42,10 @@
                         <th scope="col">cantidad premio 1</th>
                         <th scope="col">cantidad premio 2</th>
                         <th scope="col">Estado</th>
+                        @if (auth()->user()->role == 'admincarrera')
                         <th></th>
+                        @endif
+                        
                      
                         </tr>
                     </thead>
@@ -79,22 +74,22 @@
                             <td>
                                 {{$races->race_state}}
                             </td>
+                            @if (auth()->user()->role == 'admincarrera')
                             <td>
                                 <form action="{{url('/race/'.$races->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{url('/race/'.$races->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                                <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                                {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
                                 </form>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-
         </div>
-    
 </div>
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>

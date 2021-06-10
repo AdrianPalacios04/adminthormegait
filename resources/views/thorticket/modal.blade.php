@@ -11,6 +11,7 @@
         </div>
         <div class="modal-body">
             <p><b>ID : </b><span>{{$thortickets->i_id}}</span></p>
+            <p><b>Nombre </b><span>{{$thortickets->t_nombre}}</span></p>
             <p><b>Pregunta N°1: </b><span >{{$thortickets->t_pregunta1}}</span></p>
             <p><b>Respuesta N°1: </b><span >{{$thortickets->t_respuesta1}}</span></p>
             <p><b>Pregunta N°2: </b><span >{{$thortickets->t_pregunta2}}</span></p>

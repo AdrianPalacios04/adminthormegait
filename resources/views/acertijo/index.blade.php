@@ -111,9 +111,7 @@
                 "next":">",
                 "previous":"<"
             }
-
         }
-
     });
 </script>
 @endsection
