@@ -90,23 +90,29 @@ class CodeController extends Controller
         $data = [];
         for($i = 1; $i <= $request->get('number'); $i++){
             $data[] = [
-              'codes' => $this->generateRandomString(6),
-              'f_inicio' => $request->get('f_inicio'),
-              'f_final' => $request->get('f_final'),
-              'tipo_ticket' => $request->get('tipo_ticket'),
-              'cantidad' => $request->get('cantidad'),
-              'origen' => $request->get('origen'),
-              'uso' => $request->get('uso'),
+                'codes' => $this->generateRandomString(6),
+                'f_inicio' => $request->get('f_inicio'),
+                'f_final' => $request->get('f_final'),
+                'tipo_ticket' => $request->get('tipo_ticket'),
+                'cantidad' => $request->get('cantidad'),
+                'origen' => $request->get('origen'),
+                'uso' => $request->get('uso'),
             ];
-          }
-          //dd($data);
+        }
+        
+        Code::upsert($data, [
+            'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
+        ]);
+
+// dd('queda', Code::all()->toArray());
+
+        //dd($data);
         //   Code::upsert($data, [
         //     'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso'
         // ]);
-        Code::create($data);
+        //Code::create($data);
         //   $notification = "El acertijo se creo correctamente";
         //   return redirect('/codes')->with(compact('notification'));
-
     }
 
     /**

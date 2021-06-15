@@ -41,13 +41,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Fecha Inicio</label>
-                      <input type="date" name="f_inicio[]" class="form-control" />
+                      <input type="date" name="f_inicio" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Fecha Final</label>
-                      <input type="date" name="f_final[]" class="form-control" />
+                      <input type="date" name="f_final" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <label>Tipo Ticket</label>
-                        <select class="form-control" name="tipo_ticket[]">
+                        <select class="form-control" name="tipo_ticket">
                             <option value="verde" selected>Verde</option>
                             <option value="amarillo">Amarillos</option>
                         </select>
@@ -64,19 +64,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio</label>
-                        <input type="number" min="0" max="1000" name="cantidad[]" class="form-control" />
+                        <input type="number" min="0" max="1000" name="cantidad" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Origen</label>
-                        <input type="text" name="origen[]" class="form-control" />
+                        <input type="text" name="origen" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Uso</label>
-                        <input type="number" min="0" max="40" name="uso[]" class="form-control" />
+                        <input type="number" min="0" max="40" name="uso" class="form-control" />
                     </div>
                 </div>
                 
