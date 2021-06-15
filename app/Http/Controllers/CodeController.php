@@ -37,9 +37,76 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
+
+            // $code = Code::create($request->all());
+        // return redirect('/codes')->with(compact('code'));
+        // $valores = array();
+    
+        //$number = $_POST['number'];
+
+        // $f_inicio = $request->input('f_inicio');
+        // $f_final = $request->input('f_final');
+        // $tipo_ticket = $request->input('tipo_ticket');
+        // $cantidad = $request->input('cantidad');
+        // $origen = $request->input('origen');
+        // $uso = $request->input('uso');
         
-        $code = Code::create($request->all());
-        return redirect('/codes')->with(compact('code'));
+        // for ($i=0; $i < $number ; $i++) { 
+        //     $num = $this->generateRandomString(6);
+        //     array_push($valores,$num);
+        // }
+        // $data = [];
+        // for ($i=0; $i < count($valores) ; $i++) { 
+        //     $data[]= [
+        //         'codes' => $valores[$i],
+        //         // 'f_inicio'=> $f_inicio[$i],
+        //         // 'f_final' => $f_final[$i],
+        //         // 'tipo_ticket'=> $tipo_ticket[$i],
+        //         // 'cantidad' => $cantidad[$i],
+        //         // 'origen'=> $origen[$i],
+        //         //  'uso' => $uso[$i]
+
+        //     ];
+               
+        //         // $data = new Code;
+        //         // $data->codes = $valores[$i];
+        //         // $data->f_inicio = $valores[$i];
+        //         // $data->f_final = $valores[$i];
+        //         // $data->tipo_ticket = $valores[$i];
+        //         // $data->cantidad = $valores[$i];
+        //         // $data->origen = $valores[$i];
+        //         // $data->uso = $valores[$i];
+        //         // 'codes' =>$request['codes'],
+        //         // 'f_inicio'=>$request['f_inicio'],
+        //         // 'f_final'=>$request['f_final'],
+        //         // 'tipo_ticket' => $request['tipo_ticket'],
+        //         // 'premio' => $request['premio'],
+        //         // 'origen' => $request['origen'],
+        //         // 'uso' => $request['uso']
+                
+        //     // ]);
+        // }
+        // dd($data);
+        $data = [];
+        for($i = 1; $i <= $request->get('number'); $i++){
+            $data[] = [
+              'codes' => $this->generateRandomString(6),
+              'f_inicio' => $request->get('f_inicio'),
+              'f_final' => $request->get('f_final'),
+              'tipo_ticket' => $request->get('tipo_ticket'),
+              'cantidad' => $request->get('cantidad'),
+              'origen' => $request->get('origen'),
+              'uso' => $request->get('uso'),
+            ];
+          }
+          //dd($data);
+        //   Code::upsert($data, [
+        //     'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso'
+        // ]);
+        Code::create($data);
+        //   $notification = "El acertijo se creo correctamente";
+        //   return redirect('/codes')->with(compact('notification'));
+
     }
 
     /**
@@ -80,6 +147,8 @@ class CodeController extends Controller
         }
         return $randomString;
     }
+    
+
 }
 
 // https://stackoverflow.com/questions/41297116/how-to-generate-unique-voucher-code-in-laravel-5-2

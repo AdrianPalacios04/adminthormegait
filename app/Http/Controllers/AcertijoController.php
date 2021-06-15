@@ -54,10 +54,10 @@ class AcertijoController extends Controller
         // $acertijo = $request->all();
         // $acertijo['user_id'] = $user->id;
         }
-           // dd($data);
-         Acertijo::insert($data);
-        $notification = "El acertijo se creo correctamente";
-        return redirect('/acertijo')->with(compact('notification'));
+            dd($data);
+        //  Acertijo::insert($data);
+        // $notification = "El acertijo se creo correctamente";
+        // return redirect('/acertijo')->with(compact('notification'));
     }
     
     public function edit(Request $request, $id)

@@ -12,6 +12,6 @@ class Code extends Model
     // protected $dateFormat = 'U';
     use HasFactory;
     protected $fillable = [
-        'codes','f_inicio','f_final','tipo_ticket','cantidad','origen'
+        'codes','f_inicio','f_final','tipo_ticket','cantidad','origen','uso'
     ];
 }

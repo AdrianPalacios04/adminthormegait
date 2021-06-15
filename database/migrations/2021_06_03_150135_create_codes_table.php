@@ -21,6 +21,7 @@ class CreateCodesTable extends Migration
             $table->string('tipo_ticket',50);
             $table->string('cantidad',50);
             $table->string('origen',50);
+            $table->integer('uso');
         });
     }
 

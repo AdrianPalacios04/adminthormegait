@@ -25,7 +25,7 @@
         @endif
         <form action="{{url('acertijo')}}" method="post">
             @csrf
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <h4 for="pregunta">ACERTIJO</h4>
                 <input type="text" name="t_pregunta" class="form-control" value="{{old('t_pregunta',$acertijo->t_pregunta)}}">
             </div>
@@ -48,8 +48,8 @@
             <div class="form-group">
                 <h4 for="respuesta">KEY WORD N째3 </h4>
                 <input type="text" name="t_kword3" class="form-control" value="{{old('t_kword3',$acertijo->t_kword3)}}" >
-            </div>
-            {{-- <table class="table align-items-center table-flush">
+            </div> --}}
+            <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                     <tr>
                        <th scope="col">Pregunta</th>
@@ -59,8 +59,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($workDays as $key => $workDay) --}}
-                    {{-- <tr>
+                     {{-- @foreach ($workDays as $key => $workDay) --}}
+                    <tr>
                         <td>
                             <div class="row">
                                 <div class="col">
@@ -80,16 +80,16 @@
 
                     </tr>
                     {{-- @endforeach --}}
-                {{-- </tbody>
+                </tbody>
                
-            </table> --}} --}} --}}
+            </table>
             <button>guardar</button>
         </form>
     </div>
 </div>
 @endsection
 @push('scripts')
-{{-- <script>
+ <script>
         let add;
     $('thead').on('click','.addRow',function() {
          add =  "<tr>"+
@@ -115,6 +115,6 @@
         $(this).parent().parent().remove();
     });
    
-</script> --}}
+</script>
     
 @endpush
