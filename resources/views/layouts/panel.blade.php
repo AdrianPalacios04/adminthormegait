@@ -29,7 +29,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
+      <a class="navbar-brand pt-0" href="{{url('/home')}}">
         <img src="{{asset('img/brand/thorlogo.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User --><!-- modo celular -->

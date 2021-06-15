@@ -35,26 +35,26 @@ class AcertijoController extends Controller
         //     'respuesta' => 'required',
         // ]);
 
-         $user = User::find(auth()->id());
-         $pregunta = $request->pregunta;
-         $respuesta = $request->respuesta;
+        //  $user = User::find(auth()->id());
+        //  $pregunta = $request->pregunta;
+        //  $respuesta = $request->respuesta;
 
-         $data = [];
-         for ($i=0; $i < count($pregunta) ; $i++) {
-             $data[] = [
-                 'pregunta' => $pregunta[$i],
-                 'respuesta'=> $respuesta[$i],
-                 'user_id'=> $user->id
+        //  $data = [];
+        //  for ($i=0; $i < count($pregunta) ; $i++) {
+        //      $data[] = [
+        //          'pregunta' => $pregunta[$i],
+        //          'respuesta'=> $respuesta[$i],
+        //          'user_id'=> $user->id
                  
-                //  'time_final'=>  $time_final[$i],
-                //  'premio'    =>  $premio[$i],
-                //  'cantidad'  =>  $cantidad[$i]
-             ];
+        //           'time_final'=>  $time_final[$i],
+        //           'premio'    =>  $premio[$i],
+        //           'cantidad'  =>  $cantidad[$i]
+        //      ];
          
-        // $acertijo = $request->all();
+        $acertijo = $request->all();
         // $acertijo['user_id'] = $user->id;
-        }
-            dd($data);
+        // }
+        dd($acertijo);
         //  Acertijo::insert($data);
         // $notification = "El acertijo se creo correctamente";
         // return redirect('/acertijo')->with(compact('notification'));

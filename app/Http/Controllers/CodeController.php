@@ -99,4 +99,6 @@ class CodeController extends Controller
 
 }
 
-// https://stackoverflow.com/questions/41297116/how-to-generate-unique-voucher-code-in-laravel-5-2
+// funcion para code generator https://stackoverflow.com/questions/41297116/how-to-generate-unique-voucher-code-in-laravel-5-2
+
+ //validacion de fechas https://es.stackoverflow.com/questions/164408/c%C3%B3mo-puedo-validar-que-una-fecha-sea-mayor-meno-o-igual-a-otra-con-javascript

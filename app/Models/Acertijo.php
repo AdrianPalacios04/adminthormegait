@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acertijo extends Model
 {
+    use HasFactory;
     // protected $connection = 'mysql_connect_2';
     // protected $table = "tc_equilicua_x";
     // protected $primaryKey = 'i_id';
@@ -17,7 +18,7 @@ class Acertijo extends Model
     protected $fillable =[
         'pregunta','respuesta','user_id'
     ];
-    use HasFactory;
+ 
     
       public function User()
     {

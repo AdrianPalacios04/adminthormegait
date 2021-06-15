@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Reclamo;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Iluminate\Support\Facades\Mail;
+use App\Mail\ReclamoMail;
 
 class ReclamoController extends Controller
 {
@@ -37,8 +39,8 @@ class ReclamoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+       
     }
 
     /**
@@ -84,5 +86,16 @@ class ReclamoController extends Controller
     public function destroy(Reclamo $reclamo)
     {
         //
+    }
+
+    public function MessageName(Request $request,$id)
+    {
+        $reclamo = Reclamo::findOrFail($id);
+        return view('reclamo.message',compact('reclamo'));
+    }
+    public function EnvioCorreo(Request $request)
+    {
+        $envio = $request->all();
+        dd($envio);
     }
 }

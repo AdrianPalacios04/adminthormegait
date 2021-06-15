@@ -2,20 +2,14 @@
 
 @section('content')
 <div class="col-md-12 mb-4">
-    <div class="card">
-        <div class="card-header">Dashboard</div>
-
-        <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            Bienvenido {{ Auth::user()->name }}
-        </div>
-    </div>
+  <div class="jumbotron">
+    <h1 class="display-4">Bienvenido {{ Auth::user()->name }}</h1>
+ 
+    
+    
+  </div>
 </div>
+
 {{-- <div class="col-xl-8 mb-5 mb-xl-0">
   <div class="card bg-gradient-default shadow">
     <div class="card-header bg-transparent">
