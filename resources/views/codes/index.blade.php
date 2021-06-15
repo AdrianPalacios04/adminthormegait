@@ -33,6 +33,7 @@
                     <th scope="col">Tipo Ticket</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Origen</th>
+                    <th scope="col">Uso</th>
                     {{-- <th scope="col">Acciones</th> --}}
                     </tr>
                 </thead>
@@ -60,6 +61,9 @@
                         </td>
                         <td>
                             {{$codes->origen}}
+                        </td>
+                        <td>
+                            {{$codes->uso}}
                         </td>
                         {{-- <td>
                             <form action="{{url('/code/'.$codes->id)}}" method="post">
