@@ -56,7 +56,11 @@
                     @endforeach
                 </tbody>
             </table>
+            
         </div>
+        <div class="d-flex justify-content-center">
+            {{ $client->links() }}
+        </div>   
     </div>
 </div>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -68,7 +72,8 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
-        "lengthChange": false,
+        "paging": false,
+        
 
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",

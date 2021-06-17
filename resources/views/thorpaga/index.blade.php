@@ -117,6 +117,9 @@
             </table>
             <!-- Modal -->
              @include('thorpaga.modal')
+             <div class="d-flex justify-content-center">
+                {{ $thorpaga->links() }}
+            </div>  
         </div>
     </div>
 </div>
@@ -129,6 +132,7 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
+        "paging":false,
         
 
         "language":{

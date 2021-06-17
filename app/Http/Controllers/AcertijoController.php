@@ -13,11 +13,11 @@ class AcertijoController extends Controller
     {
        //$findUser = User::find(auth()->id());
          if (auth()->user()->role == 'admin') {
-            $acertijo = Acertijo::all();
+            $acertijo = Acertijo::paginate(10);
           }elseif(auth()->user()->role == 'supacertijero') {
-            $acertijo = Acertijo::all();
+            $acertijo = Acertijo::paginate(10);
         }else{
-            $acertijo = Acertijo::where('user_id',Auth::id())->get();
+            $acertijo = Acertijo::where('user_id',Auth::id())->where('i_uso',true)->paginate(8);
          }
         // dd($acertijo);
         return view('acertijo.index',compact('acertijo'));

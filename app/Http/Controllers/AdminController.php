@@ -14,7 +14,7 @@ class AdminController extends Controller
     {
         //dd(Auth::user()->role);
         
-         $client = User::all();
+         $client = User::paginate(10);
          return view('admin.index', compact('client'));
     }
     public function create()

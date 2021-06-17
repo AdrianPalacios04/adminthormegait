@@ -17,9 +17,9 @@ class ThorPagaController extends Controller
     public function index()
     {
         if (auth()->user()->role == 'admin') {
-            $thorpaga = ThorPaga::paginate(8);
+            $thorpaga = ThorPaga::paginate(10);
           }elseif(auth()->user()->role == 'supacertijero') {
-            $thorpaga = ThorPaga::paginate(8);
+            $thorpaga = ThorPaga::paginate(10);
         }else{
             $thorpaga = ThorPaga::where('user_id',Auth::id())->get();
          }
@@ -45,7 +45,7 @@ class ThorPagaController extends Controller
     public function store(Request $request)
     {
         $user = User::find(auth()->id());
-        $acertijo = $request->all();
+        $acertijo = $request->all();    
         $acertijo['user_id'] = $user->id;
         ThorPaga::create($acertijo);
         $notificacion = "El acertijo se creo correctamente";

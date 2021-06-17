@@ -59,8 +59,11 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $client->links() }}
+            
             @include('client.modal')
+            <div class="d-flex justify-content-center">
+                {{ $client->links() }}
+            </div>  
         </div>
 
     </div>
@@ -76,6 +79,7 @@
         autoWidth:false,
         "ordering":false,
         "lengthChange": false,
+        "paging":false,
 
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",

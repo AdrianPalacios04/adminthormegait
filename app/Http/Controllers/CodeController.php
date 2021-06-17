@@ -14,7 +14,7 @@ class CodeController extends Controller
      */
     public function index()
     {
-        $code = Code::all();
+        $code = Code::paginate(15);
         return view('codes.index',compact('code'));
     }
 
@@ -40,7 +40,7 @@ class CodeController extends Controller
         $data = [];
         for($i = 1; $i <= $request->get('number'); $i++){
             $data[] = [
-                'codes' => $this->generateRandomString(6),
+                'codes' => $request->get('codes'),
                 'f_inicio' => $request->get('f_inicio'),
                 'f_final' => $request->get('f_final'),
                 'tipo_ticket' => $request->get('tipo_ticket'),
@@ -49,12 +49,12 @@ class CodeController extends Controller
                 'uso' => $request->get('uso'),
             ];
         }
-        
-        Code::upsert($data, [
-            'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
-        ]);
-        $notification = "El Codigos se creo correctamente";
-        return redirect('/codes')->with(compact('notification'));
+        dd($data);
+        // Code::upsert($data, [
+        //     'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
+        // ]);
+        // $notification = "El Codigos se creo correctamente";
+        // return redirect('/codes')->with(compact('notification'));
     }
 
     /**

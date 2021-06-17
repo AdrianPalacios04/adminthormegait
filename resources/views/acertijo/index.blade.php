@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+    @extends('layouts.panel')
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
@@ -63,12 +63,12 @@
                         @endif
                         <td>
                             {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
-                            <form action="{{url('/acertijo/'.$acertijos->id)}}" method="post">
+                            <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                @if ($acertijos->i_uso == false)
-                                <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a>
-                                @endif
+                                {{-- @if ($acertijos->i_uso == false) --}}
+                                <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a>
+                                {{-- @endif --}}
                                 {{-- <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a> --}}
                                 <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
                             </form>
@@ -81,12 +81,11 @@
             </table>
         </div>
         <!-- Projects table -->
-        
-        
         <!-- Modal -->
-        
         @include('acertijo.modal')
-        {{-- {{ $acertijo->links() }} --}}
+        <div class="d-flex justify-content-center">
+            {{ $acertijo->links('vendor.pagination.bootstrap-4') }}
+        </div>   
     </div>
 </div>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -98,7 +97,8 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
-        "lengthChange": false,
+        "paging": false,
+       
 
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",
@@ -121,7 +121,9 @@
 <script>
     $('.toggle-class').change(function() {
         var i_uso = $(this).prop('checked') == true ? 1:0;
+        alert(i_uso);
         var id = $(this).data('id');
+        alert(id);
         $.ajax({
             type:'GET',
             dataType:'JSON',
@@ -136,6 +138,7 @@
         });
     });
 </script>
+scrip
     
 @endpush
 

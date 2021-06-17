@@ -89,7 +89,11 @@
             </tbody>
         </table>
         @include('reclamo.modal')
+
         @include('reclamo.envio')
+        <div class="d-flex justify-content-center">
+            {{ $reclamo->links() }}
+        </div>  
     </div>
 </div>
     

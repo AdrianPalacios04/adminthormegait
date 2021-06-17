@@ -75,8 +75,12 @@
                         </td> --}}
                     </tr>
                     @endforeach
+                   
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {{ $code->links() }}
+            </div>  
         </div>
     </div>
 </div>
@@ -89,6 +93,7 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
+        "paging":false,
        
 
         "language":{

@@ -18,7 +18,7 @@ class ReclamoController extends Controller
     public function index()
     {
         // $reclamo = Reclamo::with('clients')->get();
-        $reclamo = Reclamo::all();
+        $reclamo = Reclamo::paginate(10);
         return view('reclamo.index',compact('reclamo'));
     }
 

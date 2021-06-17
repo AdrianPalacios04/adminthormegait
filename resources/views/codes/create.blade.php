@@ -32,12 +32,12 @@
                         <input type="number" min="0" max="1000" name="number" class="form-control" />
                     </div>
                 </div>
-                {{-- <div class="col-md-4">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Código</label>
                       <input type="text" name="codes" class="form-control" value="{{App\Http\Controllers\CodeController::generateRandomString(6)}}">
                     </div>
-                </div> --}}
+                </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Fecha Inicio</label>

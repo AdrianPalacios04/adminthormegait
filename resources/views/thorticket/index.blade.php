@@ -114,6 +114,9 @@
             <!-- Modal -->
             
             @include('thorticket.modal')
+            <div class="d-flex justify-content-center">
+                {{ $thorticket->links() }}
+            </div> 
         </div>
         
     </div>
@@ -128,6 +131,7 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
+        "paging":false,
         "lengthChange": false,
 
         "language":{
