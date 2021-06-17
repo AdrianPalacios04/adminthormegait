@@ -65,14 +65,14 @@
                         <td>
                             {{$codes->uso}}
                         </td>
-                        {{-- <td>
-                            <form action="{{url('/code/'.$codes->id)}}" method="post">
+                        <td>
+                            <form action="{{url('/codes/'.$codes->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <a href="{{url('/code/'.$codes->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                            <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                            <a href="{{url('/codes/'.$codes->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                            {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
                             </form>
-                        </td> --}}
+                        </td>
                     </tr>
                     @endforeach
                    

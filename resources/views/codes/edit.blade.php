@@ -25,19 +25,19 @@
         <form action="{{url('codes')}}" method="post">
             @csrf
             <div class="row"> 
-                <div class="col-md-2">
+                {{-- <div class="col-md-2">
                     <div class="form-group">
                         <label>Cantidad de Ticket</label>
                         <input type="number" min="1" max="1000" name="number" class="form-control" value="1"/>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Código</label>
-                      <input type="text" name="codes" class="form-control" id="boton" readonly>
+                      <input type="text" name="codes" class="form-control" value="{{old('codes',$code->codes)}}" readonly>
                     </div>
                 </div>
-                <div class="col-md-1">
+                {{-- <div class="col-md-1">
                     <div class="form-group">
                         <label for=""></label>
                         <div class="custom-control custom-checkbox mb-3">
@@ -45,18 +45,18 @@
                         <label class="custom-control-label" for="customCheck1">Escribir Código</label>
                       </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Fecha Inicio</label>
                         
-                      <input type="date" name="f_inicio" class="form-control" value="{{ date('Y-m-d\TH:i:s')}}"/>
+                      <input type="date" name="f_inicio" class="form-control" value="{{\Carbon\Carbon::parse($code->f_inicio)->format('Y-m-d')}}"/>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Fecha Final</label>
-                      <input type="date" name="f_final" class="form-control" />
+                      <input type="date" name="f_final" class="form-control"  value="{{\Carbon\Carbon::parse($code->f_final)->format('Y-m-d')}}"/>
                     </div>
                 </div>
             </div>
@@ -73,19 +73,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio</label>
-                        <input type="number" min="0" max="1000" name="cantidad" class="form-control" />
+                        <input type="number" min="0" max="1000" name="cantidad" class="form-control" value="{{old('t_nombre',$code->cantidad)}}" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Origen</label>
-                        <input type="text" name="origen" class="form-control"  />
+                        <input type="text" name="origen" class="form-control"  value="{{old('origen',$code->origen)}}"/>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Uso</label>
-                        <input type="number" min="0" max="40" name="uso" class="form-control" />
+                        <input type="number" min="0" max="40" name="uso" class="form-control" value="{{old('uso',$code->uso)}}"/>
                     </div>
                 </div>
                 

@@ -37,21 +37,26 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
+        
+       // $text = empty($this->get('codes'));
+        
         $data = [];
         for($i = 1; $i <= $request->get('number'); $i++){
-            $data[] = [
-                'codes' => $request->get('codes'),
-                'f_inicio' => $request->get('f_inicio'),
-                'f_final' => $request->get('f_final'),
-                'tipo_ticket' => $request->get('tipo_ticket'),
-                'cantidad' => $request->get('cantidad'),
-                'origen' => $request->get('origen'),
-                'uso' => $request->get('uso'),
-            ];
-        }
-        dd($data);
-        // Code::upsert($data, [
-        //     'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
+            
+                $data[] = [
+                    'codes' => empty($request->get('codes')) ? $this->generateRandomString(6) : $request->get('codes'),
+                    // https://www.neoguias.com/if-abreviado-en-php-el-operador-ternario/
+                   'f_inicio' => $request->get('f_inicio'),
+                   'f_final' => $request->get('f_final'),
+                   'tipo_ticket' => $request->get('tipo_ticket'),
+                   'cantidad' => $request->get('cantidad'),
+                   'origen' => $request->get('origen'),
+                   'uso' => $request->get('uso'),
+               ];
+            }
+         dd($data);
+        //  Code::upsert($data, [
+        //      'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
         // ]);
         // $notification = "El Codigos se creo correctamente";
         // return redirect('/codes')->with(compact('notification'));
@@ -67,13 +72,22 @@ class CodeController extends Controller
     {
         //
     }
-    public function edit(Code $code)
+    public function edit($id)
     {
-        //
+        $code = Code::findOrFail($id);
+        return view('codes.edit',compact('code'));
     }
-    public function update(Request $request, Code $code)
+    public function update(Request $request,$id)
     {
-        //
+        $code = Code::findOrFail($id);
+        $data = $request->only('f_inicio','f_final','tipo_ticket','cantidad','origen');
+        
+        $code->fill($data);
+        $code->save();//UPDATE
+
+        //dd($code);
+        $notification = 'Se edito el acertijo se ha actualizado correctamente';
+        return redirect('/codes')->with(compact('notification'));
     }
 
     /**
