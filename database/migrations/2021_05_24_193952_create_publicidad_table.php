@@ -18,9 +18,9 @@ class CreatePublicidadTable extends Migration
             $table->string('nombre',100);
             $table->text('imagen');
             $table->string('link',100);
+            $table->date('f_inicio');
             $table->date('f_final');
             $table->string('posicion');
-            $table->date('f_inicio');
             $table->string('opciones');
             // $table->timestamps();
         });

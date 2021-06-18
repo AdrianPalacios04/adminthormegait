@@ -40,20 +40,31 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">Zona Pertenece (<em><small>Página Pertenece</small></em>)</label>
-                      <input type="text" name="zona" class="form-control" />
+                        {{-- <label for="">Zona Pertenece (<em><small>Página Pertenece</small></em>)</label>
+                         --}}
+                         <label for="">Link</label>
+                      <input type="text" name="link" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group" >
                         <label>Posición</label>
-                        <select class="form-control" name="posicion" id="tienda" onchange="change(this)">
+                        <select class="form-control" name="posicion">
                             <option value="horizontal" selected>Horizontal</option>
                             <option value="vertical">Vertical</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="">Opcion</label>
+                        <select class="form-control" name="opciones">
+                            <option value="permanente" selected>Permanente</option>
+                            <option value="rotatorio">Rotatorio</option>
+                        </select>                    
+                    </div>
+                </div>
+                {{-- <div class="col-md-3">
                     <div class="form-group" id="horizontal">
                         <label>Lugar</label>
                         <select class="form-control"  name="lugar">
@@ -68,7 +79,8 @@
                             <option value="abajo">Abajo</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
+                
             </div>
             <div class="row" style="font-weight: bolder;">
                 <div class="col-md-6">
@@ -84,6 +96,8 @@
                   </div>
                 </div>
             </div>
+            
+            
             <button type="submit" class="btn btn-default">Guardar</button>
         </form>
     </div>

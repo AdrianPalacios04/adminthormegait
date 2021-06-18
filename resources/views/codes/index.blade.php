@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                     <th scope="col">N°</th>
-                    <th scope="col">Coódigos</th>
+                    <th scope="col">Codigos</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Final</th>
                     <th scope="col">Tipo Ticket</th>
@@ -70,8 +70,8 @@
                             @csrf
                             @method('DELETE')
                             <a href="{{url('/codes/'.$codes->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                            {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
-                            </form>
+                            <button type="submit" class="btn btn-sm btn-danger" type="submit" id="submitForm">Eliminar</button> 
+                            </form>  
                         </td>
                     </tr>
                     @endforeach
@@ -94,8 +94,6 @@
         autoWidth:false,
         "ordering":false,
         "paging":false,
-       
-
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",
             "zeroRecords":"Nada encontrado",
@@ -107,12 +105,32 @@
                 "next":">",
                 "previous":"<"
             }
-
         }
-
     });
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    $('#submitForm').on('click',function(e){
+        e.preventDefault();
+        var form = $(this).parents('form');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                form.submit();
+            }
+        });
+    });
+</script>
+{{-- https://stackoverflow.com/questions/55361062/delete-confirmation-with-sweet-alert-2/55361312 --}}
+{{-- <script>
     
 $('body').on('click','#addCode',function(event) {
         var codes =  $(this).data('codes');
@@ -131,5 +149,5 @@ $('body').on('click','#addCode',function(event) {
 })
 
 // https://laratutorials.com/laravel-8-ajax-crud-tutorial/
-</script>
+</script> --}}
 @endsection

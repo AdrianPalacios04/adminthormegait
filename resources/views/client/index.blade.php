@@ -11,6 +11,11 @@
             </div>
         </div>
     </div>
+    <label class="custom-toggle">
+        <input type="checkbox" class="toggle-class"  
+        data-toggle="toggle" data-style="slow" >
+        <span class="custom-toggle-slider rounded-circle"></span>
+        </label>
     <div class="card-body">
         <div class="table-responsive">
             <!-- Projects table -->
@@ -36,6 +41,9 @@
                         </th>
                         <th scope="row">
                             {{$clients->t_username}}
+                        </th>
+                        <th scope="row">
+                            {{$clients->b_acepto}}
                         </th>
                         <td>
                             {{$clients->persona->t_apellidoper}}
@@ -95,6 +103,23 @@
 
         }
 
+    });
+</script>
+<script>
+    $('.toggle-class').change(function() {
+        var b_acepto = $(this).prop('checked') == true ? 1:0;
+        alert(b_acepto);
+        $.ajax({
+            type:'GET',
+            dataType:'JSON',
+            url: '{{route('changeStatus')}}',
+            data:{
+                'b_acepto':b_acepto,
+            },
+            // done:function(data){
+
+            // }
+        });
     });
 </script>
 @endsection

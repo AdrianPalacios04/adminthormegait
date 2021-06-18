@@ -14,7 +14,7 @@ class Client extends Model
     public $timestamps = false;
     
     protected $fillable = [
-       "t_password","t_username","t_correoper","n_celular"
+       "t_password","t_username","t_correoper","n_celular","b_acepto"
     ];
    
     public function Persona()

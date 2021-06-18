@@ -1,6 +1,7 @@
 @extends('layouts.panel')
 @section('content')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
@@ -8,7 +9,7 @@
             <h3 class="mb-0">Publicidad</h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary">Registro Publidad</a>
+            <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary ">Registro Publidad</a>
         </div>
         </div>
     </div>
@@ -19,110 +20,113 @@
         </div>
         @endif
     </div>  
-    <div class="card-deck">
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    @foreach ($publicidad as $publi)
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card" style="background-color: white">
+          <a href="{{asset('imagen/publicidad/'.$publi->imagen)}}" data-toggle="lightbox"></a>
+            {{-- lightbox para hacer zoom en las imagenes --}}
+          <img src="{{asset('imagen/publicidad/'.$publi->imagen)}}" height="150" width="50" class="img-fluid rounded" />
+          <div class="card-body">
+            <h5 class="card-title">{{$publi->nombre}}</h5>
+            <h5>Link: {{$publi->link}} </h5>
+
+            <h5>Fecha: {{\Carbon\Carbon::parse($publi->f_inicio)->format('d/m/Y') }} a {{\Carbon\Carbon::parse($publi->f_final)->format('d/m/Y')}}</h5>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" 
+              data-id="{{ $publi->id }}"  {{ $publi->opciones == 'rotatorio' ? 'checked' : ''}}/>
+              <h5 class="form-check-label" for="inlineRadio1">ROT</h5>
+            </div>
+            
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio2" 
+              data-id="{{ $publi->id }}"  {{ $publi->opciones == 'permanente' ? 'checked' : ''}}
+              />
+              <h5 class="form-check-label" for="inlineRadio2">PER</h5>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class="col">
+        <div class="card" style="background-color: white">
+          <img
+            src="https://mdbootstrap.com/img/new/standard/city/042.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            asdasd
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class="col">
+        <div class="card" >
+          <img
+            src="https://mdbootstrap.com/img/new/standard/city/043.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural lead-in to
+              additional content. This content is a little bit longer.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+     <div class="col">
+        <div class="card">
+          <img
+            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural lead-in to
+              additional content. This content is a little bit longer.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      {{-- <div class="col">
+        <div class="card">
+          <img
+            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural lead-in to
+              additional content. This content is a little bit longer.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div> --}}
+      {{-- <div class="col">
+        <div class="card">
+          <img
+            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural lead-in to
+              additional content. This content is a little bit longer.
+            </p>
+          </div>
         </div>
-      </div>
-      
+      </div> --}}
     </div>
-    {{-- <div class="col-md-6">
-        <ul class="nav nav-pills nav-pills-circle mb-3" id="tabs_3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link" id="first-tab" data-toggle="tab" href="#link22" role="tab" aria-selected="true">
-              <span class="nav-link-icon d-block"><i class="ni ni-atom"></i></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="second-tab" data-toggle="tab" href="#link23" role="tab" aria-selected="false">
-              <span class="nav-link-icon d-block"><i class="ni ni-chat-round"></i></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="third-tab" data-toggle="tab" href="#link24" role="tab" aria-selected="false">
-              <span class="nav-link-icon d-block"><i class="ni ni-cloud-download-95"></i></span>
-            </a>
-          </li>
-        </ul>
-      <div class="card card-plain">
-        <div class="tab-content tab-space">
-          <div class="tab-pane fade" id="link22">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title1</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-          </div>
-          <div class="tab-pane fade" id="link23">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title2</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-          </div>
-          <div class="tab-pane fade" id="link24">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title3</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div> --}}
+    @endforeach
   </div>  
     {{-- <div class="table-responsive">
         <!-- Projects table -->
@@ -165,4 +169,10 @@
         </table>
     </div> --}}
 </div>
+<script>
+  $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+  event.preventDefault();
+  $(this).ekkoLightbox();
+});
+</script>
 @endsection

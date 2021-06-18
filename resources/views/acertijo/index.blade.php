@@ -138,7 +138,6 @@
         });
     });
 </script>
-scrip
     
 @endpush
 

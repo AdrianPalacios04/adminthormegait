@@ -22,8 +22,9 @@
                 </ul>
             </div>
         @endif
-        <form action="{{url('codes')}}" method="post">
+        <form action="{{url('codes/'.$code->id)}}" method="post">
             @csrf
+            @method('PUT')
             <div class="row"> 
                 {{-- <div class="col-md-2">
                     <div class="form-group">
@@ -73,7 +74,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio</label>
-                        <input type="number" min="0" max="1000" name="cantidad" class="form-control" value="{{old('t_nombre',$code->cantidad)}}" />
+                        <input type="number" min="0" max="1000" name="cantidad" class="form-control" value="{{old('cantidad',$code->cantidad)}}" />
                     </div>
                 </div>
                 <div class="col-md-3">

@@ -50,4 +50,12 @@ class ClientController extends Controller
         $notificacion = " Se modifico correctamente";
         return redirect('/users')->with(compact('notificacion'));
     }
+    public function changeStatus(Request $request)
+    {
+        $client = Client::where('b_acepto', '=', $request->b_acepto)->update(array('b_acepto' => $request->b_acepto));
+        dd($client);
+
+        // return response()->json(['uso Activo']);
+
+    }
 }

@@ -41,11 +41,12 @@ class PublicidadController extends Controller
         $publicidad = new Publicidad();
 
         $publicidad->nombre = $request->input('nombre');
-        $publicidad->zona = $request->input('zona');
-        $publicidad->posicion = $request->input('posicion');
-        $publicidad->lugar = $request->input('lugar');
+        $publicidad->link = $request->input('link');
         $publicidad->f_inicio = $request->input('f_inicio');
         $publicidad->f_final = $request->input('f_final');
+        $publicidad->posicion = $request->input('posicion');
+        $publicidad->opciones = $request->input('opciones');
+        
 
 
          if ($request->hasfile('imagen')) {

@@ -36,6 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // administrador general
 
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
+   Route::get('changeStatus',[ClientController::class,'changeStatus'])->name('changeStatus');
    
    //acertijero
    Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:admin|acertijero|supacertijero']);

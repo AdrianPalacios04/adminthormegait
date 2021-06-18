@@ -80,14 +80,15 @@ class CodeController extends Controller
     public function update(Request $request,$id)
     {
         $code = Code::findOrFail($id);
-        $data = $request->only('f_inicio','f_final','tipo_ticket','cantidad','origen');
-        
-        $code->fill($data);
+        $code->f_inicio = $request->input('f_inicio');
+        $code->f_final = $request->input('f_final');
+        $code->tipo_ticket = $request->input('tipo_ticket');
+        $code->cantidad = $request->input('cantidad');
+        $code->origen = $request->input('origen');
+        $code->uso = $request->input('uso');
         $code->save();//UPDATE
-
-        //dd($code);
-        $notification = 'Se edito el acertijo se ha actualizado correctamente';
-        return redirect('/codes')->with(compact('notification'));
+        $notification = 'El codigo de promoción actualizado correctamente';
+         return redirect('/codes')->with(compact('notification'));
     }
 
     /**
@@ -98,7 +99,9 @@ class CodeController extends Controller
      */
     public function destroy(Code $code)
     {
-        //
+        $code->delete();
+        $notification = "El acertijo se ha eliminado correctamente";
+        return redirect('/codes')->with(compact('notification'));
     }
     public  static function generateRandomString($length = 20) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
