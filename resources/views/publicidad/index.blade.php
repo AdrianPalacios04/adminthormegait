@@ -10,7 +10,9 @@
         </div>
         <div class="col text-right">
             <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary ">Registro Publidad</a>
+             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Marca</button>
         </div>
+       
         </div>
     </div>
     <div class="card-body">
@@ -21,111 +23,22 @@
         @endif
     </div>  
     @foreach ($publicidad as $publi)
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card" style="background-color: white">
-          <a href="{{asset('imagen/publicidad/'.$publi->imagen)}}" data-toggle="lightbox"></a>
-            {{-- lightbox para hacer zoom en las imagenes --}}
-          <img src="{{asset('imagen/publicidad/'.$publi->imagen)}}" height="150" width="50" class="img-fluid rounded" />
+    
+    <div class="container">   
+      <div class="card-group mt-3">
+  
+        <div class="card text-center border-info">
           <div class="card-body">
-            <h5 class="card-title">{{$publi->nombre}}</h5>
-            <h5>Link: {{$publi->link}} </h5>
-
-            <h5>Fecha: {{\Carbon\Carbon::parse($publi->f_inicio)->format('d/m/Y') }} a {{\Carbon\Carbon::parse($publi->f_final)->format('d/m/Y')}}</h5>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" 
-              data-id="{{ $publi->id }}"  {{ $publi->opciones == 'rotatorio' ? 'checked' : ''}}/>
-              <h5 class="form-check-label" for="inlineRadio1">ROT</h5>
-            </div>
-            
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions"  id="inlineRadio2" 
-              data-id="{{ $publi->id }}"  {{ $publi->opciones == 'permanente' ? 'checked' : ''}}
-              />
-              <h5 class="form-check-label" for="inlineRadio2">PER</h5>
-            </div>
+            <h4 class="card-title">Titulo de la tarjeta 1</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                  tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                  nec tortor sit amet, maximus mattis dui. </p>
+            <a href="#" class="btn btn-primary">Entrar</a>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="background-color: white">
-          <img
-            src="https://mdbootstrap.com/img/new/standard/city/042.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            asdasd
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" >
-          <img
-            src="https://mdbootstrap.com/img/new/standard/city/043.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </p>
-          </div>
-        </div>
-      </div>
-     <div class="col">
-        <div class="card">
-          <img
-            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </p>
-          </div>
-        </div>
-      </div>
-      {{-- <div class="col">
-        <div class="card">
-          <img
-            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </p>
-          </div>
-        </div>
-      </div> --}}
-      {{-- <div class="col">
-        <div class="card">
-          <img
-            src="https://mdbootstrap.com/img/new/standard/city/044.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </p>
-          </div>
-        </div>
-      </div> --}}
-    </div>
+        </div>         
+    </div> 
+    
+    
     @endforeach
   </div>  
     {{-- <div class="table-responsive">
@@ -169,6 +82,7 @@
         </table>
     </div> --}}
 </div>
+@include('publicidad.modal')
 <script>
   $(document).on("click", '[data-toggle="lightbox"]', function(event) {
   event.preventDefault();

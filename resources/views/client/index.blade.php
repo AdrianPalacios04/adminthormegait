@@ -114,7 +114,7 @@
             dataType:'JSON',
             url: '{{route('changeStatus')}}',
             data:{
-                'b_acepto':b_acepto,
+                'b_acepto':b_acepto ,
             },
             // done:function(data){
 

@@ -54,12 +54,12 @@ class CodeController extends Controller
                    'uso' => $request->get('uso'),
                ];
             }
-         dd($data);
-        //  Code::upsert($data, [
-        //      'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
-        // ]);
-        // $notification = "El Codigos se creo correctamente";
-        // return redirect('/codes')->with(compact('notification'));
+        //  dd($data);
+          Code::upsert($data, [
+              'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
+         ]);
+         $notification = "El Codigos se creo correctamente";
+         return redirect('/codes')->with(compact('notification'));
     }
 
     /**
@@ -97,8 +97,9 @@ class CodeController extends Controller
      * @param  \App\Models\Code  $code
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Code $code)
+    public function destroy($id)
     {
+        $code = Code::findOrFail($id);
         $code->delete();
         $notification = "El acertijo se ha eliminado correctamente";
         return redirect('/codes')->with(compact('notification'));

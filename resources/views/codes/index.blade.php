@@ -23,7 +23,8 @@
         @endif
         <div class="table-responsive">
             <!-- Projects table -->
-            <table class="table table-striped" id="usuarios">
+            <table class="table table-striped" id="usuarios 
+            ">
                 <thead>
                     <tr>
                     <th scope="col">N°</th>
@@ -35,6 +36,7 @@
                     <th scope="col">Origen</th>
                     <th scope="col">Uso</th>
                     {{-- <th scope="col">Acciones</th> --}}
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,7 +50,7 @@
                             {{$codes->codes}}
                         </td>
                         <td>
-                            {{ \Carbon\Carbon::parse($codes->f_inicio)->format('d/m/Y')}}
+                            {{ \Carbon\Carbon::parse($codes->f_inicio)->format('d M, Y')}}
                         </td>
                         <td>
                             {{ \Carbon\Carbon::parse($codes->f_final)->format('d/m/Y')}}
@@ -66,11 +68,13 @@
                             {{$codes->uso}}
                         </td>
                         <td>
-                            <form action="{{url('/codes/'.$codes->id)}}" method="post">
+                            <form action="{{url('/codes/'.$codes->id)}}" method="post" class="archiveItem">
                             @csrf
                             @method('DELETE')
-                            <a href="{{url('/codes/'.$codes->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                            <button type="submit" class="btn btn-sm btn-danger" type="submit" id="submitForm">Eliminar</button> 
+                            <a href="{{url('/codes/'.$codes->id.'/edit')}}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                            <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  id="{{$codes->id}}" 
+                                style="color: white"><i class="far fa-trash-alt"></i></a> 
+                            {{-- <button class="btn btn-sm btn-primary" id="submitForm">Eliminar</button> --}}
                             </form>  
                         </td>
                     </tr>
@@ -110,24 +114,43 @@
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $('#submitForm').on('click',function(e){
-        e.preventDefault();
-        var form = $(this).parents('form');
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
+  function archiveRemove(any) {
+        var click = $(any);
+        var id = click.attr("id");
+        swal.fire({
+            title: '¿Seguro que quieres eliminarlo?',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Si, Eliminar!'
         }).then((result) => {
             if (result.value) {
-
-                form.submit();
+               $('a[id="' + id + '"]').parents(".archiveItem").submit();
+            }else{
+               
             }
-        });
-    });
+        })
+    }
+    //$('a[id="' + id + '"]').parents(".archiveItem").submit();
+//     $('#submitForm').on('click',function(e){
+//         e.preventDefault();
+        
+
+//         Swal.fire({
+//             title: 'Are you sure?',
+//             text: "You won't be able to revert this!",
+//             icon: 'warning',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Yes, delete it!'
+//         }).then((result) => {
+//             if (result.value) {
+
+//                 form.submit();
+//         });
+//     });
 </script>
 {{-- https://stackoverflow.com/questions/55361062/delete-confirmation-with-sweet-alert-2/55361312 --}}
 {{-- <script>

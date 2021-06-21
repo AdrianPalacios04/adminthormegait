@@ -65,11 +65,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // reclamos
 
    Route::resource('reclamo', ReclamoController::class)->middleware(['auth','role:admin|adminreclamo']);
+   // Route::get('reclamaciones',function ()
+   // {
+   //    $correo = new ReclamoMail;
+   //    Mail::to('adrian@tecsup.edu.pe')->send($correo);
 
-   Route::get('reclamaciones',function ()
-   {
-      $correo = new ReclamoMail;
-      Mail::to('adrian@tecsup.edu.pe')->send($correo);
+   //    return "Mensaje enviado";
+   // });
 
-      return "Mensaje enviado";
-   });
+   Route::resource('marca',MarcaController::class);
