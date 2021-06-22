@@ -35,7 +35,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Nombre Publicidad</label>
-                      <input type="text" name="nombre" class="form-control" />
+                      <input type="text" name="nombre" class="form-control" placeholder="" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -64,74 +64,37 @@
                         </select>                    
                     </div>
                 </div>
-                {{-- <div class="col-md-3">
-                    <div class="form-group" id="horizontal">
-                        <label>Lugar</label>
-                        <select class="form-control"  name="lugar">
-                            <option value="derecha">Derecha</option>
-                            <option value="izquierda">Izquierda</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="vertical" style="display: none">
-                        <label>Lugar</label>
-                        <select class="form-control"  name="lugar">
-                            <option value="arriba">Arriba</option>
-                            <option value="abajo">Abajo</option>
-                        </select>
-                    </div>
-                </div> --}}
-                
             </div>
             <div class="row" style="font-weight: bolder;">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Fecha Inicio</label>
                     <input type="date" class="form-control" name="f_inicio" required>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Fecha Final</label>
                     <input type="date" class="form-control" name="f_final" required>
                   </div>
                 </div>
+                
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Marcas</label>
+                      <select name="marcas" class="form-control">
+                        @foreach ($marca as $marcas)
+                          <option value="{{$marcas->id}}">{{$marcas->marcas}}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                </div>
             </div>
-            
-            
-            <button type="submit" class="btn btn-default">Guardar</button>
+             <div class="col text-right">
+                <button type="submit" class="btn btn-default">Guardar</button>
+            </div>
         </form>
     </div>
 </div>
 <script src="{{asset('js/ocultar.js')}}"></script>
 @endsection
-
-{{-- @push('scripts')
-<script>
-        let add;
-    $('thead').on('click','.addRow',function() {
-         add =  "<tr>"+
-                        "<td>"+
-                            "<div class='row'>"+
-                                "<div class='col'>"+
-                                    "<input type='text' name='pregunta[]' class='form-control' >"+
-                            " </div>"+
-                        " </div>"+
-                        "</td>"+
-                        "<td>"+
-                            "<div class='row'>"+
-                                "<div class='col'>"+
-                                "<input type='text' name='respuesta[]' class='form-control'>"+
-                                "</div>"+
-                            " </div>"+          
-                        "</td>"+
-                         "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'><i class='fa fa-trash' aria-hidden='true'></i></a></th>"+
-                    "</tr>"+
-         $('tbody').append(add);
-    });
-    $('tbody').on('click','.deleteRow',function () {
-        $(this).parent().parent().remove();
-    });
-   
-</script>
-     --}}
-{{-- @endpush --}}

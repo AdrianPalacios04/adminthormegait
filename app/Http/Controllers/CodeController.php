@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Code;
+use App\Models\TipoPremio;
 use Illuminate\Http\Request;
 
 class CodeController extends Controller
@@ -14,7 +15,7 @@ class CodeController extends Controller
      */
     public function index()
     {
-        $code = Code::paginate(15);
+        $code = Code::with('premio')->get();
         return view('codes.index',compact('code'));
     }
 
@@ -25,8 +26,8 @@ class CodeController extends Controller
      */
     public function create()
     {
-        // $this->generateRandomString(6);
-        return view('codes.create');
+        $type = TipoPremio::where('premio',30)->get(); // para consultar
+        return view('codes.create',compact('type'));
     }
 
     /**
@@ -48,15 +49,15 @@ class CodeController extends Controller
                     // https://www.neoguias.com/if-abreviado-en-php-el-operador-ternario/
                    'f_inicio' => $request->get('f_inicio'),
                    'f_final' => $request->get('f_final'),
-                   'tipo_ticket' => $request->get('tipo_ticket'),
+                   'id_tipo' => $request->get('tipo_ticket'),
                    'cantidad' => $request->get('cantidad'),
                    'origen' => $request->get('origen'),
                    'uso' => $request->get('uso'),
                ];
             }
-        //  dd($data);
+         //dd($data);
           Code::upsert($data, [
-              'codes', 'f_inicio', 'f_final', 'tipo_ticket', 'cantidad', 'origen', 'uso',
+              'codes', 'f_inicio', 'f_final', 'cantidad', 'origen', 'uso','id_tipo'
          ]);
          $notification = "El Codigos se creo correctamente";
          return redirect('/codes')->with(compact('notification'));

@@ -14,7 +14,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        
+        $marca = Marca::all();
+        return view('publicidad.create',compact('marca'));
     }
 
     /**

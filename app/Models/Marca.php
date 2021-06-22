@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Marca extends Model
 {
-
+    
     use HasFactory;
 
     protected $fillable = [
         'marca'
     ];
+    public function Publicidades()
+    {
+        return $this->hasMany(Publicidad::class, 'id_marca');
+    }
+    
 }

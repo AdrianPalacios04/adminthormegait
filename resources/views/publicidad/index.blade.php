@@ -22,25 +22,94 @@
         </div>
         @endif
     </div>  
-    @foreach ($publicidad as $publi)
+    @foreach ($marca as $marcas)
     
-    <div class="container">   
-      <div class="card-group mt-3">
-  
-        <div class="card text-center border-info">
-          <div class="card-body">
-            <h4 class="card-title">Titulo de la tarjeta 1</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
-                                  tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
-                                  nec tortor sit amet, maximus mattis dui. </p>
-            <a href="#" class="btn btn-primary">Entrar</a>
+    {{-- https://codepen.io/modelsofidentity/pen/gRaXPg/?html-preprocessor=haml --}}
+    {{-- https://bootsnipp.com/snippets/M5VgX --}}
+    <div class="py-5">
+      <div class="container">
+        <div class="row hidden-md-up">
+          {{-- <div class="col-md-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+                <a href="#" class="card-link">link</a>
+                <a href="#" class="card-link">Second link</a>
+              </div>
+            </div>
+          </div> --}}
+           {{-- <div class="col-md-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+                <a href="#" class="card-link">link</a>
+                <a href="#" class="card-link">Second link</a>
+              </div>
+            </div>
+          </div> --}} 
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+                <a href="#" class="card-link">link</a>
+                <a href="#" class="card-link">Second link</a>
+              </div>
+            </div>
+          </div> 
+        </div><br>
+         {{-- <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+                <a href="#" class="card-link">link</a>
+                <a href="#" class="card-link">Second link</a>
+              </div>
+            </div>
           </div>
-        </div>         
-    </div> 
-    
-    
-    @endforeach
-  </div>  
+          {{-- <div class="col-md-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+                <a href="#" class="card-link">link</a>
+                <a href="#" class="card-link">Second link</a>
+              </div>
+            </div>
+          </div> --}}
+        </div>
+    </div>
+        {{-- <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div> --}}
+      </div>
+    {{-- @endforeach --}}
+
+  @endforeach
     {{-- <div class="table-responsive">
         <!-- Projects table -->
         <table class="table align-items-center table-flush">

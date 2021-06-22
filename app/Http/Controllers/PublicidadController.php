@@ -3,23 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publicidad;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 use file;
 
 
 class PublicidadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        $publicidad = Publicidad::all();
-        return view('publicidad.index',compact('publicidad'));
+        // $marca = Marca::with('publicidades')->get('nombre');
+        $marca = Publicidad::all();
+        return view('publicidad.index',compact('marca'));
     }
-
+    // public function getindex()
+    // {
+        
+    //     $publicidad = Publicidad::all();
+    //     return view('publicidad.index',compact('publicidad'));
+    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +30,8 @@ class PublicidadController extends Controller
      */
     public function create()
     {
-        return view('publicidad.create');
+        $marca = Marca::all();
+        return view('publicidad.create',compact('marca'));
     }
 
     /**
@@ -46,9 +50,9 @@ class PublicidadController extends Controller
         $publicidad->f_final = $request->input('f_final');
         $publicidad->posicion = $request->input('posicion');
         $publicidad->opciones = $request->input('opciones');
+        $publicidad->id_marca = $request->input('marcas');
         
-
-
+        
          if ($request->hasfile('imagen')) {
             $request->hasfile('imagen');
             $file = $request->file('imagen');
@@ -61,11 +65,13 @@ class PublicidadController extends Controller
             return $request;
             $publicidad->imagen = '';
         }
-        //dd($publicidad);
-         $publicidad->save();
-         $notificacion = "Se agrego la publicidad correctamente";
 
-         return redirect('/publicidad')->with(compact('notificacion'));
+       
+        // dd($publicidad);
+          $publicidad->save();
+          $notificacion = "Se agrego la publicidad correctamente";
+
+          return redirect('/publicidad')->with(compact('notificacion'));
     }
 
     /**

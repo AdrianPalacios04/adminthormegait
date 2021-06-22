@@ -22,6 +22,7 @@ class CreatePublicidadTable extends Migration
             $table->date('f_final');
             $table->string('posicion');
             $table->string('opciones');
+            $table->foreignId('id_marca')->constrained('marcas');
             // $table->timestamps();
         });
     }

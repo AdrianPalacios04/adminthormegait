@@ -10,7 +10,14 @@ class Code extends Model
 {
     public $timestamps = false;
     use HasFactory;
+    
     protected $fillable = [
-        'codes','f_inicio','f_final','tipo_ticket','cantidad','origen','uso','activo'
+        'codes','f_inicio','f_final','cantidad','origen','uso','activo','id_tipo'
     ];
+
+    public function Premio()
+    {
+        return $this->belongsTo(TipoPremio::class,'id_tipo');
+    }
+    
 }

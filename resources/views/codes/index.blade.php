@@ -56,7 +56,7 @@
                             {{ \Carbon\Carbon::parse($codes->f_final)->format('d/m/Y')}}
                         </td>
                         <td>
-                            {{$codes->tipo_ticket}}
+                            {{$codes->premio->tipo}}
                         </td>
                         <td>
                             {{$codes->cantidad}}
@@ -82,9 +82,9 @@
                    
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center">
+            {{-- <div class="d-flex justify-content-center">
                 {{ $code->links() }}
-            </div>  
+            </div>   --}}
         </div>
     </div>
 </div>

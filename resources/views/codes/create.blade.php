@@ -65,9 +65,11 @@
                     <div class="form-group" >
                         <label>Tipo Ticket</label>
                         <select class="form-control" name="tipo_ticket">
-                            <option value="verde" selected>Verde</option>
-                            <option value="amarillo">Amarillos</option>
+                            @foreach($type as $types)
+                            <option value="{{$types->id}}">{{$types->tipo}}</option>
+                            @endforeach
                         </select>
+                       
                     </div>
                 </div>
                 <div class="col-md-3">
