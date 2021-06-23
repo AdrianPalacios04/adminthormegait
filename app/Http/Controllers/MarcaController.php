@@ -36,8 +36,11 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
+
         $marca = $request->all();
         Marca::create($marca);
+
+        return response()->json(['success' => 'Uso Activo']);
     }
 
     /**

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Publicidad;
 use App\Models\Marca;
 use Illuminate\Http\Request;

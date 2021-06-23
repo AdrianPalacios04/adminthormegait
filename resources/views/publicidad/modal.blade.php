@@ -10,13 +10,34 @@
       </div>
       <form action="{{url('marca')}}" method="post">
           <div class="modal-body">
-              <input type="text" class="form-control" name="marca" id="marca">
+              <input type="text" class="form-control" name="marcas" id="marcas">
             </div>
       </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="addCode">Save changes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+ $('body').on('click','#addCode',function(event) {
+       // var marcas =  $(this).data('marcas');
+        var marcas = $('#marcas').val();
+    $.ajax({
+        type:"POST",
+        
+        url:"{{url('marca')}}",
+        data:{
+            "_token": "{{ csrf_token() }}", // toquen para el metodo POST
+            'marca':marcas // variable que se necesita 
+        },
+        success:function(res){
+            window.location.reload(); //refrescar la página
+        }
+    })
+})
+  
+</script>
+

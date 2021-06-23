@@ -9,7 +9,7 @@ class Marca extends Model
 {
     
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'marca'
     ];

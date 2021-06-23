@@ -9,8 +9,9 @@
             <h3 class="mb-0">Publicidad</h3>
         </div>
         <div class="col text-right">
+          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Marca</button>
             <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary ">Registro Publidad</a>
-             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Marca</button>
+             
         </div>
        
         </div>
@@ -22,94 +23,40 @@
         </div>
         @endif
     </div>  
-    @foreach ($marca as $marcas)
+  
     
     {{-- https://codepen.io/modelsofidentity/pen/gRaXPg/?html-preprocessor=haml --}}
     {{-- https://bootsnipp.com/snippets/M5VgX --}}
-    <div class="py-5">
-      <div class="container">
-        <div class="row hidden-md-up">
-          {{-- <div class="col-md-4">
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-                <a href="#" class="card-link">link</a>
-                <a href="#" class="card-link">Second link</a>
-              </div>
-            </div>
-          </div> --}}
-           {{-- <div class="col-md-4">
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-                <a href="#" class="card-link">link</a>
-                <a href="#" class="card-link">Second link</a>
-              </div>
-            </div>
-          </div> --}} 
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-                <a href="#" class="card-link">link</a>
-                <a href="#" class="card-link">Second link</a>
-              </div>
-            </div>
-          </div> 
-        </div><br>
-         {{-- <div class="row">
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-                <a href="#" class="card-link">link</a>
-                <a href="#" class="card-link">Second link</a>
-              </div>
-            </div>
-          </div>
-          {{-- <div class="col-md-4">
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
-                <a href="#" class="card-link">link</a>
-                <a href="#" class="card-link">Second link</a>
-              </div>
-            </div>
-          </div> --}}
-        </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>  </th>
+            <th>Publicidad</th>
+            <th>Con 1</th>
+            <th>Con 2</th>
+            <th>Con 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($marca as $marcas)
+            <tr>
+              <td>{{$marcas->marca->marcas}}
+              </td>
+              <td>
+                <div style="text-align: center">
+                  <a href="{{asset('imagen/publicidad/'.$marcas->imagen)}}" data-toggle="lightbox">
+                  <img src="{{asset('imagen/publicidad/'.$marcas->imagen)}}" height="150" width="30" class="img-fluid rounded"/></a>
+                </div>
+                 
+              </td>
+              <td>{{$marcas->f_inicio}}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
     </div>
-        {{-- <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div> --}}
-      </div>
-    {{-- @endforeach --}}
-
-  @endforeach
+ 
     {{-- <div class="table-responsive">
         <!-- Projects table -->
         <table class="table align-items-center table-flush">

@@ -11,6 +11,7 @@ use App\Http\Controllers\ThorPagaController;
 use App\Http\Controllers\PublicidadController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\CodeController;
+use App\Http\Controllers\MarcaController;
 
 use App\Mail\ReclamoMail;
 use Illuminate\Support\Facades\Mail;
