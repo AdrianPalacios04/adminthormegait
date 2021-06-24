@@ -20,6 +20,6 @@ class TipoReclamo extends Model
 
     public function Reclamo()
     {
-        return $this->belongsTo(Reclamo::class,'id_tipo');
+        return $this->hasMany(Reclamo::class);
     }
 }

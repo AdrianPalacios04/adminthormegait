@@ -106,9 +106,9 @@ class ThorPagaController extends Controller
     {
         $thorpaga = ThorPaga::findOrFail($id);
         $thorpaga->delete();
-        $notification = "El acertijo se ha eliminado correctamente";
+        $notificacion = "El acertijo se ha eliminado correctamente";
         
-        return redirect('/cash')->with(compact('notification'));
+        return redirect('/cash')->with(compact('notificacion'));
     }
     // public function changeUsePaga(Request $request)
     // {

@@ -45,11 +45,13 @@
                             {{$clients->role}}
                         </td>
                         <td>
-                            <form action="{{url('/client/'.$clients->id)}}" method="post">
+                            <form action="{{url('/client/'.$clients->id)}}" method="post" class="archiveItem">
                             @csrf
                             @method('DELETE')
                             <a href="{{url('/client/'.$clients->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                            <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                            {{-- <button class="btn btn-sm btn-danger"  type="submit">Eliminar</button> --}}
+                            <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  id="{{$clients->id}}" 
+                                style="color: white">Eliminar</a> 
                             </form>
                         </td>
                     </tr>
@@ -90,5 +92,26 @@
         }
 
     });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function archiveRemove(any) {
+        var click = $(any);
+        var id = click.attr("id");
+        swal.fire({
+            title: '¿Seguro que quieres eliminarlo?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!'
+        }).then((result) => {
+            if (result.value) {
+               $('a[id="' + id + '"]').parents(".archiveItem").submit();
+            }else{
+               
+            }
+        })
+    }
 </script>
 @endsection

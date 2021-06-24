@@ -48,7 +48,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
   Route::get('changeUseTicket',[ThorTicketController::class,'changeUseTicket'])->name('changeUseTicket');
 
    //usuarios
-   Route::resource('users', ClientController::class)->middleware(['auth','role:admin|adminusuario']);
+   Route::resource('users', ClientController::class)->middleware(['auth','role:admin|adminusuario|acliente']);
    // Route::get('users',ClientController::class,'index');
 
    //carrera

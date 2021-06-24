@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" >
+                    <input type="email" class="form-control" id="exampleFormControlInput1" value="{{$reclamo->email}}">
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Respuesta</label>

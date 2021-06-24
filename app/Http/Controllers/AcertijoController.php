@@ -83,8 +83,8 @@ class AcertijoController extends Controller
     {
         
         $acertijo->delete();
-        $notification = "El acertijo se ha eliminado correctamente";
-        return redirect('/acertijo')->with(compact('notification'));
+        $notificacion = "El acertijo se ha eliminado correctamente";
+        return redirect('/acertijo')->with(compact('notificacion'));
     }
     public function changeUse(Request $request)
     {

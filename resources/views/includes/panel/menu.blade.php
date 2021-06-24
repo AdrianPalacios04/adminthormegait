@@ -53,6 +53,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fab fa-adversal"></i> ATENCION CLIENTE
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/reclamo">
                 <i class="far fa-handshake"></i> RECLAMO
             </a>
@@ -135,6 +140,13 @@
         <li class="nav-item">
             <a class="nav-link" href="/race">
                 <i class="fab fa-adversal"></i> CARERRAS
+            </a>
+        </li>
+        {{-- ATENCION DE CLIENTE --}}
+        @elseif(auth()->user()->role == 'acliente') 
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fab fa-adversal"></i> USUARIOS
             </a>
         </li>
         @endif

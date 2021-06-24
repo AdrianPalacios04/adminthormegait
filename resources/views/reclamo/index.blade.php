@@ -43,7 +43,7 @@
                 <th scope="col">pedido</th>
                 <th scope="col">detalle</th>
                 <th scope="col">Fecha</th>
-
+                <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -56,13 +56,13 @@
                             <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                     </td>
                     <td scope="row">
-                        {{$reclamos->nombres}}
+                        {{$reclamos->clients->t_username}}
                     </td>
                     <td>
                         {{$reclamos->tienda_compra}}
                     </td>
                     <td>
-                        {{$reclamos->tiporeclamo->tipo}}
+                        {{$reclamos->tipo->tipo}}
                     </td>
                     <td>
                         {{$reclamos->monto_reclamado}}
@@ -77,7 +77,7 @@
                         {{$reclamos->detalle}}
                     </td>
                     <td>
-                        {{$reclamos->fecha_registro}}
+                        {{ \Carbon\Carbon::parse($reclamos->fecha_registro)->format('d M, Y')}}
                     </td>                    
                     <td>
                         <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
@@ -91,9 +91,9 @@
         @include('reclamo.modal')
 
         @include('reclamo.envio')
-        <div class="d-flex justify-content-center">
+        {{-- <div class="d-flex justify-content-center">
             {{ $reclamo->links() }}
-        </div>  
+        </div>   --}}
     </div>
 </div>
     

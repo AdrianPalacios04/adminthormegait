@@ -1,4 +1,5 @@
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -21,23 +22,25 @@
   </div>
 </div>
 
+
 <script>
- $('body').on('click','#addCode',function(event) {
-       // var marcas =  $(this).data('marcas');
-        var marcas = $('#marcas').val();
-    $.ajax({
-        type:"POST",
+//  $('body').on('click','#addCode',function(event) {
+//        // var marcas =  $(this).data('marcas');
+//         var marcas = $('#marcas').val();
+//     $.ajax({
+//         type:"POST",
         
-        url:"{{url('marca')}}",
-        data:{
-            "_token": "{{ csrf_token() }}", // toquen para el metodo POST
-            'marca':marcas // variable que se necesita 
-        },
-        success:function(res){
-            window.location.reload(); //refrescar la página
-        }
-    })
-})
-  
+//         url:"{{url('marca')}}",
+//         data:{
+//             "_token": "{{ csrf_token() }}", // toquen para el metodo POST
+//             'marca':marcas // variable que se necesita 
+//         },
+//         success:function(res){
+//             window.location.reload(); //refrescar la página
+//         }
+//     })
+// })
+
+
 </script>
 

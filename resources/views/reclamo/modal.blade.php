@@ -11,8 +11,8 @@
         </div>
         <div class="modal-body">
             {{-- <p><b>ID : </b><span>{{$reclamos->i_id}}</span></p> --}}
-            <p><b style="font-weight: bold" >Pregunta : </b><span >{{$reclamos->nombres}}</span></p>
-            <p><b  style="font-weight: bold">Respuesta : </b><span >{{$reclamos->tienda_compra}}</span></p>
+            <p><b style="font-weight: bold" >Pedido : </b><span >{{$reclamos->pedido}}</span></p>
+            <p><b  style="font-weight: bold">Detalle : </b><span >{{$reclamos->detalle}}</span></p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -18,7 +18,7 @@
             <p><b>DNI: </b><span >{{$clients->persona->c_dniper}}</span></p>
             <p><b>Nombre: </b><span >{{$clients->persona->t_nombreper}}</span></p>
             <p><b>Apellido: </b><span >{{$clients->persona->t_apellidoper}}</span></p>
-            <p><b>Fecha de Nacimiento: </b><span >{{$clients->persona->d_nacimientoper}}</span></p>
+            <p><b>Fecha de Nacimiento: </b><span >{{ \Carbon\Carbon::parse($clients->persona->f_inicio)->format('d M, Y')}}</span></p>
             <p><b>Sexo:  </b><span >{{$clients->persona->c_sexoper}}</span></p>
         </div>
         <div class="modal-footer">

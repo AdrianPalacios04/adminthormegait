@@ -20,6 +20,6 @@ class TipoCategoria extends Model
 
     public function Reclamo()
     {
-        return $this->belongsTo(Reclamo::class,'id_categoria');
+        return $this->hasMany(Reclamo::class);
     }
 }

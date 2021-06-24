@@ -44,11 +44,13 @@
               <td>{{$marcas->marca->marcas}}
               </td>
               <td>
-                <div style="text-align: center">
+                <div>
                   <a href="{{asset('imagen/publicidad/'.$marcas->imagen)}}" data-toggle="lightbox">
                   <img src="{{asset('imagen/publicidad/'.$marcas->imagen)}}" height="150" width="30" class="img-fluid rounded"/></a>
-                </div>
-                 
+                </div><br>
+                  <h5>Link: {{$marcas->link}}</h5>  
+                  <h5>Fechas: {{ \Carbon\Carbon::parse($marcas->f_inicio)->format('d M, Y')}} - {{ \Carbon\Carbon::parse($marcas->f_final)->format('d M, Y')}}</h5>
+                
               </td>
               <td>{{$marcas->f_inicio}}</td>
             </tr>

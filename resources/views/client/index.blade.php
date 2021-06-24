@@ -11,11 +11,11 @@
             </div>
         </div>
     </div>
-    <label class="custom-toggle">
-        <input type="checkbox" class="toggle-class"  
-        data-toggle="toggle" data-style="slow" >
-        <span class="custom-toggle-slider rounded-circle"></span>
-        </label>
+        {{-- <label class="custom-toggle">
+            <input type="checkbox" class="toggle-class"  
+            data-toggle="toggle" data-style="slow" >
+            <span class="custom-toggle-slider rounded-circle"></span>
+        </label> --}}
     <div class="card-body">
         <div class="table-responsive">
             <!-- Projects table -->
@@ -27,8 +27,10 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Nombre </th>
                     <th scope="col">DNI</th>
-    
+                    <th scope="col">Celular</th>
+                    @if (auth()->user()->role == 'adminusuario')  
                     <th></th>
+                    @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -42,9 +44,9 @@
                         <th scope="row">
                             {{$clients->t_username}}
                         </th>
-                        <th scope="row">
+                        {{-- <th scope="row">
                             {{$clients->b_acepto}}
-                        </th>
+                        </th> --}}
                         <td>
                             {{$clients->persona->t_apellidoper}}
                         </td>
@@ -52,9 +54,12 @@
                             {{$clients->persona->t_nombreper}}
                         </td>
                         <td>
-                            {{$clients->persona->c_dniper}}
+                            {{$clients->t_correoper}}
                         </td>
-                        
+                        <td>
+                            {{$clients->n_celular}}
+                        </td>
+                        @if (auth()->user()->role == 'adminusuario')
                         <td>
                             <form action="{{url('/users/'.$clients->i_idusuario)}}" method="post">
                             @csrf
@@ -63,17 +68,18 @@
                             {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             
             @include('client.modal')
-            <div class="d-flex justify-content-center">
-                {{ $client->links() }}
-            </div>  
+            
         </div>
-
+        <div class="d-flex justify-content-center">
+            {{ $client->links() }}
+        </div> 
     </div>
     
 </div>

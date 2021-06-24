@@ -22,8 +22,8 @@ class Client extends Model
         return $this->belongsTo(Persona::class,"i_idpersona");
     }
 
-    // public function Reclamos()
-    // {
-    //     return $this->belongsTo(Reclamo::class,'user_id');
-    // }
+    public function Reclamos()
+    {
+        return $this->hasMany(Reclamo::class);
+    }
 }

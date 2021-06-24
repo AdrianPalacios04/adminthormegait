@@ -14,30 +14,20 @@ class Reclamo extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombres','apellidos','celular','telefono_casa','dni','pais','fecha_nac','sexo','contestar','email',
-        'domicilio','tienda_compra','id_tipo','monto_reclamo','id_categoria','pedido','detalle','id_usuario','fecha_registro'
+       'telefono_casa','contestar','email','domicilio','tienda_compra','id_tipo',
+       'monto_reclamo','id_categoria','pedido','detalle','id_usuario','fecha_registro'
     ];
-    // protected $table = "reclamo";
-    // protected $fillable = [
-    //         'tipo_tienda',
-    //         'tipo',
-    //         'monto',
-    //         'categoria',
-    //         'pedido',
-    //         'detalle',
-    //         'user_id'
-    // ];
-    // public function Clients()
-    // {
-    //     return $this->hasOne(Client::class,'i_idusuario');
-    // }
-
-    public function TipoReclamo()
+    public function Clients()
     {
-        return $this->hasOne(TipoReclamo::class,'id_tipo');
+        return $this->belongsTo(Client::class,'id_usuario');
+    }
+
+    public function Tipo()
+    {
+        return $this->belongsTo(TipoReclamo::class,'id_tipo');
     }
     public function Categoria()
     {
-        return $this->hasOne(TipoCategoria::class,'id_categoria');
+        return $this->belongsTo(TipoCategoria::class,'id_categoria');
     }
 }

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reclamo;
 use Illuminate\Http\Request;
 use App\Models\Client;
-use Iluminate\Support\Facades\Mail;
-use App\Mail\ReclamoMail;
 
-class ReclamoController extends Controller
+class AtencionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,7 @@ class ReclamoController extends Controller
      */
     public function index()
     {
-        // $reclamo = Reclamo::with('clients')->get();
-        $reclamo = Reclamo::all();
-        return view('reclamo.index',compact('reclamo'));
+        return view('atencion.index');
     }
 
     /**
@@ -39,17 +34,17 @@ class ReclamoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-       
+    {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reclamo  $reclamo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Reclamo $reclamo)
+    public function show($id)
     {
         //
     }
@@ -57,10 +52,10 @@ class ReclamoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Reclamo  $reclamo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reclamo $reclamo)
+    public function edit($id)
     {
         //
     }
@@ -69,10 +64,10 @@ class ReclamoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reclamo  $reclamo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reclamo $reclamo)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,22 +75,11 @@ class ReclamoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reclamo  $reclamo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reclamo $reclamo)
+    public function destroy($id)
     {
         //
-    }
-
-    public function MessageName(Request $request,$id)
-    {
-        $reclamo = Reclamo::findOrFail($id);
-        return view('reclamo.message',compact('reclamo'));
-    }
-    public function EnvioCorreo(Request $request)
-    {
-        $envio = $request->all();
-        dd($envio);
     }
 }

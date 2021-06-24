@@ -63,14 +63,16 @@
                         @endif
                         <td>
                             {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
-                            <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post">
+                            <form action="{{url('/acertijo/'.$acertijos->i_id)}}" method="post" class="archiveItem">
                                 @csrf
                                 @method('DELETE')
                                 {{-- @if ($acertijos->i_uso == false) --}}
-                                <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a>
+                                <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
                                 {{-- @endif --}}
                                 {{-- <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a> --}}
-                                <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                                <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  i_id="{{$acertijos->i_id}}" 
+                                    style="color: white"><i class="far fa-trash-alt"></i></a> 
+                                {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
                             </form>
                             {{-- @endif --}}
                             
@@ -137,6 +139,27 @@
             // }
         });
     });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function archiveRemove(any) {
+        var click = $(any);
+        var id = click.attr("i_id");
+        swal.fire({
+            title: '¿Seguro que quieres eliminarlo?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!'
+        }).then((result) => {
+            if (result.value) {
+               $('a[i_id="' + id + '"]').parents(".archiveItem").submit();
+            }else{
+               
+            }
+        })
+    }
 </script>
     
 @endpush
