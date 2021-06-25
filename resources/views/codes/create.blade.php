@@ -1,5 +1,6 @@
 @extends('layouts.panel')
 @section('content')
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <div class="card shadow" >
     <div class="card-header border-0">
         <div class="row align-items-center">
@@ -27,15 +28,17 @@
             <div class="row"> 
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label>Cantidad de Ticket</label>
+                        <label>Cant. Ticket</label>
                         <input type="number" min="1" max="1000" name="number" class="form-control" value="1"/>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Código</label>
-                      <input type="text" name="codes" class="form-control" id="boton" readonly>
+                      <input type="text" name="codes" class="form-control" maxlength="50" id="codes" readonly>
+                     
                     </div>
+                    
                 </div>
                 <div class="col-md-1">
                     <div class="form-group">
@@ -46,14 +49,14 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Fecha Inicio</label>
                         
                       <input type="date" name="f_inicio" class="form-control" value="{{ date('Y-m-d\TH:i:s')}}"/>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Fecha Final</label>
                       <input type="date" name="f_final" class="form-control" />
@@ -99,15 +102,31 @@
         </form>
     </div>
 </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var maxLength = 50;
+    $('#codes').keyup(function() {
+        var textlen = maxLength - $(this).val().length;
+        $('#rchars').text(textlen);
+        if (textlen == 0) {
+            Swal.fire({
+            icon: 'error',
+            text: 'Límite de caracteres alcanzado',
+            })
+        }
+    });
+</script>   
 <script>
        function comprobar(obj)
 {   
     if (obj.checked)
-      document.getElementById('boton').readOnly = false;
+      document.getElementById('codes').readOnly = false;
     else
-      document.getElementById('boton').readOnly = true;
-      document.getElementById("boton").value = "";
+      document.getElementById('codes').readOnly = true;
+      document.getElementById("codes").value = "";
         
 }
 </script>
+
+
 @endsection

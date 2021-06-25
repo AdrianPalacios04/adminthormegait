@@ -66,6 +66,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // reclamos
 
    Route::resource('reclamo', ReclamoController::class)->middleware(['auth','role:admin|adminreclamo']);
+
+   Route::post('reclamo/send',[ReclamoController::class,'send'])->name('send');
+   
    // Route::get('reclamaciones',function ()
    // {
    //    $correo = new ReclamoMail;

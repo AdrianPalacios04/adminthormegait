@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Reclamo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,15 +12,17 @@ class ReclamoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Información de contactos";
+     protected $reclamo;
+
     /**
      * Create a new message instance.
+    
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($emails)
     {
-        //
+        $this ->emails = $emails;
     }
 
     /**
@@ -29,6 +32,6 @@ class ReclamoMail extends Mailable
      */
     public function build()
     {
-        return $this->view('reclamo.message');
+        return $this->view('reclamo.envio')->with('emails',$this->emails);
     }
 }
