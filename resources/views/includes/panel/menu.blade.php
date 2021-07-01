@@ -53,7 +53,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/atencion">
                 <i class="fab fa-adversal"></i> ATENCION CLIENTE
             </a>
         </li>
@@ -145,8 +145,8 @@
         {{-- ATENCION DE CLIENTE --}}
         @elseif(auth()->user()->role == 'acliente') 
         <li class="nav-item">
-            <a class="nav-link" href="/users">
-                <i class="fab fa-adversal"></i> USUARIOS
+            <a class="nav-link" href="/atencion">
+                <i class="fab fa-adversal"></i> ATENCION CLIENTE
             </a>
         </li>
         @endif

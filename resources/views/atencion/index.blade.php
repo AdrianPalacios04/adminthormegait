@@ -29,55 +29,48 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Celular</th>
                    
-                    <th></th>
+                    
                    
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($client as $clients)
+                    @foreach ($atencion as $atent)
                     <tr>
                         <th scope="row">
                             <button type="button" class="btn btn-sm" data-toggle="modal" 
-                                data-target="#exampleModal{{$clients->i_idusuario}}" >
+                                data-target="#exampleModal{{$atent->i_idusuario}}" >
                                 <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                         </th>
                         <th scope="row">
-                            {{$clients->t_username}}
+                            {{$atent->t_username}}
                         </th>
                         {{-- <th scope="row">
-                            {{$clients->b_acepto}}
+                            {{$atent->b_acepto}}
                         </th> --}}
                         <td>
-                            {{$clients->persona->t_apellidoper}}
+                            {{$atent->persona->t_apellidoper}}
                         </td>
                         <td>
-                            {{$clients->persona->t_nombreper}}
+                            {{$atent->persona->t_nombreper}}
                         </td>
                         <td>
-                            {{$clients->t_correoper}}
+                            {{$atent->t_correoper}}
                         </td>
                         <td>
-                            {{$clients->n_celular}}
+                            {{$atent->n_celular}}
                         </td>
                        
-                        <td>
-                            <form action="{{url('/users/'.$clients->i_idusuario)}}" method="post">
-                            @csrf
-                            {{-- @method('DELETE') --}}
-                            <a href="{{url('/users/'.$clients->i_idusuario.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                            {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
-                            </form>
-                        </td>
+                       
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             
-            @include('client.modal')
+            @include('atencion.modal')
             
         </div>
         <div class="d-flex justify-content-center">
-            {{ $client->links() }}
+            {{ $atencion->links() }}
         </div> 
     </div>
     

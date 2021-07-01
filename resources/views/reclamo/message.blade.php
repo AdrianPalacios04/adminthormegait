@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Correo Electronico</h1>
-      
+
+    {{$reclamo['respuesta']}}
 </body>
 </html>

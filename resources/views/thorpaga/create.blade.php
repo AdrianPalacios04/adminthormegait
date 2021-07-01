@@ -24,51 +24,82 @@
         @endif
         <form action="{{url('cash')}}" method="post">
             @csrf
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5>NOMBRE</h5>
+                      <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 for="">SECUENCIA DE PISTAS</h5>
+                      <input type="text" name="pistas_Ax" class="form-control" value="{{old('pistas_Ax')}}" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°1</label>
-                <input type="text" name="t_pregunta1" class="form-control" value="{{old('t_pregunta1')}}" required>
+            <div class="row"> 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">PREGUNTA N°1</h5>
+                      {{-- <input type="text" name="t_pregunta1" class="form-control"  value="{{old('t_pregunta1')}}" /> --}}
+                      <textarea name="t_pregunta1" id="" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" >
+                        <h5>PREGUNTA N°2</h5>
+                        {{-- <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_respuesta1')}}" > --}}
+                        <textarea name="t_pregunta2" id="" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" >
+                        <h5>PREGUNTA N°3</h5>
+                        {{-- <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_respuesta1')}}" > --}}
+                        <textarea name="t_pregunta3" id="" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Respuesta N°1</label>
-                <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_respuesta1')}}" required>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">RESPUESTA N°1 <em>(Poner en mayúscula y sin signos)</em></h5>
+                      <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_pregunta2')}}" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">RESPUESTA N°2 <em>(Poner en mayúscula y sin signos)</em></h5>
+                      <input type="text" name="t_respuesta2" class="form-control"  value="{{old('t_respuesta2')}}" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">RESPUESTA N°3 <em>(Poner en mayúscula y sin signos)</em> </h5>
+                      <input type="text" name="t_respuesta3" class="form-control" value="{{old('t_pregunta3')}}" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°2</label>
-                <input type="text" name="t_pregunta2" class="form-control" value="{{old('t_pregunta2')}}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="name">Respuesta N°2</label>
-                <input type="text" name="t_respuesta2" class="form-control" value="{{old('t_respuesta2')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Pregunta N°3</label>
-                <input type="text" name="t_pregunta3" class="form-control" value="{{old('t_pregunta3')}}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="name">Respuesta N°3</label>
-                <input type="text" name="t_respuesta3" class="form-control" value="{{old('t_respuesta3')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°1 </label>
-                <input type="text" name="t_llave1" class="form-control" value="{{old('t_llave1')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°2 </label>
-                <input type="text" name="t_llave2" class="form-control" value="{{old('t_llave2')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Llave N°3 </label>
-                <input type="text" name="t_llave3" class="form-control" value="{{old('t_llave3')}}" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Pistas</label>
-                <input type="text" name="pistas_Ax" class="form-control" value="{{old('pistas_Ax')}}" required>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">LLAVE N°1 <em>(Poner en mayúscula y sin signos)</em></h5>
+                      <input type="text" name="t_llave1" class="form-control" value="{{old('t_pregunta2')}}" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">LLAVE N°2 <em>(Poner en mayúscula y sin signos)</em></h5>
+                      <input type="text" name="t_llave2" class="form-control"  value="{{old('t_respuesta2')}}"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">LLAVE N°3 <em>(Poner en mayúscula y sin signos)</em> </h5>
+                      <input type="text" name="t_llave3" class="form-control" value="{{old('t_pregunta3')}}"/>
+                    </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>

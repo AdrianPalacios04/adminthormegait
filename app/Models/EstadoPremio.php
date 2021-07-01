@@ -5,24 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoPremio extends Model
-{ 
+class EstadoPremio extends Model
+{
     use HasFactory;
-    protected $connection = 'mysql_connect_5';
-    protected $table = "tipe_premio";
+
+    protected $table = "state_races";
     protected $primaryKey = 'id';
+    public $timestamps = false;
+
     protected $fillable = [
-        'tipo','premio','state'
+        'codigo','state_race','state'
     ];
-
-    public function Code()
-    {
-        return $this->hasMany(Code::class,'id_tipo');
-    }
-
     public function Carrera()
     {
         return $this->hasMany(Carrera::class);
     }
-
 }

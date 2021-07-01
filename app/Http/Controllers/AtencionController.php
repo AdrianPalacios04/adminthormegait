@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
-
 class AtencionController extends Controller
 {
     /**
@@ -14,7 +13,8 @@ class AtencionController extends Controller
      */
     public function index()
     {
-        return view('atencion.index');
+        $atencion = Client::paginate(20);
+        return view('atencion.index',compact('atencion'));
     }
 
     /**

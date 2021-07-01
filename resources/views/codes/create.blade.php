@@ -52,14 +52,18 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Fecha Inicio</label>
-                        
-                      <input type="date" name="f_inicio" class="form-control" value="{{ date('Y-m-d\TH:i:s')}}"/>
+                            <?php
+                            // Obteniendo la fecha actual del sistema con PHP
+                            $fechaActual = date('Y-m-d');
+                            ?>
+                        {{-- value="{{ date('Y-m-d\TH:i:s')}} --}}
+                      <input type="date" name="f_inicio" class="form-control" value="<?php  echo $fechaActual;?>"/>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Fecha Final</label>
-                      <input type="date" name="f_final" class="form-control" />
+                      <input type="date" name="f_final" class="form-control" value="<?php  echo $fechaActual;?>"/>
                     </div>
                 </div>
             </div>

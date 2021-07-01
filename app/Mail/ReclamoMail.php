@@ -12,7 +12,7 @@ class ReclamoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-     protected $reclamo;
+    public $reclamo;
 
     /**
      * Create a new message instance.
@@ -20,9 +20,9 @@ class ReclamoMail extends Mailable
      *
      * @return void
      */
-    public function __construct($emails)
+    public function __construct($reclamo)
     {
-        $this ->emails = $emails;
+        $this ->reclamo = $reclamo;
     }
 
     /**
@@ -32,6 +32,6 @@ class ReclamoMail extends Mailable
      */
     public function build()
     {
-        return $this->view('reclamo.envio')->with('emails',$this->emails);
+        return $this->view('reclamo.message');
     }
 }

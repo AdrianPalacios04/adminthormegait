@@ -13,8 +13,8 @@ class Acertijo extends Model
     protected $primaryKey = 'i_id';
     public $timestamps = false;
     protected $fillable = [
-        "t_pregunta","t_respuesta","t_pista","t_kword1","t_kword2","t_kword3","user_id","i_uso","b_estado"
-    ];
+        "t_pregunta","t_respuesta","t_pista","t_kword1","t_kword2","t_kword3","user_id","i_uso","b_estado",'answered'
+        ];
     // protected $fillable =[
     //     'pregunta','respuesta','user_id'
     // ];

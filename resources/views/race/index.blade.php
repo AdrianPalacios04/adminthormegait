@@ -63,7 +63,7 @@
                                 {{$races->id_ax}}
                             </td>
                             <td>
-                                {{$races->id_px}}
+                                {{$races->premio->tipo}}
                             </td>
                             <td>
                                 {{$races->px_1}}
@@ -72,18 +72,21 @@
                                 {{$races->px_2}}
                             </td>
                             <td>
-                                {{$races->race_state}}
+                                {{$races->status->state_race}}
                             </td>
-                            @if (auth()->user()->role == 'admincarrera')
+                            
                             <td>
+                                @if ($races->race_state == 1)
                                 <form action="{{url('/race/'.$races->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <a href="{{url('/race/'.$races->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                                {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
-                                </form>
+                                    @csrf
+                                    
+                                    <a href="{{url('/race/'.$races->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                                    
+                                    </form>
+                                @endif
+                                
                             </td>
-                            @endif
+                            
                         </tr>
                         @endforeach
                     </tbody>

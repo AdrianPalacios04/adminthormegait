@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\ThorPaga;
+use App\Models\ThorTicket;
+use App\Models\TipoPremio;
 use Illuminate\Http\Request;
 class CarreraController extends Controller
 
@@ -93,10 +96,17 @@ class CarreraController extends Controller
      * @param  \App\Models\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carrera $carrera,$id)
+    public function edit(Request $request,$id)
     {
         $race = Carrera::find($id);
-        return view('race.edit',compact('race'));
+        $type = TipoPremio::all();
+        if($request->get('tipo_ticket') == 'ticket'){
+            $ticket = Thorticket::all();
+        }else{
+            $ticket = ThorPaga::all();
+        }
+           
+        return view('race.edit',compact('race','type','ticket'));
     }
 
     /**
@@ -110,11 +120,18 @@ class CarreraController extends Controller
     {
       
         $race = Carrera::findOrFail($id);
-        $data = $request->only('inicio','final','id_ax','id_px','px_1','px_2');
-        
-        $race->fill($data);
+        // $data = $request->only('inicio','final','id_ax','id_px','px_1','px_2');
+        $race->update([
+            "inicio"=> $request->input('inicio'),
+            "final"=> $request->input('final'),
+            "id_ax"=> $request->input('id_ax'),
+            "id_px"=> $request->input('id_px'),
+            "px_1"=> $request->input('px_1'),
+            "px_2"=> $request->input('px_2')
+        ]);
+        // $race->fill($data);
         //dd($race);
-        $race->save();//UPDATE
+        // $race->save();//UPDATE
         return redirect('/race')->with(compact('race'));
         
     }

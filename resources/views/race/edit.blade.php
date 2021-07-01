@@ -42,36 +42,39 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">Acertijos</label>
-                      <input type="text" name="nombre" class="form-control"value="{{old('id_ax',$race->id_ax)}}" />
+                        <label for="">ID Pregunta</label>
+                        <select class="form-control" name="tipo_ticket">
+                            @foreach($type as $types)
+                            <option value="{{$types->id}}">{{$types->tipo}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">Nombre del Acertijos</label>
+                      {{-- <input type="text" name="id_ax" class="form-control"value="{{old('id_ax',$race->id_ax)}}" /> --}}
+                        <select name="" id="" class="form-control">
+                            @foreach ($ticket as $tickets)
+                            <option value="{{$tickets->id}}">{{$tickets->t_nombre}}</option>
+                            @endforeach
+                            
+                        </select>
                     </div>
                 </div>
             </div>
             
             <div class="row"> 
-                
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">Pregunta</label>
-                      <input type="text" name="zona" class="form-control" value="{{old('id_px',$race->id_px)}}"/>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group" >
-                        <label>Posición</label>
-                        <input type="text" class="form-control" name="" value="{{old('px_1',$race->px_1)}}">
-                    </div>
-                </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio N°1</label>
-                        <input type="text" class="form-control" name="px_1"  value="{{old('px_1',$race->px_1)}}">
+                        <input type="number" class="form-control" name="px_1" id="px_1"  oninput="actualizarValorMunicipioInm()" value="{{old('px_1',$race->px_1)}}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio N°2</label>
-                        <input type="text" class="form-control" name="px_1"  value="{{old('px_1',$race->px_2)}}">
+                        <input type="number" class="form-control" name="px_2" id="px_2" value="{{old('px_2',$race->px_2)}}">
                     </div>
                 </div>
             </div>
@@ -79,4 +82,11 @@
         </form>
     </div>
 </div>
+<script>
+    function actualizarValorMunicipioInm() {
+        let px_1 = document.getElementById("px_1").value;
+        //Se actualiza en municipio inm
+        document.getElementById("px_2").value = px_1;
+    }
+</script>
 @endsection

@@ -18,4 +18,14 @@ class Carrera extends Model
         'inicio','final','id_ax','id_px','px_1','px_2','race_state'
     ];
 
+    public function Status()
+    {
+        return $this->belongsTo(EstadoPremio::class,'race_state');
+    }
+
+    public function Premio()
+    {
+        return $this->belongsTo(TipoPremio::class,'id_px');
+    }
+
 }

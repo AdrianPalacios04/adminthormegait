@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reclamo;
 use Illuminate\Http\Request;
 use App\Models\Client;
-use Iluminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;    
 use App\Mail\ReclamoMail;
 
 class ReclamoController extends Controller
@@ -17,15 +17,19 @@ class ReclamoController extends Controller
         $reclamo = Reclamo::all();
         return view('reclamo.index',compact('reclamo'));
     }
-    public function send(Request $request)
+    public function store(Request $request)
     {
-        $reclamo = array (
-            'respuesta' => $request->respuesta
-        );
-        $email = $request->input('email');
 
-        Mail::to('Receiver Email Address')->send(new ReclamoMail($reclamo));
+        // $correoFind = Reclamo::findOrFail($id);
+        $correo = new ReclamoMail($request->all());
 
-        return back()->with('success','Envio Exitoso');
+        $envio = Mail::to($request->get('email'))->send($correo);
+    
+        return "Mensaje Enviado";
+    }
+    public function edit(Request $request, $id)
+    {
+        $reclamo = Reclamo::findOrFail($id);
+        return view('reclamo.edit',compact('reclamo'));
     }
 }
