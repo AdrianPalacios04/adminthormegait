@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Code;
 use App\Models\TipoPremio;
 use Illuminate\Http\Request;
+use DB;
 
 class CodeController extends Controller
 {
@@ -59,7 +60,7 @@ class CodeController extends Controller
           Code::upsert($data, [
               'codes', 'f_inicio', 'f_final', 'cantidad', 'origen', 'uso','id_tipo'
          ]);
-         $notification = "El Codigos se creo correctamente";
+         $notification = "Se creo correctamente";
          return redirect('/codes')->with(compact('notification'));
     }
 
@@ -113,6 +114,13 @@ class CodeController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("codes")->whereIn('id',explode(",",$ids))->delete();
+       
+        return response()->json(['success'=>"Products Deleted successfully."]);
     }
     
 

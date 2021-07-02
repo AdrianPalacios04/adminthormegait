@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
@@ -21,13 +22,17 @@
             {{session('notification')}}
         </div>
         @endif
+        <button style="margin-bottom: 10px" class="btn  btn-sm btn-danger delete_all" data-url="{{ url('myproductsDeleteAll') }}">Delete All</button>
         <div class="table-responsive">
             <!-- Projects table -->
-            <table class="table table-striped" id="usuarios 
-            ">
+            <table class="table table-striped" >
                 <thead>
                     <tr>
-                    <th scope="col">N°</th>
+                        <th width="50px"><div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="master">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                          </div></th>
                     <th scope="col">Codigos</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Final</th>
@@ -43,9 +48,10 @@
                     @foreach ($code as $codes)
                         
                     <tr>
-                        <th scope="row">
+                        {{-- <th scope="row">
                             {{$codes->id}}
-                        </th>
+                        </th> --}}
+                        <td><input type="checkbox" class="sub_chk" data-id="{{$codes->id}}"></td>
                         <td>
                             {{$codes->codes}}
                         </td>
@@ -132,26 +138,70 @@
             }
         })
     }
-    //$('a[id="' + id + '"]').parents(".archiveItem").submit();
-//     $('#submitForm').on('click',function(e){
-//         e.preventDefault();
-        
-
-//         Swal.fire({
-//             title: 'Are you sure?',
-//             text: "You won't be able to revert this!",
-//             icon: 'warning',
-//             showCancelButton: true,
-//             confirmButtonColor: '#3085d6',
-//             cancelButtonColor: '#d33',
-//             confirmButtonText: 'Yes, delete it!'
-//         }).then((result) => {
-//             if (result.value) {
-
-//                 form.submit();
-//         });
-//     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#master').on('click', function(e) {
+         if($(this).is(':checked',true))  
+         {
+            $(".sub_chk").prop('checked', true);  
+         } else {  
+            $(".sub_chk").prop('checked',false);  
+         }  
+        });
+        $('.delete_all').on('click', function(e) {
+            var allVals = [];  
+            $(".sub_chk:checked").each(function() {  
+                allVals.push($(this).attr('data-id'));
+            });  
+            if(allVals.length <=0)  
+            {  
+                Swal.fire('Seleccione una fila');
+            }  else {  
+                var check = Swal.fire({
+                title: '¿Estas seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Eliminar!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var join_selected_values = allVals.join(","); 
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'DELETE',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                            if (data['success']) {
+                                $(".sub_chk:checked").each(function() {  
+                                    $(this).parents("tr").remove();
+                                });
+                                Swal.fire(
+                                'Eliminado!',
+                                'Los codigos han sido eliminados.',
+                                'success'
+                                )
+                            } else if (data['error']) {
+                                sw   
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                    });
+                  $.each(allVals, function( index, value ) {
+                      $('table tr').filter("[data-row-id='" + value + "']").remove();
+                  });
+                        
+                    }
+                });
+            }  
+        });
+    });
+</script>
+
 {{-- https://stackoverflow.com/questions/55361062/delete-confirmation-with-sweet-alert-2/55361312 --}}
 {{-- <script>
     

@@ -58,6 +58,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    
    //administrador ticket
    Route::resource('codes', CodeController::class)->middleware('auth','role:admin|adminticket');
+   Route::delete('/myproductsDeleteAll', [CodeController::class, 'deleteAll']);
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:acertijero|admin']);
 
   //publicidad
