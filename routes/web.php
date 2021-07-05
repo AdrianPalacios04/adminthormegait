@@ -54,6 +54,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    //carrera
    Route::resource('/race',CarreraController::class);
+   Route::put('/configrace',[CarreraController::class,'updateConfig'])->name('configcarrera');
    Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
    //administrador ticket

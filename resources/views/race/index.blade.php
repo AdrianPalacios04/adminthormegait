@@ -9,23 +9,32 @@
 </head>
 <div class="card shadow">
     <div class="card-header border-0">
-        <div class="row align-items-center">
+        <div class="row">
             <div class="col">
-                <h3 class="mb-0">Carreras</h3>
+                <h3 class="mb-0">Carreras</h3> 
             </div>
-            <div class="col text-left">
-                <div class="col-md-8">
-                    {{-- <div class="form-group"> --}}
-                      <div class="input-group">
-                        <input type="date" id="mySearchText" class="form-control">
-                        <button id="mySearchButton" class="btn btn-primary" type="button" >Button</button>
-                        <div class="input-group-append">
-                          <button id="mySearchButton" class="btn btn-primary" type="button" >Button</button>
+            <div class="col text-right">
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" 
+                        data-target="#exampleModal" >
+                        Configuracion de Evento</button>
+                    </div>
+                    <div class="col text-right">
+                        <div class="row justify-content-end ">
+                            {{-- <div class="col-md-9"> --}}
+                              <div class="form-group">
+                                <div class="input-group">
+                                    <input type="date" class="form-control" id="mySearchText">
+                                     <button id="mySearchButton" class="btn btn-primary" type="button" ><i class="fas fa-search"></i></button>
+                                </div>
+                              </div>
+                            {{-- </div> --}}
                         </div>
-                      </div>
-                    {{-- </div> --}}
-                  </div>
+                    </div>
+                </div>
             </div>
+            @include('race.modal')
         </div>
     </div>
 
@@ -45,6 +54,7 @@
                         @if (auth()->user()->role == 'admincarrera')
                         <th></th>
                         @endif
+                        <th></th>
                         
                      
                         </tr>
@@ -53,6 +63,7 @@
                         @foreach ($race as $races)
                             
                         <tr>
+                            
                             <th scope="row" id="fecha">
                                 {{$races->inicio}}
                             </th>
@@ -91,8 +102,10 @@
                         @endforeach
                     </tbody>
                 </table>
+               
             </div>
         </div>
+      
 </div>
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -129,128 +142,4 @@
 
 </script>
 {{-- Para buscar por fecha : http://live.datatables.net/hiyitago/1/edit --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
-    {{-- <script>
-
-        $(document).ready(function () {
-        
-            $.ajaxSetup({
-                headers:{
-                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        
-            var calendar = $('#full_calendar_events').fullCalendar({
-                editable:true,
-                header:{
-                    left:'prev,next today',
-                    center:'title',
-                    right:'month,agendaWeek,agendaDay'
-                },
-                events:'/race',
-                selectable:true,
-                selectHelper: true,
-                select:function(inicio, final, allDay)
-                {
-                    var px_1 = prompt('Event Title:');
-        
-                    if(px_1)
-                    {
-                        var inicio = $.fullCalendar.formatDate(inicio, 'Y-MM-DD HH:mm:ss');
-        
-                        var final = $.fullCalendar.formatDate(final, 'Y-MM-DD HH:mm:ss');
-        
-                        $.ajax({
-                            url:"/full-calender/action",
-                            type:"POST",
-                            data:{
-                                px_1: px_1,
-                                inicio: inicio,
-                                final: final,
-                                type: 'add'
-                            },
-                            success:function(data)
-                            {
-                                calendar.fullCalendar('refetchEvents');
-                                alert("Event Created Successfully");
-                            }
-                        })
-                    }
-                },
-                editable:true,
-                eventResize: function(event, delta)
-                {
-                    var inicio = $.fullCalendar.formatDate(event.inicio, 'Y-MM-DD HH:mm:ss');
-                    var final = $.fullCalendar.formatDate(event.final, 'Y-MM-DD HH:mm:ss');
-                    var px_1 = event.px_1;
-                    var id = event.id;
-                    $.ajax({
-                        url:"/full-calender/action",
-                        type:"POST",
-                        data:{
-                            px_1: px_1,
-                            inicio: inicio,
-                            final: final,
-                            id: id,
-                            type: 'update'
-                        },
-                        success:function(response)
-                        {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Updated Successfully");
-                        }
-                    })
-                },
-                eventDrop: function(event, delta)
-                {
-                    var inicio = $.fullCalendar.formatDate(event.inicio, 'Y-MM-DD HH:mm:ss');
-                    var final = $.fullCalendar.formatDate(event.final, 'Y-MM-DD HH:mm:ss');
-                    var px_1 = event.px_1;
-                    var id = event.id;
-                    $.ajax({
-                        url:"/full-calender/action",
-                        type:"POST",
-                        data:{
-                            px_1: px_1,
-                            inicio: inicio,
-                            final: final,
-                            id: id,
-                            type: 'update'
-                        },
-                        success:function(response)
-                        {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Updated Successfully");
-                        }
-                    })
-                },
-        
-                eventClick:function(event)
-                {
-                    if(confirm("Are you sure you want to remove it?"))
-                    {
-                        var id = event.id;
-                        $.ajax({
-                            url:"/full-calender/action",
-                            type:"POST",
-                            data:{
-                                id:id,
-                                type:"delete"
-                            },
-                            success:function(response)
-                            {
-                                calendar.fullCalendar('refetchEvents');
-                                alert("Event Deleted Successfully");
-                            }
-                        })
-                    }
-                }
-            });
-        
-        });
-          
-        </script> --}}
 @endsection

@@ -68,7 +68,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Premio N°1</label>
-                        <input type="number" class="form-control" name="px_1" id="px_1"  oninput="actualizarValorMunicipioInm()" value="{{old('px_1',$race->px_1)}}">
+                        <input type="number" class="form-control" name="px_1" id="px_1" value="{{old('px_1',$race->px_1)}}">
+                        {{-- oninput="actualizarValorMunicipioInm()" --}}
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -82,11 +83,18 @@
         </form>
     </div>
 </div>
-<script>
+{{-- <script>
     function actualizarValorMunicipioInm() {
         let px_1 = document.getElementById("px_1").value;
         //Se actualiza en municipio inm
         document.getElementById("px_2").value = px_1;
+    }
+</script> --}}
+
+<script>
+    function comprobarPremio() {
+        clave1 = document.px_1.value
+        clave2 = document.
     }
 </script>
 @endsection

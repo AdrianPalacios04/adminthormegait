@@ -118,7 +118,7 @@ class CodeController extends Controller
     public function deleteAll(Request $request)
     {
         $ids = $request->ids;
-        DB::table("codes")->whereIn('id',explode(",",$ids))->delete();
+        DB::table("codes")->whereIn('id',explode(",",$ids))->delete();  
        
         return response()->json(['success'=>"Products Deleted successfully."]);
     }

@@ -6,6 +6,7 @@ use App\Models\Carrera;
 use App\Models\ThorPaga;
 use App\Models\ThorTicket;
 use App\Models\TipoPremio;
+use App\Models\ConfigCarrera;
 use Illuminate\Http\Request;
 class CarreraController extends Controller
 
@@ -13,7 +14,8 @@ class CarreraController extends Controller
     public function index(Request $request)
     {
     $race = Carrera::all();
-    return view('race.index',compact('race'));
+    $config = ConfigCarrera::all();
+    return view('race.index',compact('race','config'));
     // if($request->ajax())
     	// {
         //     $validated = $request->validate([
@@ -89,13 +91,6 @@ class CarreraController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Carrera  $carrera
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request,$id)
     {
         $race = Carrera::find($id);
@@ -108,14 +103,6 @@ class CarreraController extends Controller
            
         return view('race.edit',compact('race','type','ticket'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Carrera  $carrera
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
       
@@ -135,51 +122,23 @@ class CarreraController extends Controller
         return redirect('/race')->with(compact('race'));
         
     }
+    // public function configcarrera()
+    // {
+      
+    //     return view('race.index',compact('config'));
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Carrera  $carrera
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Carrera $carrera)
+    public function updateConfig(Request $request)
     {
-        //
+        $config = ConfigCarrera::find($request->id);
+        $config->cant_ax_cash =   $request->cant_ax_cash;
+        $config->cant_ax_ticket =  $request->cant_ax_ticket;
+        $config->inicio = $request->inicio;
+        $config->intervalo =   $request->intervalo;
+        $config->duration =  $request->duration;
+        $config -> save();
+        return response()->json($config) ;
     }
 }
 
- // public function calendarEvents(Request $request)
-    // {
  
-    //     switch ($request->type) {
-    //        case 'create':
-    //           $event = Carrera::create([
-    //             //   'name' => $request->name,
-    //               'inicio' => $request->inicio,
-    //               'final' => $request->final,
-    //           ]);
- 
-    //           return response()->json($event);
-    //          break;
-  
-    //        case 'edit':
-    //           $event = Carrera::find($request->id)->update([
-    //               'name' => $request->name,
-    //               'inicio' => $request->inicio,
-    //               'final' => $request->final,
-    //           ]);
- 
-    //           return response()->json($event);
-    //          break;
-  
-    //        case 'delete':
-    //           $event = Carrera::find($request->id)->delete();
-  
-    //           return response()->json($event);
-    //          break;
-             
-    //        default:
-    //          # ...
-    //          break;
-    //     }
-    // }
