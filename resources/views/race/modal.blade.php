@@ -1,4 +1,4 @@
-@foreach ($config as $con)
+{{-- @foreach ($config as $con) --}}
     
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -11,49 +11,39 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="studentEditForm" method="POST">
+          <form action="{{route('updateConfig')}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Cantidad de Ax CASH:</label>
-              <input type="text" class="form-control" id="cant_ax_cash" value={{$con->cant_ax_cash}}>
+              <input type="text" class="form-control" name="cant_ax_cash" id="cant_ax_cash" value={{$con->cant_ax_cash}}>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Cantidad de Ax TICKET</label>
-               <input type="text" class="form-control" id="cant_ax_ticket" value={{$con->cant_ax_ticket}}>
+               <input type="text" class="form-control" name="cant_ax_ticket" id="cant_ax_ticket" value={{$con->cant_ax_ticket}}>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Comienzo del EVENTO</label>
-               <input type="time" class="form-control" id="inicio" value={{$con->inicio}}>
+               <input type="time" class="form-control" name="inicio" id="inicio" value={{$con->inicio}}>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">INTERVALO</label>
-               <input type="time" class="form-control" id="intervalo" value={{$con->intervalo}}>
+               <input type="time" class="form-control" name="intervalo" id="intervalo" value={{$con->intervalo}}>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Duración de Juego</label>
-               <input type="time" class="form-control" id="duration" value={{$con->duration}}>
+               <input type="time" class="form-control" name="duration" id="duration" value={{$con->duration}}>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="deletebutton" value="enviar" >
             </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="saveEdit">Guardar</button>
-        </div>
+        
       </div>
     </div>
   </div>
-  @endforeach
+  {{-- @endforeach --}}
 
-  <script>
-    $('#studentEditForm').submit(function(e) {
-      e.preventDafault();
-      
-      let cant_ax_cash = $('cant_ax_cash').val();
-      let cant_ax_ticket = $('cant_ax_ticket').val();
-      let inicio = $('inicio').val();
-      let intervalo = $('intervalo').val();
-      let duration = $('duration').val();
-      
-    })
-    
-  </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 

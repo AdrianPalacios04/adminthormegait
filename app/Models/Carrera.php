@@ -13,8 +13,6 @@ class Carrera extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        // 'name','day','time_start','time_final','premio','cantidad'
-        // 'name','start','end'
         'inicio','final','id_ax','id_px','px_1','px_2','race_state'
     ];
 
@@ -26,6 +24,10 @@ class Carrera extends Model
     public function Premio()
     {
         return $this->belongsTo(TipoPremio::class,'id_px');
+    }
+    public function Ticket()
+    {
+        return $this->belongsTo(ThorTicket::class,'id_ax');
     }
 
 }

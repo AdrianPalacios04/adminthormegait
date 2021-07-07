@@ -21,4 +21,8 @@ class ThorTicket extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function Carrera()
+    {
+        return $this->hasMany(Carrera::class);
+    }
 }

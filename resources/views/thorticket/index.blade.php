@@ -26,8 +26,8 @@
                 <thead>
                     <tr>
                        <th></th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Pregunta N°1</th>
+                        <th >Nombre</th>
+                        <th >Pregunta N°1</th>
                         {{-- <th scope="col">Respuesta N°1</th> --}}
                         <th scope="col">Pregunta N°2</th>
                         {{-- <th scope="col">Respuesta N°2</th> --}}
@@ -52,7 +52,7 @@
                                 data-target="#exampleModal{{$thortickets->i_id}}" >
                                 <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                         </td>
-                        <td cellspacing="4" cellpadding="4" border="1" width=400>
+                        <td width="50px">
                             {{$thortickets->t_nombre}}
                         </td>
                         <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
@@ -61,13 +61,13 @@
                         {{-- <td>
                             {{$thortickets->t_respuesta1}}
                         </td> --}}
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thortickets->t_pregunta2}}
-                        </td>
+                        </td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{-- <td>
                             {{$thortickets->t_respuesta2}}
                         </td> --}}
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thortickets->t_pregunta3}}
                         </td>
                         {{-- <td>

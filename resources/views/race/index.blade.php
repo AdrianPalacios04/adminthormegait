@@ -46,10 +46,10 @@
                         <tr>
                         <th scope="col">inicio</th>
                         <th scope="col">final</th>
-                        <th scope="col">id acertijo</th>
-                        <th scope="col">id premio</th>
-                        <th scope="col">cantidad premio 1</th>
-                        <th scope="col">cantidad premio 2</th>
+                        <th scope="col">Nombre Acertijo</th>
+                        <th scope="col">Tipo ticket</th>
+                        <th scope="col">Premio</th>
+                        <th scope="col">Control</th>
                         <th scope="col">Estado</th>
                         @if (auth()->user()->role == 'admincarrera')
                         <th></th>
@@ -64,14 +64,15 @@
                             
                         <tr>
                             
-                            <th scope="row" id="fecha">
-                                {{$races->inicio}}
+                            <th width="100px">
+                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y h:m:s' )}}
                             </th>
-                            <td>
+                            <td width="100px">
                                 {{$races->final}}
                             </td>
-                            <td>
-                                {{$races->id_ax}}
+                            <td width="100px">
+                                {{$races->ticket->t_nombre}}
+                                {{-- {{$races->id_ax}} --}}
                             </td>
                             <td>
                                 {{$races->premio->tipo}}

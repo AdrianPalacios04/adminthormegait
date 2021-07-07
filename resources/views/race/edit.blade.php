@@ -55,7 +55,7 @@
                         <label for="">Nombre del Acertijos</label>
                       {{-- <input type="text" name="id_ax" class="form-control"value="{{old('id_ax',$race->id_ax)}}" /> --}}
                         <select name="" id="" class="form-control">
-                            @foreach ($ticket as $tickets)
+                            @foreach ($type as $tickets)
                             <option value="{{$tickets->id}}">{{$tickets->t_nombre}}</option>
                             @endforeach
                             
@@ -79,22 +79,65 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-success" id="enviar">Guardar</button>
         </form>
+
+        <div class="row"> 
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Hora 1</label>
+                    <input type="time" class="form-control" name="h1" id="h1" value="{{$race->inicio}}">
+                    {{-- oninput="actualizarValorMunicipioInm()" --}}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>hora 2</label>
+                    <input type="time" class="form-control" name="h2" id="h2" >
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>hora total</label>
+                    <input type="time" class="form-control" name="tot" id="tot">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{{-- <script>
-    function actualizarValorMunicipioInm() {
-        let px_1 = document.getElementById("px_1").value;
-        //Se actualiza en municipio inm
-        document.getElementById("px_2").value = px_1;
-    }
-</script> --}}
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function comprobarPremio() {
-        clave1 = document.px_1.value
-        clave2 = document.
+    $(document).ready(function() {
+    //variables
+    var pass1 = $('#px_1');
+    var pass2 = $('#px_2');
+    function coincidePassword() {
+        var valor1 = pass1.val();
+        var valor2 = pass2.val();
+        
+        //condiciones dentro de la función
+        if (valor1 != valor2) {
+           
+            $("#enviar").prop('disabled', true);
+        
+        }else if(valor2 != valor1){
+            
+            $("#enviar").prop('disabled', true);
+        }
+        if(valor1.length != 0 && valor1 == valor2) {
+
+            Swal.fire('Los datos si coinciden, ya puedes guardar');
+            $("#enviar").prop('disabled', false);
+        }
+    
     }
+    //ejecuto la función al soltar la tecla
+    pass2.keyup(function() {
+        coincidePassword();
+    });
+    pass1.keyup(function () {
+        coincidePassword();
+    });
+});
 </script>
 @endsection

@@ -14,8 +14,8 @@ class CarreraController extends Controller
     public function index(Request $request)
     {
     $race = Carrera::all();
-    $config = ConfigCarrera::all();
-    return view('race.index',compact('race','config'));
+    $con = ConfigCarrera::find(1);
+    return view('race.index',compact('race','con'));
     // if($request->ajax())
     	// {
         //     $validated = $request->validate([
@@ -95,13 +95,13 @@ class CarreraController extends Controller
     {
         $race = Carrera::find($id);
         $type = TipoPremio::all();
-        if($request->get('tipo_ticket') == 'ticket'){
-            $ticket = Thorticket::all();
-        }else{
-            $ticket = ThorPaga::all();
-        }
+        // if($request->get('tipo_ticket') == 'ticket'){
+        //     $ticket = Thorticket::all();
+        // }else{
+        //     $ticket = ThorPaga::all();
+        // }
            
-        return view('race.edit',compact('race','type','ticket'));
+        return view('race.edit',compact('race','type'));
     }
     public function update(Request $request,$id)
     {
@@ -128,17 +128,33 @@ class CarreraController extends Controller
     //     return view('race.index',compact('config'));
     // }
 
+    // public function getConfig()
+    // {
+    //     $config = ConfigCarrera::where('id',1)->get();
+    //     return response()->json($config);
+    // }
+
+    // public function getConfig()
+    // {
+    //     $con = ConfigCarrera::find(1);
+    //     return response()->json($con);
+    // }
     public function updateConfig(Request $request)
-    {
-        $config = ConfigCarrera::find($request->id);
-        $config->cant_ax_cash =   $request->cant_ax_cash;
-        $config->cant_ax_ticket =  $request->cant_ax_ticket;
-        $config->inicio = $request->inicio;
-        $config->intervalo =   $request->intervalo;
-        $config->duration =  $request->duration;
-        $config -> save();
-        return response()->json($config) ;
+    {   
+        // dd($request->all());
+        $config = ConfigCarrera::find(1);
+         $config->update($request->all());
+
+        // return response()->json([
+        //     'message'=> 'Se configuro'
+        // ]);
+        return redirect()->route('race.index')
+        ->with('success','User deleted successfully');{
+            
+        }
     }
+        // dd($config);
+        // return response()->json($config) ;
 }
 
  

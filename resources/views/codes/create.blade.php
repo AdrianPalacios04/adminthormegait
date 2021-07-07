@@ -29,7 +29,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Cant. Ticket</label>
-                        <input type="number" min="1" max="1000" name="number" class="form-control" value="1"/>
+                        <input type="number" min="1" max="1000" id="number" name="number" class="form-control" value="1" />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -121,14 +121,20 @@
     });
 </script>   
 <script>
-       function comprobar(obj)
-{   
-    if (obj.checked)
-      document.getElementById('codes').readOnly = false;
-    else
-      document.getElementById('codes').readOnly = true;
-      document.getElementById("codes").value = "";
-        
+function comprobar(obj){   
+    if (obj.checked){
+    document.getElementById('codes').readOnly = false;
+    document.getElementById('number').readOnly = true;
+    document.getElementById("number").value = "1";
+
+    }else{
+
+    document.getElementById('codes').readOnly = true;
+    document.getElementById("codes").value = "";
+    document.getElementById('number').readOnly = false;
+    document.getElementById("number").value = "";
+    
+    }
 }
 </script>
 
