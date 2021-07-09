@@ -87,11 +87,11 @@
                         {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
                         <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
                             @csrf
-                            {{-- <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
+                            <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
                             data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
-                            Responder</button> --}}
+                            Responder</button>
                             {{-- @if ($acertijos->i_uso == false) --}}
-                            <a href="{{url('/reclamo/'.$reclamos->id_reclamaciones.'/edit')}}" class="btn btn-sm btn-primary">Respuesta</a>
+                            {{-- <a href="{{url('/reclamo/'.$reclamos->id_reclamaciones.'/edit')}}" class="btn btn-sm btn-primary">Respuesta</a> --}}
                             {{-- @endif --}}
                             {{-- <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a> --}}
                             {{-- <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  i_id="{{$acertijos->i_id}}" 

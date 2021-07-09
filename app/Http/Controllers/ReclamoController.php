@@ -20,16 +20,24 @@ class ReclamoController extends Controller
     public function store(Request $request)
     {
 
-        // $correoFind = Reclamo::findOrFail($id);
-        $correo = new ReclamoMail($request->all());
+        // // $correoFind = Reclamo::findOrFail($id);
+        // $correo = new ReclamoMail($request->all());
 
-        $envio = Mail::to($request->get('email'))->send($correo);
+        // $envio = Mail::to($request->get('email'))->send($correo);
     
-        return "Mensaje Enviado";
+        // return "Mensaje Enviado";
     }
     public function edit(Request $request, $id)
     {
         $reclamo = Reclamo::findOrFail($id);
         return view('reclamo.edit',compact('reclamo'));
+    }
+    public function Message(Request $request)
+    {
+        $correo = new ReclamoMail($request->all());
+
+        $envio = Mail::to($request->get('email'))->send($correo);
+    
+        return 'se envio el directo';
     }
 }

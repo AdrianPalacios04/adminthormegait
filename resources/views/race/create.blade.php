@@ -4,13 +4,13 @@
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row align-items-center">
-            <div class="col">
-                <h3 class="mb-0">Nueva Carrera</h3>
-            </div>
-            <div class="col text-right">
-                <a href="{{url('race')}}" class="btn btn-sm btn-default">
-                Cancelar y Volver</a>
-            </div>
+        <div class="col">
+            <h3 class="mb-0">Editar Carrera</h3>
+        </div>
+        <div class="col text-right">
+            <a href="{{url('/race')}}" class="btn btn-sm btn-default">
+            Cancelar y Volver</a>
+        </div>
         </div>
     </div>
     <div class="card-body">
@@ -23,146 +23,86 @@
                 </ul>
             </div>
         @endif
-        <form action="{{url('/race')}}" method="post">
+        <form action="{{url('race')}}" method="post">
             @csrf
-            {{-- <div class="row align-items-center">
-                <div class=" col text-right col-2"> 
-
-                    <input type="date" name="day[]" class="form-control" " required>
-                </div>
-            </div> --}}
-            <div class="card shadow">
-                <div class="card-body">
-                    @if(session('notification'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('notification')}}
+            <div class="row"> 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5>FECHA INICIO</h5>
+                        <input type="datetime-local"  name="inicio"  class="form-control">
                     </div>
-                    @endif
+                    <div class="form-group">
+                        <h5>FECHA FINAL</h5>
+                        <input type="datetime-local" name="final" class="form-control" />
+                    </div>
                 </div>
-                <div class="table-responsive">
-                    <!-- Projects table -->
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                            <tr>
-                               <th scope="col">name</th>
-                                <th scope="col">start </th>
-                                <th scope="col">Final</th>
-                                {{-- <th scope="col">Premio</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Activo</th> --}}
-                                <th scope="col"><a href="javascript:void(0)" class="btn btn-success addRow">
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i></a></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {{-- @foreach ($workDays as $key => $workDay) --}}
-                        <tr>
-                            <td>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" name="name[]" class="form-control">
-                                    </div>
-                                </div>
-                            </td>
-                           
-                            <td>
-                            <div class="row">
-                                <div class="col">
-                                    {{-- <select class="form-control" name="start[]">
-                                    @for($i=1; $i<=23; $i++)
-                                        <option value="{{$i}}:00">{{$i}}:00 </option>  
-                                    @endfor
-                                    </select> --}}
-                                    <input type="date" name="start[]">
-                                </div>
-                            </div>          
-                            </td>
-                            <td>
-                            <div class="row">
-                                <div class="col">
-                                    {{-- <select class="form-control" name="end[]">
-                                    @for($i=1; $i<=23; $i++)
-                                        <option value="{{$i}}:00">{{$i}}:00 </option>
-                                       
-                                    @endfor
-                                    </select> --}}
-                                    <input type="date" name="end[]" id="">
-                                </div>
-                            </div>
-                            </td>
-                            {{-- <td>
-                                <select class="form-control" name="premio[]">
-                                    <option value="ticket">ticket</option>
-                                    <option value="cash">cash</option>
-                                </select>
-                            </td> --}}
-                            {{-- <td>
-                                <input type="text" class="form-control" name="cantidad[]">
-                            </td> --}}
-                            {{-- <td> 
-                                <label class="custom-toggle">
-                                    <input type="checkbox" name="active[]" checked>
-                                    <span class="custom-toggle-slider rounded-circle" value="1"></span>
-                                </label>
-                            </td> --}}
-                            <th scope="col"><a href="javascript:void(0)" class="btn btn-danger deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
-        
-                        </tr>
-                        {{-- @endforeach --}}
-                        </tbody>
-                    </table>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <H5 for="">TIPO TICKET</H5>
+                        <select class="form-control" name="id_px">
+                            @foreach($type as $types)
+                            <option value="{{$types->id}}">{{$types->tipo}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <H5 for="">NOMBRE DEL ACERTIJO</H5>
+                        <select name="id_ax" class="form-control">
+                            @foreach ($name as $names)
+                                <option value="{{$names->i_id}}">{{$names->t_nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>  
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <H5 for="">PREMIO</H5>
+                        <input type="number" class="form-control" name="px_1" id="px_1" step="0"/>
+                    </div>
+                    <div class="form-group">
+                      
+                        <H5>CONTROL</H5>
+                        <input type="number" class="form-control" name="px_2" id="px_2" >
+                    </div>  
                 </div>
             </div>
-            <button>guardar</button>
+            <button type="submit" class="btn btn-success" id="enviar">Guardar</button>
         </form>
     </div>
 </div>
-@endsection
-@push('scripts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $('thead').on('click','.addRow',function() {
-        const tr =    "<tr>"+
-                       " <td>"+
-                        "<div class='row'>"+
-                                    "<div class='col'>"+
-                                        "<input type='text' name='name[]' class='form-control'>"+
-                                    "</div>"+
-                                "</div>"+
-                        "</td>"+
-                        
-                        "<td>"+
-                        "<div class='row'>"+
-                            "<div class='col'>"+
-                                "<select class='form-control' name='start[]'>"+
-                                
-                                    "@for($i=1; $i<=23; $i++)"+
-                                        "<option value='{{$i}}:00'>{{$i}}:00 </option>"+  
-                                    "@endfor"+
-                                
-                               " </select>"+
-                            "</div>"+
-                        "</div>"+     
-                        "</td>"+
-                        "<td>"+
-                        "<div class='row'>"+
-                            "<div class='col'>"+
-                                "<select class='form-control' name='end[]'>"+
-                                    "@for($i=1; $i<=23; $i++)"+
-                                        "<option value='{{$i}}:00'>{{$i}}:00 </option>"+  
-                                    "@endfor"+
-                                "</select>"+
-                            "</div>"+
-                        "</div>"+
-                        "</td>"+
-                        
-                        "<th scope='col'><a href='javascript:void(0)' class='btn btn-danger deleteRow'><i class='fa fa-trash aria-hidden='true'></i></a></th>"+
-                    "</tr>"
-                    $('tbody').append(tr);
-    });
-    $('tbody').on('click','.deleteRow',function () {
-        $(this).parent().parent().remove();
-    });
-   
-</script>
+    $(document).ready(function() {
+    //variables
+    var pass1 = $('#px_1');
+    var pass2 = $('#px_2');
+    function coincidePassword() {
+        var valor1 = pass1.val();
+        var valor2 = pass2.val();
+        
+        //condiciones dentro de la función
+        if (valor1 != valor2) {
+           
+            $("#enviar").prop('disabled', true);
+        
+        }else if(valor2 != valor1){
+            
+            $("#enviar").prop('disabled', true);
+        }
+        if(valor1.length != 0 && valor1 == valor2) {
+
+            Swal.fire('Los datos si coinciden, ya puedes guardar');
+            $("#enviar").prop('disabled', false);
+        }
     
-@endpush
+    }
+    //ejecuto la función al soltar la tecla
+    pass2.keyup(function() {
+        coincidePassword();
+    });
+    pass1.keyup(function () {
+        coincidePassword();
+    });
+});
+</script>
+@endsection

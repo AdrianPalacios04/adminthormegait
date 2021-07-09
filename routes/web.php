@@ -54,6 +54,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    //carrera
    Route::resource('/race',CarreraController::class);
+   Route::get('/raceAll',[CarreraController::class,'RaceAll'])->name('raceAll');
    Route::put('/updateConfig',[CarreraController::class,'updateConfig'])->name('updateConfig');
    Route::post('calendar-crud-ajax', [CarreraController::class, 'calendarEvents']);
    
@@ -71,6 +72,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::resource('reclamo', ReclamoController::class)->middleware(['auth','role:admin|adminreclamo']);
 
    Route::resource('atencion',AtencionController::class);
+
+   Route::post('/message',[ReclamoController::class,'Message'])->name('message');
 
    // Route::post('reclamo',[ReclamoController::class,'send'])->name('send');
    

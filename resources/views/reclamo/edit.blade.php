@@ -8,7 +8,7 @@
             <h3 class="mb-0">Editar Acertijo</h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('acertijo/')}}" class="btn btn-sm btn-default">
+            <a href="{{url('reclamo')}}" class="btn btn-sm btn-default">
             Cancelar y Volver</a>
         </div>
         </div>
@@ -25,7 +25,6 @@
         @endif
         <form action="{{url('reclamo')}}" method="post">
             @csrf
-            
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">

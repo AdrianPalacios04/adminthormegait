@@ -25,4 +25,8 @@ class ThorTicket extends Model
     {
         return $this->hasMany(Carrera::class);
     }
+    public function CarreraT()
+    {
+        return $this->hasMany(CarreraTotal::class);
+    }
 }

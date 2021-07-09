@@ -27,82 +27,53 @@
             @csrf
             @method('PUT')
             <div class="row"> 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Fecha Inicio</label>
+                        <h5>FECHA INICIO</h5>
                         <input type="datetime-local"  name="inicio"  class="form-control" value="{{\Carbon\Carbon::parse($race->inicio)->format('Y-m-d\TH:i:s')}}">
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group" >
-                        <label>Fecha Final</label>
+                    <div class="form-group">
+                        <h5>FECHA FINAL</h5>
                         <input type="datetime-local" name="final" class="form-control" value="{{\Carbon\Carbon::parse($race->final)->format('Y-m-d\TH:i:s')}}"/>
-
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">ID Pregunta</label>
-                        <select class="form-control" name="tipo_ticket">
+                        <h5 for="">TIPO TICKET</h5>
+                        <select class="form-control" name="id_px">
                             @foreach($type as $types)
                             <option value="{{$types->id}}">{{$types->tipo}}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>
-                <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">Nombre del Acertijos</label>
+                        <h5 for="">NOMBRE DEL ACERTIJO</h5>
                       {{-- <input type="text" name="id_ax" class="form-control"value="{{old('id_ax',$race->id_ax)}}" /> --}}
-                        <select name="" id="" class="form-control">
-                            @foreach ($type as $tickets)
-                            <option value="{{$tickets->id}}">{{$tickets->t_nombre}}</option>
-                            @endforeach
-                            
-                        </select>
-                    </div>
+                      <select name="id_ax" class="form-control">
+                        @foreach ($name as $names)
+                        <option value="{{$names->i_id}}">{{$names->t_nombre}}</option>
+                        @endforeach
+                    </select>
+                    </div>  
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h5 for="">PREMIO</h5>
+                        <input type="number" class="form-control" name="px_1" id="px_1" step="0" value="{{old('px_1',$race->px_1)}}"/>
+                    </div>
+                    <div class="form-group">
+                        <h5>CONTROL</h5>
+                        <input type="number" class="form-control" name="px_2" id="px_2" value="{{old('px_2',$race->px_2)}}">
+                    </div>  
+                </div>
+            </div>
+
+            <div class="col text-right">
+                <button type="submit" class="btn btn-success" id="enviar">Guardar</button>
             </div>
             
-            <div class="row"> 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Premio N°1</label>
-                        <input type="number" class="form-control" name="px_1" id="px_1" value="{{old('px_1',$race->px_1)}}">
-                        {{-- oninput="actualizarValorMunicipioInm()" --}}
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Premio N°2</label>
-                        <input type="number" class="form-control" name="px_2" id="px_2" value="{{old('px_2',$race->px_2)}}">
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success" id="enviar">Guardar</button>
         </form>
-
-        <div class="row"> 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Hora 1</label>
-                    <input type="time" class="form-control" name="h1" id="h1" value="{{$race->inicio}}">
-                    {{-- oninput="actualizarValorMunicipioInm()" --}}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>hora 2</label>
-                    <input type="time" class="form-control" name="h2" id="h2" >
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>hora total</label>
-                    <input type="time" class="form-control" name="tot" id="tot">
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

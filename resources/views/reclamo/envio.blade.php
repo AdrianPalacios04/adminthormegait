@@ -9,8 +9,8 @@
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <form action="{{url('reclamo')}}" method="POST">
-            @csrf
+        <form action="{{route('message')}}" method="POST">
+            @csrf|
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
