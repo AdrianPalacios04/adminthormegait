@@ -1,5 +1,5 @@
-
 @foreach ($reclamo as $reclamos)
+
 <div class="modal fade" id="exampleModal1{{$reclamos->id_reclamaciones}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +10,7 @@
         </button>
         </div>
         <form action="{{route('message')}}" method="POST">
-            @csrf|
+            @csrf
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -18,16 +18,14 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Respuesta</label>
-                    <textarea class="form-control" name="respuesta" rows="4"></textarea>
+                    <textarea class="form-control"  name="respuesta" rows="4"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Enviar</button>
+              <input type="submit" class="btn btn-primary" value="Enviar">
             </div>
-        </form>
-        
+        </form>  
     </div>
     </div>
 </div>
-    
 @endforeach

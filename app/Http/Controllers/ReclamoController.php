@@ -34,10 +34,15 @@ class ReclamoController extends Controller
     }
     public function Message(Request $request)
     {
+        // forma sincrona es el envio 
         $correo = new ReclamoMail($request->all());
 
         $envio = Mail::to($request->get('email'))->send($correo);
+
+        
+
+        $notificacion = "Se envio el correo correctamente";
     
-        return 'se envio el directo';
+        return redirect('/reclamo')->with(compact('notificacion'));
     }
 }

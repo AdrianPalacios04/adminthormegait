@@ -3,28 +3,15 @@
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row justify-content-end">
-        <div class="col">
-            <h3 class="mb-0">Reclamo y/o quejas</h3>
-        </div>
-         {{-- <div class="col text-right">
-            {{-- <a href="{{url('acertijo/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a> --}}
-            {{-- <div class="row justify-content-end ">
-                <div class="col-md-5">
-                  <div class="form-group">
-                    <div class="input-group mb-4">
-                      <input class="form-control" placeholder="Search" type="date">
-                      <button>assad</button>
-                    </div>
-                  </div>
-                </div>
+            <div class="col">
+                <h3 class="mb-0">Reclamo y/o quejas</h3>
             </div>
-        </div>  --}}
         </div>
     </div>
     <div class="card-body">
-        @if(session('notification'))
+        @if(session('notificacion'))
         <div class="alert alert-success" role="alert">
-            {{session('notification')}}
+            {{session('notificacion')}}
         </div>
         @endif
     </div>
@@ -38,7 +25,7 @@
                 
                 <th scope="col">tienda compra</th>
                 <th scope="col">tipo</th>
-                <th scope="col">monto reclamado</th>
+                <th scope="col">monto</th>
                 <th scope="col">categoria</th>
                 <th scope="col">pedido</th>
                 <th scope="col">detalle</th>
