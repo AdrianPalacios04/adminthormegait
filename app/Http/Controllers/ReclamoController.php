@@ -30,19 +30,24 @@ class ReclamoController extends Controller
     public function edit(Request $request, $id)
     {
         $reclamo = Reclamo::findOrFail($id);
-        return view('reclamo.edit',compact('reclamo'));
+        return view('reclamo.message',compact('reclamo'));
     }
-    public function Message(Request $request)
-    {
-        // forma sincrona es el envio 
-        $correo = new ReclamoMail($request->all());
-
+    public function Message(Request $request) //  este es cierto ? si 
+    {   
+        dd($request->all());
+        $correo = new ReclamoMail($request->get('respuesta'), $request->get('reclamo_id'));
+// por ejemplo aqui como segundo parametro puedes pasar el codigo de la reclamacion
         $envio = Mail::to($request->get('email'))->send($correo);
-
-        
+        // $model->status = !$model->status;
+// guasat olvide grabar el controller xD
 
         $notificacion = "Se envio el correo correctamente";
     
         return redirect('/reclamo')->with(compact('notificacion'));
+    }
+    public function GetMessage($id)
+    {
+        $find = Reclamo::findOrFail($id);
+        return view('reclamo.message',compact('find'));
     }
 }

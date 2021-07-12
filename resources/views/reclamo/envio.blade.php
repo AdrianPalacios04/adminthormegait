@@ -12,6 +12,7 @@
         <form action="{{route('message')}}" method="POST">
             @csrf
             <div class="modal-body">
+                <input name="reclamo_id" type="hidden" value="{{$reclamos->id_reclamaciones}}">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
                     <input type="email" class="form-control" name="email" value="{{$reclamos->email}}">
@@ -29,3 +30,4 @@
     </div>
 </div>
 @endforeach
+// oks puedes hacer una demo ?
