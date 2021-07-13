@@ -6,17 +6,21 @@
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
     }
+
     #hoja {
         width: 300px;
         text-align: center;
     }
+
     #respuesta {
         height: 100px;
         margin-top: 100px;
     }
+
     #firma {
         text-align: center;
     }
+
     #pedido {
         width: 300px;
     }
@@ -27,21 +31,19 @@
 <table border="1">
     <tr>
         <td colspan="5" style="text-align: center;">LIBRO DE RECLAMACIONES</td>
-        <td id="hoja" rowspan="2">HOJA DE RECLAMACIÓN
-            <br>
+        <td id="hoja" rowspan="2">HOJA DE RECLAMACIÓN <br>
             <?php 
                 $length = 5;
-                $stringer = $reclamo['correlativo'];
+                $stringer = $correlativo;
                 echo str_pad($stringer,$length,"0", STR_PAD_LEFT);
             ?>
-            
         </td>
     </tr>
     <tr>
         <th id="fecha">FECHA</th>
-        <th>{{ \Carbon\Carbon::parse($reclamo['fecha_registro'])->format('d')}}</th>
-        <th colspan="2">{{ \Carbon\Carbon::parse($reclamo['fecha_registro'])->format('M')}}</th>
-        <th>{{ \Carbon\Carbon::parse($reclamo['fecha_registro'])->format('Y')}}</th>
+        <th>{{ \Carbon\Carbon::parse($fecha_registro)->format('d')}}</th>
+        <th colspan="2">{{ \Carbon\Carbon::parse($fecha_registro)->format('M')}}</th>
+        <th>{{ \Carbon\Carbon::parse($fecha_registro)->format('Y')}}</th>
     </tr>
     <tr>
         <td colspan="6" style="text-align: center;">Ruc: 20603928394 Razón Social: OPERACIONES THOR S.A.C.</td>
@@ -53,14 +55,14 @@
     </tr>
 
     <tr>
-        <td colspan="6">NOMBRE: {{$reclamo['nombre']}} {{$reclamo['apellido']}}</td>
+        <td colspan="6">NOMBRE: {{$nombre}} {{$apellido}}</td>
     </tr>
     <tr>
         <td colspan="6">DOMICILIO:</td>
     </tr>
     <tr>
-        <td colspan="2">DNI/CE: {{$reclamo['dni']}}</td>
-        <td colspan="4">TELEFONO/EMAIL: {{$reclamo['n_celular']}}</td>
+        <td colspan="2">DNI/CE: {{$dni}}</td>
+        <td colspan="4">TELEFONO/EMAIL: {{$celular}}</td>
     </tr>
     <tr>
         <td id="datos" colspan="6">
@@ -71,7 +73,7 @@
         <td>PRODUCTO</td>
         <td></td>
         <td colspan="4" rowspan="2">
-            <p>MONTO RECLAMADO: {{$reclamo['monto_reclamado']}} </p>
+            <p>MONTO RECLAMADO: {{$monto_reclamado}} </p>
         </td>
     </tr>
     <tr>
@@ -84,7 +86,7 @@
     <tr>
         <td>RECLAMO</td>
         <td></td>
-        <td colspan="4" rowspan="2">DETALLE: {{$reclamo['detalle']}}</td>
+        <td colspan="4" rowspan="2">DETALLE: {{$detalle}}</td>
     </tr>
     <tr>
         <td>QUEJA</td>
@@ -92,7 +94,7 @@
     </tr>
     <tr>
         <td colspan="5" rowspan="2">
-            <p id="pedido">PEDIDO: {{$reclamo['pedido']}}</p>
+            <p id="pedido">PEDIDO: {{$pedido}}</p>
         </td>
         <td style=" height: 70px">
         </td>
@@ -104,18 +106,19 @@
         <td id="datos" colspan="6">4.OBSERVACIONES Y ACCIONES ADOPTADAS POR EL PROVEEDOR</td>
     </tr>
     <tr style="text-align: center">
-        <td colspan="2">FECHA DE RESPUESTA</td>
+        <td colspan="2" >FECHA DE RESPUESTA</td>
         <td>{{ \Carbon\Carbon::now()->format('d')}}</td>
         <td>{{ \Carbon\Carbon::now()->format('M')}}</td>
         <td>{{ \Carbon\Carbon::now()->format('Y')}}</td>
-        <td rowspan="2" style="height: 70px;"> {{ Auth::user()->name}}</td>
+        <td rowspan="2" style="height: 70px;" > {{ Auth::user()->name}}</td>
     </tr>
     <tr>
         <td id="pedido" colspan="5" rowspan="2">
             <p>
-                RESPUESTA: {{$reclamo['respuesta']}}
+                RESPUESTA: {{$respuesta}}
             </p>
         </td>
+
     </tr>
     <tr>
         <td id="firma">FIRMA DE PROVEEDOR</td>

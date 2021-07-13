@@ -12,7 +12,21 @@
         <form action="{{route('message')}}" method="POST">
             @csrf
             <div class="modal-body">
-                <input name="reclamo_id" type="hidden" value="{{$reclamos->id_reclamaciones}}">
+                <input name="correlativo" type="hidden" value="{{$reclamos->correlativo}}">
+                <input name="fecha_registro" type="hidden" value="{{$reclamos->fecha_registro}}">
+                <input name="nombre" type="hidden" value="{{$reclamos->clients->persona->t_nombreper}}">
+                <input name="apellido" type="hidden" value="{{$reclamos->clients->persona->t_apellidoper}}">
+                <input name="dni" type="hidden" value="{{$reclamos->clients->persona->c_dniper}}">
+                <input name="detalle" type="hidden" value="{{$reclamos->detalle}}">
+                <input name="estado" type="hidden" value="{{$reclamos->correlativo}}">
+
+                {{-- <input name="reclamo_id" type="hidden" value="{{$reclamos->id_reclamaciones}}"> --}}
+                <input name="monto_reclamado" type="hidden" value="{{$reclamos->monto_reclamado}}">
+                <input name="pedido" type="hidden" value="{{$reclamos->pedido}}">
+                <input name="n_celular" type="hidden" value="{{$reclamos->clients->n_celular}}">
+                <input name="email" type="hidden" value="{{$reclamos->email}}">
+
+            
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
                     <input type="email" class="form-control" name="email" value="{{$reclamos->email}}">
@@ -30,4 +44,3 @@
     </div>
 </div>
 @endforeach
-// oks puedes hacer una demo ?

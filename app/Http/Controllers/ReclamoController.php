@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Mail;    
 use App\Mail\ReclamoMail;
+use PDF;
 
 class ReclamoController extends Controller
 {
@@ -19,35 +20,34 @@ class ReclamoController extends Controller
     }
     public function store(Request $request)
     {
-
-        // // $correoFind = Reclamo::findOrFail($id);
-        // $correo = new ReclamoMail($request->all());
-
-        // $envio = Mail::to($request->get('email'))->send($correo);
-    
-        // return "Mensaje Enviado";
+        
     }
     public function edit(Request $request, $id)
     {
         $reclamo = Reclamo::findOrFail($id);
         return view('reclamo.message',compact('reclamo'));
     }
-    public function Message(Request $request) //  este es cierto ? si 
+    public function Message(Request $request)
     {   
-        dd($request->all());
-        $correo = new ReclamoMail($request->get('respuesta'), $request->get('reclamo_id'));
-// por ejemplo aqui como segundo parametro puedes pasar el codigo de la reclamacion
+        // dd($request->all());
+        $data['correlativo'] = $request->correlativo;
+        $data['nombre'] = $request->nombre;
+        $data['apellido'] = $request->apellido;
+        $data['fecha_registro'] = $request->fecha_registro;
+        $data['dni'] = $request->dni;
+        $data['celular'] = $request->n_celular;
+        $data['monto_reclamado'] = $request->monto_reclamado;
+        $data['detalle'] = $request->detalle;
+        $data['pedido'] = $request->pedido;
+        $data['respuesta'] = $request->respuesta;
+        $pdf = PDF::loadView("reclamo.pdf.pdf",$data);
+        $correo = new ReclamoMail($request->all());
+        $correo->attachData($pdf->output(),'Reclamo.pdf');
         $envio = Mail::to($request->get('email'))->send($correo);
-        // $model->status = !$model->status;
-// guasat olvide grabar el controller xD
-
+      
+        
         $notificacion = "Se envio el correo correctamente";
     
         return redirect('/reclamo')->with(compact('notificacion'));
-    }
-    public function GetMessage($id)
-    {
-        $find = Reclamo::findOrFail($id);
-        return view('reclamo.message',compact('find'));
     }
 }

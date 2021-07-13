@@ -12,21 +12,16 @@ class ReclamoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $respuesta;
-    public $reclamoId;
+    public $reclamo;
    
-    public function __construct($respuesta, $reclamoId)
+    public function __construct($reclamo)
     {
-        $this->respuesta = $respuesta;
-        $this->reclamoId = $reclamoId;
+        $this->reclamo = $reclamo;
         
     }
 
     public function build()
     {
-        return $this->view('reclamo.message')->with([
-            'respuesta'=> $this->respuesta,
-            'reclamoId'=> $this->reclamoId, // claro esta que aqui le puedes pasar el nombre que tu quieras
-        ]);
+        return $this->view('reclamo.message');
     }
 }
