@@ -22,7 +22,7 @@
             {{session('notification')}}
         </div>
         @endif
-        <button style="margin-bottom: 10px" class="btn  btn-sm btn-danger delete_all" data-url="{{ url('myproductsDeleteAll') }}">Delete All</button>
+        <button type="submit" style="margin-bottom: 10px" class="btn  btn-sm btn-danger delete_all" data-url="{{ url('myproductsDeleteAll') }}">Delete All</button>
         <div class="table-responsive">
             <!-- Projects table -->
             <table class="table table-striped" >
@@ -139,6 +139,7 @@
         })
     }
 </script>
+{{-- check box para eliminar  --}}
 <script type="text/javascript">
     $(document).ready(function () {
         $('#master').on('click', function(e) {
@@ -173,7 +174,7 @@
                         url: $(this).data('url'),
                         type: 'DELETE',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        data: 'ids='+join_selected_values,
+                        data: 'id='+join_selected_values,
                         success: function (data) {
                             if (data['success']) {
                                 $(".sub_chk:checked").each(function() {  
@@ -185,7 +186,7 @@
                                 'success'
                                 )
                             } else if (data['error']) {
-                                sw   
+                                  
                             } else {
                                 alert('Whoops Something went wrong!!');
                             }

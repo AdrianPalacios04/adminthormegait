@@ -22,7 +22,6 @@
                 <tr>
                     <th></th>
                 <th scope="col">Usuario</th>
-                
                 <th scope="col">tienda compra</th>
                 <th scope="col">tipo</th>
                 <th scope="col">monto</th>
@@ -67,25 +66,14 @@
                         {{ \Carbon\Carbon::parse($reclamos->fecha_registro)->format('d M, Y')}}
                     </td>                    
                     <td>
-                         
-                            
-                    </td>
-                    <td>
-                        {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
+                       @if ($reclamos->estado == false)
                         <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
                             @csrf
                             <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
                             data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
                             Responder</button>
-                            {{-- @if ($acertijos->i_uso == false) --}}
-                            {{-- <a href="{{url('/reclamo/'.$reclamos->id_reclamaciones.'/edit')}}" class="btn btn-sm btn-primary">Respuesta</a> --}}
-                            {{-- @endif --}}
-                            {{-- <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a> --}}
-                            {{-- <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  i_id="{{$acertijos->i_id}}" 
-                                style="color: white"><i class="far fa-trash-alt"></i></a>  --}}
-                            {{-- <button class="btn btn-sm btn-danger" type="submit">Eliminar</button> --}}
-                        </form>
-                        {{-- @endif --}}
+                        </form>  
+                       @endif
                         
                     </td>
                 </tr>

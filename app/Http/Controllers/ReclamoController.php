@@ -29,6 +29,7 @@ class ReclamoController extends Controller
     }
     public function Message(Request $request)
     {   
+   
         // dd($request->all());
         $data['correlativo'] = $request->correlativo;
         $data['nombre'] = $request->nombre;
@@ -44,8 +45,9 @@ class ReclamoController extends Controller
         $correo = new ReclamoMail($request->all());
         $correo->attachData($pdf->output(),'Reclamo.pdf');
         $envio = Mail::to($request->get('email'))->send($correo);
-      
+
         
+        Reclamo::where('email',$request->email)->where('estado', false)->update(['estado' => true]);
         $notificacion = "Se envio el correo correctamente";
     
         return redirect('/reclamo')->with(compact('notificacion'));

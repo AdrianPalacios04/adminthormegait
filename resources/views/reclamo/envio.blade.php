@@ -18,7 +18,7 @@
                 <input name="apellido" type="hidden" value="{{$reclamos->clients->persona->t_apellidoper}}">
                 <input name="dni" type="hidden" value="{{$reclamos->clients->persona->c_dniper}}">
                 <input name="detalle" type="hidden" value="{{$reclamos->detalle}}">
-                <input name="estado" type="hidden" value="{{$reclamos->correlativo}}">
+                <input name="estado" type="hidden" value="{{$reclamos->estado}}">
 
                 {{-- <input name="reclamo_id" type="hidden" value="{{$reclamos->id_reclamaciones}}"> --}}
                 <input name="monto_reclamado" type="hidden" value="{{$reclamos->monto_reclamado}}">
