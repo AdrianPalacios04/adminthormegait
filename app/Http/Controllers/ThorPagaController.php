@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\ThorPaga;
 use App\Models\User;
 use Auth;
@@ -42,15 +43,13 @@ class ThorPagaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $user = User::find(auth()->id());
         $acertijo = $request->all();    
         $acertijo['user_id'] = $user->id;
         ThorPaga::create($acertijo);
         $notificacion = "El acertijo se creo correctamente";
-
-        
         return redirect('/cash')->with(compact('notificacion'));
     }
 

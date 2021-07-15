@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <h5>TEXTO ACERTIJO</h5>
                       {{-- <input type="text" name="t_pregunta" class="form-control" value="{{old('t_pregunta')}}" required/> --}}
-                      <textarea name="t_pregunta" rows="10" cols="30" class="form-control"></textarea>
+                      <textarea name="t_pregunta" rows="10" cols="30" class="form-control" required></textarea>
                     </div>
                     <div class="form-group">
                         <h5>RESPUESTA <em>(Poner en mayúscula y sin signos)</em></h5>
