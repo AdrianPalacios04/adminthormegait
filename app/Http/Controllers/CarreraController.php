@@ -42,11 +42,9 @@ class CarreraController extends Controller
     public function edit(Request $request,$id)
     {
         $race = Carrera::find($id);
-        $type = TipoPremio::where('premio',30)->get();
-       $name = Thorticket::all();
        
-           
-        return view('race.edit',compact('race','type','name'));
+        $config = ConfigCarrera::all();  
+        return view('race.edit',compact('race',));
     }
     public function update(Request $request,$id)
     {

@@ -14,7 +14,7 @@ class AdminController extends Controller
     {
         //dd(Auth::user()->role);
         
-         $client = User::paginate(10);
+         $client = User::where('estado',1)->paginate(8);
          return view('admin.index', compact('client'));
     }
     public function create()
@@ -74,17 +74,12 @@ class AdminController extends Controller
     }
 
    
-    public function destroy(User $client)
+    public function changeId(User $client,$id)
     {
-        $clientName = $client->name;
-        $client->delete();
-
-        $notification = "EL usuario $clientName se ha eliminado correctamente";
+        $find = User::findOrFail($id);
+       $find -> estado = false;
+       $find->save();
+        $notification = "EL usuario se ha eliminado correctamente";
         return redirect('/client')->with(compact('notification'));
-    }
-    public function indexAcertijo()
-    {
-        $acertijo = Acertijo::paginate(8);
-        return view('admin.acertijo',compact('acertijo'));
     }
 }

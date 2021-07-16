@@ -45,9 +45,9 @@
                             {{$clients->role}}
                         </td>
                         <td>
-                            <form action="{{url('/client/'.$clients->id)}}" method="post" class="archiveItem">
+                            <form action="{{url('/client/'.$clients->id.'/delete')}}" method="post" class="archiveItem">
                             @csrf
-                            @method('DELETE')
+                            @method('PUT')
                             <a href="{{url('/client/'.$clients->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
                             {{-- <button class="btn btn-sm btn-danger"  type="submit">Eliminar</button> --}}
                             <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  id="{{$clients->id}}" 

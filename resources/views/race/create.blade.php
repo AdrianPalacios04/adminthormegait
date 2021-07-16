@@ -29,8 +29,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5>FECHA INICIO</h5>
-                        <input type="datetime-local"  name="inicio"  class="form-control">
+                        <?php
+                        date_default_timezone_set("America/Lima");
+                        // Obteniendo la fecha actual del sistema con PHP
+                        $fechaActual = date('Y-m-d\TH:i');
+                        ?>
+                        <input type="datetime-local"  name="inicio"  class="form-control" value="<?php  echo $fechaActual;?>" />
                     </div>
+                    {{-- <input type="text" name="intervalo" id="intervalo" value="{{$config->intervalo}}" > --}}
                     <div class="form-group">
                         <h5>FECHA FINAL</h5>
                         <input type="datetime-local" name="final" class="form-control" />
@@ -70,6 +76,39 @@
         </form>
     </div>
 </div>
+<h1 style="color:green;">
+    GeeksForGeeks
+</h1>
+<p id="GFG_UP" style="font-size: 15px; 
+          font-weight: bold;">
+</p>
+<button onclick="gfg_Run()">
+    addHours
+</button>
+<p id="GFG_DOWN" style="color:green; 
+          font-size: 20px;
+          font-weight: bold;">
+</p>
+<script>
+var el_up =
+    document.getElementById("GFG_UP");
+var el_down =
+    document.getElementById("GFG_DOWN");
+var intervalo = 1;
+var today = new Date();
+el_up.innerHTML = "Today's date = " + today;
+Date.prototype.addHours = function(h) {
+    this.setHours(this.getHours() + h);
+    return this;
+}
+
+function gfg_Run() {
+
+    var a = new Date();
+    a.addHours(intervalo);
+    el_down.innerHTML = a;
+}
+</script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
