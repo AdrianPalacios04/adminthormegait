@@ -26,65 +26,79 @@
             @csrf
             <div class="row">
                 <div class="col-md-3">
-                  <div class="form-group">
-                    <input type="file" class="" name="imagen">
-                  </div>
+                    <div class="form-group" >
+                        <h5 class="form-label" for="customFile">Imagen Publicitaria</h5>
+                        <input type="file" name="imagen" />
+                       
+                    </div>
                 </div>
             </div>
             <div class="row"> 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">Nombre Publicidad</label>
+                        <h5 for="">Nombre Publicidad</h5>
                       <input type="text" name="nombre" class="form-control" placeholder="" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        {{-- <label for="">Zona Pertenece (<em><small>Página Pertenece</small></em>)</label>
-                         --}}
-                         <label for="">Link</label>
+                         <h5 for="">Link</h5>
                       <input type="text" name="link" class="form-control" />
                     </div>
                 </div>
+               
+
                 <div class="col-md-3">
                     <div class="form-group" >
-                        <label>Posición</label>
+                        <h5>Posición</h5>
                         <select class="form-control" name="posicion">
-                            <option value="horizontal" selected>Horizontal</option>
-                            <option value="vertical">Vertical</option>
+                            @foreach ($posicion as $item)
+                                <option value="{{$item->id}}">{{$item->t_posicion}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                      <label for="">Opcion</label>
-                        <select class="form-control" name="opciones">
-                            <option value="permanente" selected>Permanente</option>
-                            <option value="rotatorio">Rotatorio</option>
+                      <h5 for="">Orientación</h5>
+                        <select class="form-control" name="orientacion">
+                            @foreach ($orientacion as $items)
+                                <option value="{{$items->id}}">{{$items->t_orientacion}}</option>
+                            @endforeach
                         </select>                    
                     </div>
                 </div>
             </div>
-            <div class="row" style="font-weight: bolder;">
-                <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
-                    <label for="">Fecha Inicio</label>
+                    <h5 for="">Fecha Inicio</h5>
                     <input type="date" class="form-control" name="f_inicio" required>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="form-group">
-                    <label for="">Fecha Final</label>
+                    <h5 for="">Fecha Final</h5>
                     <input type="date" class="form-control" name="f_final" required>
                   </div>
                 </div>
-                
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
-                      <label for="">Marcas</label>
-                      <select name="marcas" class="form-control">
-                        @foreach ($marca as $marcas)
-                          <option value="{{$marcas->id}}">{{$marcas->marcas}}</option>
+                      <h5 for="">Pagina Web Relacionada</h5>
+                      <select name="pagina" class="form-control">
+                          @foreach ($pagina as $paginas)
+                              <option value="{{$paginas->id}}">{{$paginas->nom_pagina}}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <h5 for="">Estado</h5>
+                      <select name="estado" class="form-control">
+                          @foreach ($estado as $estados)
+                              <option value="{{$estados->id}}">{{$estados->nom_estado}}</option>
                           @endforeach
                       </select>
                     </div>
@@ -96,5 +110,10 @@
         </form>
     </div>
 </div>
-<script src="{{asset('js/ocultar.js')}}"></script>
+{{-- <script src="{{asset('js/ocultar.js')}}"></script> --}}
+{{-- <script>
+    function thisFileUpload() {
+        document.getElementById("file").click();
+    };
+</script> --}}
 @endsection

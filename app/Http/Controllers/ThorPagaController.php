@@ -83,7 +83,7 @@ class ThorPagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $thorpaga = ThorPaga::findOrFail($id);
         $data = $request->only("t_nombre","t_pregunta1","t_respuesta1","t_pregunta2","t_respuesta2",

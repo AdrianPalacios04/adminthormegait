@@ -36,11 +36,12 @@
                         ?>
                         <input type="datetime-local"  name="inicio"  class="form-control" value="<?php  echo $fechaActual;?>" />
                     </div>
-                    {{-- <input type="text" name="intervalo" id="intervalo" value="{{$config->intervalo}}" > --}}
-                    <div class="form-group">
+                    <input type="text" name="intervalo" class="form-control" id="intervalo">
+                    <div class="form-group">    
                         <h5>FECHA FINAL</h5>
-                        <input type="datetime-local" name="final" class="form-control" />
+                        <input type="text" name="final" class="form-control" />
                     </div>
+                    <input type="button" value="CAMBIAR HORA" onclick="sumar_horas()" />
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
@@ -76,38 +77,25 @@
         </form>
     </div>
 </div>
-<h1 style="color:green;">
-    GeeksForGeeks
-</h1>
-<p id="GFG_UP" style="font-size: 15px; 
-          font-weight: bold;">
-</p>
-<button onclick="gfg_Run()">
-    addHours
-</button>
-<p id="GFG_DOWN" style="color:green; 
-          font-size: 20px;
-          font-weight: bold;">
-</p>
+
 <script>
-var el_up =
-    document.getElementById("GFG_UP");
-var el_down =
-    document.getElementById("GFG_DOWN");
-var intervalo = 1;
-var today = new Date();
-el_up.innerHTML = "Today's date = " + today;
-Date.prototype.addHours = function(h) {
-    this.setHours(this.getHours() + h);
-    return this;
-}
-
-function gfg_Run() {
-
-    var a = new Date();
-    a.addHours(intervalo);
-    el_down.innerHTML = a;
-}
+    function sumar_horas() {
+        var fecha = document.getElementsByName("inicio")[0].value;
+        var horas = document.getElementsByName("intervalo")[0].value;
+    
+    
+        fecha = new Date(fecha);
+        fecha.setHours(fecha.getHours() + horas);
+        fecha = fecha.toISOString();
+        var fecha_date = fecha.split('T');
+        var fecha_time = fecha_date[1].split('.');
+        var fecha_time = fecha_date[1].split(':');
+        fecha_date = fecha_date[0];
+    
+        fecha = fecha_date + ' ' + fecha_time[0] + ':' + fecha_time[1];
+         document.getElementsByName("final")[0].value = fecha;
+        // console.log(fecha);
+    }
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

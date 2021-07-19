@@ -9,7 +9,7 @@
             <h3 class="mb-0">Publicidad</h3>
         </div>
         <div class="col text-right">
-          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Marca</button>
+          {{-- <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Marca</button> --}}
             <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary ">Registro Publidad</a>
              
         </div>

@@ -23,7 +23,8 @@ class CarreraController extends Controller
     {
         $type = TipoPremio::where('premio',30)->get();
         $name = Thorticket::all();
-        return view('race.create',compact('type','name'));
+        $config = ConfigCarrera::first();
+        return view('race.create',compact('type','name','config'));
     }
 
     public function store(Request $request)
@@ -44,7 +45,7 @@ class CarreraController extends Controller
         $race = Carrera::find($id);
        
         $config = ConfigCarrera::all();  
-        return view('race.edit',compact('race',));
+        return view('race.edit',compact('race','config'));
     }
     public function update(Request $request,$id)
     {

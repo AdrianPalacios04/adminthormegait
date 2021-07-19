@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Publicidad;
-use App\Models\Marca;
+use App\Models\Orientacion;
+use App\Models\Pagina;
+use App\Models\EstadoPublicidad;
+use App\Models\Posicion;
 use Illuminate\Http\Request;
 use file;
 
@@ -16,29 +19,15 @@ class PublicidadController extends Controller
         $marca = Publicidad::all();
         return view('publicidad.index',compact('marca'));
     }
-    // public function getindex()
-    // {
-        
-    //     $publicidad = Publicidad::all();
-    //     return view('publicidad.index',compact('publicidad'));
-    // }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $marca = Marca::all();
-        return view('publicidad.create',compact('marca'));
+        $estado = EstadoPublicidad::all();
+        $orientacion = Orientacion::all();
+        $posicion = Posicion::all();
+        $pagina = Pagina::all();
+        return view('publicidad.create',compact('estado','orientacion','posicion','pagina'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $publicidad = new Publicidad();

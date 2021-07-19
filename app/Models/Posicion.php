@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Marca extends Model
+class Posicion extends Model
 {
-    
     use HasFactory;
+    protected $table = 'posicion';
     public $timestamps = false;
     protected $fillable = [
-        'marca'
+        't_posicion'
     ];
-    public function Publicidades()
-    {
-        return $this->hasMany(Publicidad::class, 'id_marca');
-    }
-    
 }
