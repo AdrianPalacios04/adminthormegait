@@ -51,7 +51,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <h5>Posición</h5>
-                        <select class="form-control" name="posicion">
+                        <select class="form-control" name="posicion" id="posicion">
                             @foreach ($posicion as $item)
                                 <option value="{{$item->id}}">{{$item->t_posicion}}</option>
                             @endforeach
@@ -61,10 +61,11 @@
                 <div class="col-md-3">
                     <div class="form-group">
                       <h5 for="">Orientación</h5>
-                        <select class="form-control" name="orientacion">
-                            @foreach ($orientacion as $items)
+                        <select class="form-control" name="orientacion" id="orientacion">
+                          
+                            {{-- @foreach ($orientacion as $items)
                                 <option value="{{$items->id}}">{{$items->t_orientacion}}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>                    
                     </div>
                 </div>
@@ -116,4 +117,51 @@
         document.getElementById("file").click();
     };
 </script> --}}
+{{-- <script>
+    $('#posicion').change(event => {
+        $.get(`towns/${event.target.value}`,function(res,sta) {
+            $('#orientacion').empty();
+            res.forEach(element => {
+               $("#orientacion").append(`<option value={res.id}>${res.t_orientacion}</option>`); 
+            });
+        });
+    });
+</script> --}}
+{{-- <script>
+    $(document).ready(function(){
+      $("#orientacion").change(function(){
+        var posicion = $(this).val();
+        $.get('twons/'+posicion, function(data){
+  //esta el la peticion get, la cual se divide en tres partes. ruta,variables y funcion
+          console.log(data);
+            var producto_select = 'Seleccione Porducto'
+              for (var i=0; i>+data[i].id;i++)
+  
+              $("#orientacion").html(producto_select);
+  
+        });
+      });
+    });
+</script> --}}
+<script type="text/javascript">
+   var data = [];
+    window.onload = function(){
+        $("#posicion").change(function(){
+            $.ajax({        
+                // le pido a la url '/utils/provincia' el liostado de loclaidades
+                url: "/twons/" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                     for (let i = 0; i < data.length; i++) {
+                        $('#orientacion').html(data[i].html+"<option value="+data[i].id+">"+data[i].t_orientacion+"</option>");    
+                        $("#orientacion").show();    
+                    console.log(data);        
+                        
+                     }
+                }
+            });
+        });
+    }
+</script>
+  
 @endsection

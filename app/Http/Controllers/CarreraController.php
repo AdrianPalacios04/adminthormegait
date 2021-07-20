@@ -9,6 +9,7 @@ use App\Models\TipoPremio;
 use App\Models\ConfigCarrera;
 use App\Models\CarreraTotal;
 use Illuminate\Http\Request;
+
 class CarreraController extends Controller
 
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class ClientController extends Controller
@@ -37,7 +38,7 @@ class ClientController extends Controller
             "t_username"=> $request->input('t_username'),
             "t_correoper"=> $request->input('t_correoper'),
             "n_celular"=> $request->input('n_celular'),
-            "t_password"=> $request->input('t_password')
+            "t_password"=> Hash::make($request->input('t_password'))
 
         ]);
         // dd($reclamaciones);

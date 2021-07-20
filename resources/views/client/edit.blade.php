@@ -5,7 +5,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
         <div class="col">
-            <h3 class="mb-0">Editar Medico</h3>
+            <h3 class="mb-0">Editar Usuario Web</h3>
         </div>
         <div class="col text-right">
             <a href="{{url('/users')}}" class="btn btn-sm btn-default">
@@ -69,21 +69,21 @@
                         <input type="date" name="d_nacimientoper" class="form-control" value="{{$client->persona->d_nacimientoper}}"/>
                     </div>
                 </div>
-                <div class="col-md-5">
+                {{-- <div class="col-md-5">
                         <label>Ingrese Contraseña</label>
                     <div class="input-group">
-                        <input id="txtPassword" type="Password" Class="form-control" value="{{$client->t_password}}" onclick="mostrarPassword()">
+                        <input id="txtPassword" type="text" Class="form-control" value="{{\Crypt::decryptString($client->t_password)}}" >
                         <div class="input-group-append">
-                            <button id="show_password" class="btn btn-primary"><i class="fa fa-eye icon"></i></button>
+                            <button id="show_password" class="btn btn-primary" onclick="mostrarPassword()"><i class="fa fa-eye icon"></i></button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 </div>
-@push('scripts')
+{{-- @push('scripts')
 <script type="text/javascript">
     function mostrarPassword(){
         var cambio = document.getElementById("txtPassword");
@@ -96,5 +96,5 @@
         }
     } 
 </script>
-@endpush
+@endpush --}}
 @endsection

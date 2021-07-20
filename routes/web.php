@@ -38,6 +38,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // administrador general
 
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
+   
    Route::get('changeStatus',[ClientController::class,'changeStatus'])->name('changeStatus');
    Route::put('client/{id}/delete',  [AdminController::class,'changeId']);
    
@@ -61,12 +62,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    
    //administrador ticket
    Route::resource('codes', CodeController::class)->middleware('auth','role:admin|adminticket');
+   Route::put('/updateConfigTicket',[CodeController::class,'updateConfigTicket'])->name('updateConfigTicket');
    Route::delete('/myproductsDeleteAll', [CodeController::class, 'deleteAll']);
    // Route::resource('acertijo', AcertijoController::class)->middleware(['auth','role:acertijero|admin']);
 
   //publicidad
    
    Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
+   Route::get('twons/{id}',[PublicidadController::class,'getPosicion']);
 
    // reclamos
 

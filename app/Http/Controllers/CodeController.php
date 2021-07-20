@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Code;
+use App\Models\ConfigTicketRegistro;
 use App\Models\TipoPremio;
 use Illuminate\Http\Request;
 use DB;
@@ -16,8 +17,11 @@ class CodeController extends Controller
      */
     public function index()
     {
-        $code = Code::with('premio')->get();
-        return view('codes.index',compact('code'));
+        // $code = Code::with('premio')->get();
+        $code = Code ::all();
+        $con = ConfigTicketRegistro::find(1);
+
+        return view('codes.index',compact('code','con'));
     }
 
     /**
@@ -123,7 +127,13 @@ class CodeController extends Controller
        
         return response()->json(['success'=>"Products Deleted successfully."]);
     }
-    
+    public function updateConfigTicket(Request $request)
+    {
+        $config = ConfigTicketRegistro::find(1);
+        $config->update($request->all());
+        // dd($config);
+        return redirect()->route('codes.index')->with('success','User deleted successfully');
+    }
 
 }
 

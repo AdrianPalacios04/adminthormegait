@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col text-right">
                         <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Filtro de Carreras 
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -23,24 +23,11 @@
                                 <a class="dropdown-item" href="{{url('raceAll')}}">Carreras Totales</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col text-right">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" 
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" 
                         data-target="#exampleModal" >
                         Configuracion de Evento</button>
                     </div>
-                    {{-- <div class="col text-right">
-                        <div class="row justify-content-end ">
-                            {{-- <div class="col-md-9"> --}}
-                              {{-- <div class="form-group">
-                                <div class="input-group">
-                                    <input type="date" class="form-control" id="mySearchText">
-                                     <button id="mySearchButton" class="btn btn-primary" type="button" ><i class="fas fa-search"></i></button>
-                                </div>
-                              </div>
-                            {{-- </div> --}}
-                        {{-- </div>
-                    </div> --}}
+                   
                 </div>
             @include('race.modal')
         </div>

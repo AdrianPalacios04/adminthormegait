@@ -11,8 +11,11 @@
             <h3 class="mb-0">Códigos Promoción</h3>
         </div>
         <div class="col text-right">
-           {{-- <button class="btn btn-sm btn-primary" id="addCode">Nuevo Codigo</button> --}}
+           
            <a href="{{url('codes/create')}}" class="btn btn-sm btn-primary">Nuevo Código</a>
+           <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" 
+                        data-target="#exampleModal" >
+                        Config. Ticket por Registro</button>
         </div>
         </div>
     </div>
@@ -88,9 +91,7 @@
                    
                 </tbody>
             </table>
-            {{-- <div class="d-flex justify-content-center">
-                {{ $code->links() }}
-            </div>   --}}
+           @include('codes.modal')
         </div>
     </div>
 </div>

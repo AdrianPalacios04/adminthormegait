@@ -13,4 +13,9 @@ class Posicion extends Model
     protected $fillable = [
         't_posicion'
     ];
+
+    public function Orientacion()
+    {
+        return $this->hasMany(Orientacion::class,'id_posicion');
+    }
 }

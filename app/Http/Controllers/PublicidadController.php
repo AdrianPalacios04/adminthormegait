@@ -19,6 +19,7 @@ class PublicidadController extends Controller
         $marca = Publicidad::all();
         return view('publicidad.index',compact('marca'));
     }
+   
     public function create()
     {
         $estado = EstadoPublicidad::all();
@@ -127,5 +128,11 @@ class PublicidadController extends Controller
         $publicidad->delete();
         $notificacion = "El acertijo se ha eliminado correctamente";
         return redirect('/publicidad')->with(compact('notificacion'));
+    }
+    public function getPosicion($id)
+    {   
+        // $posi = Posicion::findOrFail($id);
+        return Orientacion::where('id_posicion','=',$id)->get();
+        
     }
 }
