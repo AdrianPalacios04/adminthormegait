@@ -16,8 +16,16 @@ class PublicidadController extends Controller
     public function index()
     {
         // $marca = Marca::with('publicidades')->get('nombre');
-        $marca = Publicidad::all();
+        $marca = Pagina::all();
         return view('publicidad.index',compact('marca'));
+    }
+
+    public function getPublicidad($id)
+    {
+        // $find = Pagina::findOrFail($id);
+        $pubs = Publicidad::where('id_pagina','=',$id)->get();
+        //dd($pubs);
+         return view('publicidad.publicidades.index',compact('pubs'));
     }
    
     public function create()
@@ -37,9 +45,10 @@ class PublicidadController extends Controller
         $publicidad->link = $request->input('link');
         $publicidad->f_inicio = $request->input('f_inicio');
         $publicidad->f_final = $request->input('f_final');
-        $publicidad->posicion = $request->input('posicion');
-        $publicidad->opciones = $request->input('opciones');
-        $publicidad->id_marca = $request->input('marcas');
+        $publicidad->id_posicion = $request->input('posicion');
+        $publicidad->id_orientacion = $request->input('orientacion');
+        $publicidad->id_pagina = $request->input('pagina');
+        $publicidad->id_estado = $request->input('estado');
         
         
          if ($request->hasfile('imagen')) {
@@ -56,11 +65,11 @@ class PublicidadController extends Controller
         }
 
        
-        // dd($publicidad);
-          $publicidad->save();
+        //dd($publicidad);
+           $publicidad->save();
           $notificacion = "Se agrego la publicidad correctamente";
 
-          return redirect('/publicidad')->with(compact('notificacion'));
+           return redirect('/publicidad')->with(compact('notificacion'));
     }
 
     /**

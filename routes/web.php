@@ -69,6 +69,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
   //publicidad
    
    Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
+   Route::get('publicidad/{id}/view',[PublicidadController::class,'getPublicidad']);
    Route::get('twons/{id}',[PublicidadController::class,'getPosicion']);
 
    // reclamos

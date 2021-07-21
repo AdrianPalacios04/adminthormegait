@@ -52,7 +52,9 @@
                     <div class="form-group" >
                         <h5>Posición</h5>
                         <select class="form-control" name="posicion" id="posicion">
+                            <option value="">Seleccione una posicion</option>
                             @foreach ($posicion as $item)
+                            
                                 <option value="{{$item->id}}">{{$item->t_posicion}}</option>
                             @endforeach
                         </select>
@@ -74,13 +76,13 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <h5 for="">Fecha Inicio</h5>
-                    <input type="date" class="form-control" name="f_inicio" required>
+                    <input type="date" class="form-control" name="f_inicio" >
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <h5 for="">Fecha Final</h5>
-                    <input type="date" class="form-control" name="f_final" required>
+                    <input type="date" class="form-control" name="f_final" >
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -147,16 +149,18 @@
    var data = [];
     window.onload = function(){
         $("#posicion").change(function(){
+            // debugger;
+            $('#orientacion').html(' ');
+
             $.ajax({        
                 // le pido a la url '/utils/provincia' el liostado de loclaidades
                 url: "/twons/" + $(this).val(),
                 method: 'GET',
                 success: function(data) {
                      for (let i = 0; i < data.length; i++) {
-                        $('#orientacion').html(data[i].html+"<option value="+data[i].id+">"+data[i].t_orientacion+"</option>");    
-                        $("#orientacion").show();    
-                    console.log(data);        
-                        
+                        $('#orientacion').append(data[i].html+"<option value="+data[i].id+">"+data[i].t_orientacion+"</option>");    
+                        // $("#orientacion").show();    
+                    // console.log(data);          
                      }
                 }
             });

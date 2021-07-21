@@ -11,6 +11,12 @@ class Publicidad extends Model
     protected $table = 'publicidad';
     public $timestamps = false;
     protected $fillable = [
-        'nombre','imagen','link','f_inicio','f_final','id_estado','id_posicion'
+        'nombre','imagen','link','f_inicio','f_final','id_estado',
+        'id_posicion','id_orientacion','id_pagina'
     ];
+
+    public function pubs(Type $var = null)
+    {
+        
+    }
 }
