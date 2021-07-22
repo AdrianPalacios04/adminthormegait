@@ -14,9 +14,4 @@ class Publicidad extends Model
         'nombre','imagen','link','f_inicio','f_final','id_estado',
         'id_posicion','id_orientacion','id_pagina'
     ];
-
-    public function pubs(Type $var = null)
-    {
-        
-    }
 }

@@ -7,7 +7,7 @@
             <h3 class="mb-0" >Nueva Publicidad </h3>
         </div>
         <div class="col text-right">
-            <a href="{{url('publicidad')}}" class="btn btn-sm btn-default">
+            <a href="{{URL::previous()}}" class="btn btn-sm btn-default">
             Cancelar y Volver</a>
         </div>
         </div>

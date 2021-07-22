@@ -9,17 +9,15 @@ use App\Models\Posicion;
 use Illuminate\Http\Request;
 use file;
 
-
 class PublicidadController extends Controller
 {
-    
+   
     public function index()
     {
         // $marca = Marca::with('publicidades')->get('nombre');
         $marca = Pagina::all();
         return view('publicidad.index',compact('marca'));
     }
-
     public function getPublicidad($id)
     {
         // $find = Pagina::findOrFail($id);
@@ -27,7 +25,6 @@ class PublicidadController extends Controller
         //dd($pubs);
          return view('publicidad.publicidades.index',compact('pubs'));
     }
-   
     public function create()
     {
         $estado = EstadoPublicidad::all();
@@ -36,9 +33,16 @@ class PublicidadController extends Controller
         $pagina = Pagina::all();
         return view('publicidad.create',compact('estado','orientacion','posicion','pagina'));
     }
-
+    public function storePagina(Request $request)
+    {
+        $marca = Pagina::create($request->all());
+        dd($marca);
+        // return view('publicidad.index',compact('marca'));    
+    }
+   
     public function store(Request $request)
     {
+        // $page = Pagina::findOrfail($id);
         $publicidad = new Publicidad();
 
         $publicidad->nombre = $request->input('nombre');
@@ -47,9 +51,9 @@ class PublicidadController extends Controller
         $publicidad->f_final = $request->input('f_final');
         $publicidad->id_posicion = $request->input('posicion');
         $publicidad->id_orientacion = $request->input('orientacion');
-        $publicidad->id_pagina = $request->input('pagina');
+         $publicidad->id_pagina = $request->input('pagina');
+        // $publicidad->id_pagina = $request->$page->id;
         $publicidad->id_estado = $request->input('estado');
-        
         
          if ($request->hasfile('imagen')) {
             $request->hasfile('imagen');
@@ -63,13 +67,10 @@ class PublicidadController extends Controller
             return $request;
             $publicidad->imagen = '';
         }
-
-       
         //dd($publicidad);
-           $publicidad->save();
-          $notificacion = "Se agrego la publicidad correctamente";
-
-           return redirect('/publicidad')->with(compact('notificacion'));
+        $publicidad->save();
+        $notificacion = "Se agrego la publicidad correctamente";
+        return redirect('/publicidad')->with(compact('notificacion'));
     }
 
     /**
@@ -109,10 +110,7 @@ class PublicidadController extends Controller
         $publicidad->zona = $request->input('zona');
         $publicidad->f_inicio = $request->input('f_inicio');
         $publicidad->f_final = $request->input('f_final');
-
-
         
-
         if ($request -> hasfile('horizontal')) {
 
             $file = $request->file('horizontal');            
@@ -142,6 +140,6 @@ class PublicidadController extends Controller
     {   
         // $posi = Posicion::findOrFail($id);
         return Orientacion::where('id_posicion','=',$id)->get();
-        
     }
+    
 }

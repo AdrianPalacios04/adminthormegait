@@ -12,7 +12,7 @@ use App\Http\Controllers\ThorPagaController;
 use App\Http\Controllers\PublicidadController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\CodeController;
-use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\PageController;
 
 use App\Mail\ReclamoMail;
 use Illuminate\Support\Facades\Mail;
@@ -90,4 +90,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    //    return "Mensaje enviado";
    // });
 
-   Route::resource('marca',MarcaController::class);
+   Route::post('/page',[PublicidadController::class,'storePagina'])->middleware('auth');
