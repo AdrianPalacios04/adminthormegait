@@ -70,6 +70,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    
    Route::resource('publicidad', PublicidadController::class)->middleware(['auth','role:admin|adminpublicidad']);
    Route::get('publicidad/{id}/view',[PublicidadController::class,'getPublicidad']);
+   
    Route::get('twons/{id}',[PublicidadController::class,'getPosicion']);
 
    // reclamos
@@ -79,15 +80,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::resource('atencion',AtencionController::class);
 
    Route::post('/message',[ReclamoController::class,'Message'])->name('message');
-
-   // Route::post('reclamo',[ReclamoController::class,'send'])->name('send');
-   
-   // Route::get('reclamaciones',function ()
-   // {
-   //    $correo = new ReclamoMail;
-   //    Mail::to('adrian@tecsup.edu.pe')->send($correo);
-
-   //    return "Mensaje enviado";
-   // });
 
    Route::post('/page',[PublicidadController::class,'storePagina'])->middleware('auth');

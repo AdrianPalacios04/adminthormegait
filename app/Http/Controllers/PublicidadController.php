@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Publicidad;
 use App\Models\Orientacion;
@@ -11,7 +10,6 @@ use file;
 
 class PublicidadController extends Controller
 {
-   
     public function index()
     {
         // $marca = Marca::with('publicidades')->get('nombre');
@@ -36,8 +34,8 @@ class PublicidadController extends Controller
     public function storePagina(Request $request)
     {
         $marca = Pagina::create($request->all());
-        dd($marca);
-        // return view('publicidad.index',compact('marca'));    
+        // dd($marca);
+        return view('publicidad.index',compact('marca'));    
     }
    
     public function store(Request $request)
@@ -93,7 +91,11 @@ class PublicidadController extends Controller
     public function edit(Request $request,$id)
     {
         $publicidad = Publicidad::find($id);
-        return view('publicidad.edit',compact('publicidad'));
+        $estado = EstadoPublicidad::all();
+        $orientacion = Orientacion::all();
+        $posicion = Posicion::all();
+        $pagina = Pagina::all();
+        return view('.publicidad.publicidades.edit',compact('publicidad','estado','orientacion','posicion','pagina'));
     }
 
     /**
@@ -107,23 +109,25 @@ class PublicidadController extends Controller
     {
         $publicidad = Publicidad::find($id);
         $publicidad->nombre = $request->input('nombre');
-        $publicidad->zona = $request->input('zona');
+        $publicidad->link = $request->input('link');
         $publicidad->f_inicio = $request->input('f_inicio');
         $publicidad->f_final = $request->input('f_final');
+        $publicidad->id_posicion = $request->input('posicion');
+        $publicidad->id_orientacion = $request->input('orientacion');
+        $publicidad->id_pagina = $request->input('pagina');
+        $publicidad->id_estado = $request->input('estado');
         
-        if ($request -> hasfile('horizontal')) {
-
-            $file = $request->file('horizontal');            
-            $extension = $file->getClientOriginalExtension(); // nombre de la imagen
+        if ($request->hasfile('imagen')) {
+            $request->hasfile('imagen');
+            $file = $request->file('imagen');
+            $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $file -> move('imagen/publicidad/',$filename);
-            $publicidad->horizontal = $filename;
-        }elseif ($request->hasfile('vertical')) {
-            $file1 = $request->file('vertical');
-            $extension1 = $file1->getClientOriginalExtension();
-            $filename1 = time().'.'.$extension1;
-            $file1->move('imagen/publicidad/',$filename1);
-            $publicidad->vertical = $filename1;
+            $file->move('imagen/publicidad/',$filename);
+            $publicidad->imagen = $filename;
+            
+         }else {
+            return $request;
+            $publicidad->imagen = '';
         }
         $publicidad->save();//UPDATE
         $notificacion = 'Se edito la publicidad se ha actualizado correctamente';

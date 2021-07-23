@@ -2,17 +2,23 @@
 @section('content')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<style>
+  #buton{
+  
+  display: block;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  }
+</style>
 <div class="card shadow">
   <div class="card-header border-0">
       <div class="row align-items-center">
       <div class="col">
-          <h2 class="mb-0">Publicidad</h2>
+            <h2 class="mb-0">Publicidad</h2>
       </div>
         
           {{-- <a href="{{url('publicidad')}}" class="btn btn-sm btn-primary ">Retroceder</a> --}}
-
-          
-
         <div class="col text-right">
           <a href="{{url('publicidad/create')}}" class="btn btn-sm btn-primary ">Registro Publicidad</a>
         
@@ -30,7 +36,8 @@
       @foreach ($pubs as $item)
       <div class="col-md-3">
         <div class="card" style="width: 18rem;">
-          <center>
+          
+          {{-- <center> --}}
             @if ($item->id_posicion == 2)
             <a href="{{asset('imagen/publicidad/'.$item->imagen)}}" data-toggle="lightbox">
               <img src="{{asset('imagen/publicidad/'.$item->imagen)}}" height="150" width="220" class="img-fluid rounded"/></a>
@@ -39,15 +46,21 @@
             <img src="{{asset('imagen/publicidad/'.$item->imagen)}}" height="150" width="30" class="img-fluid rounded"/></a>
             @endif
             
-          </center>
+          {{-- </center> --}}
          
           
           <div class="card-body">
             <h2 class="card-title">{{$item->nombre}}</h2>
             <h4 class="card-text">{{$item->link}}</h4>
             <h3>{{$item->f_inicio}}-{{$item->f_final}}</h3>
-  
-            <a href="#" class="btn btn-primary">Editar</a>
+            
+            <form action="{{url('/publicidad/'.$item->id)}}" method="post">
+              @csrf
+              @method('DELETE')
+              <a href="{{url('/publicidad/'.$item->id.'/edit')}}" class="btn  btn-primary" id="buton"><i class="fas fa-edit"></i></a>
+              <button type="submit" class="btn btn-danger" id="buton"><i class="far fa-trash-alt"></i></button>
+            </form>
+           
           </div>
         </div>
       </div>
