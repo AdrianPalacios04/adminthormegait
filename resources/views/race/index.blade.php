@@ -69,7 +69,7 @@
                         <tr>
                             
                             <th width="100px">
-                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y h:m:s' )}}
+                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y h:m' )}}
                             </th>
                             <td width="100px">
                                 {{$races->final}}

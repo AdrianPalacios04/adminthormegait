@@ -28,7 +28,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <h5>NOMBRE</h5>
-                      <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" required/>
+                      <input type="text" name="t_nombre" class="form-control" value="{{old('t_nombre')}}" onkeyup="mayus(this)" required/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -105,4 +105,10 @@
         </form>
     </div>
 </div>
+
+<script>
+    function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+</script>
 @endsection

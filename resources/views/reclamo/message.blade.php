@@ -24,7 +24,7 @@
         background-color: #c7cbd1;
     }
 </style>
-<table border="1">
+<table border="1" style="width: 800px">
     <tr>
         <td colspan="5" style="text-align: center;">LIBRO DE RECLAMACIONES</td>
         <td id="hoja" rowspan="2">HOJA DE RECLAMACIÓN
@@ -53,14 +53,14 @@
     </tr>
 
     <tr>
-        <td colspan="6">NOMBRE: {{$reclamo['nombre']}} {{$reclamo['apellido']}}</td>
+        {{-- <td colspan="6">NOMBRE: {{$reclamo['nombre']}} {{$reclamo['apellido']}}</td> --}}
     </tr>
     <tr>
         <td colspan="6">DOMICILIO:</td>
     </tr>
     <tr>
-        <td colspan="2">DNI/CE: {{$reclamo['dni']}}</td>
-        <td colspan="4">TELEFONO/EMAIL: {{$reclamo['n_celular']}}</td>
+        {{-- <td colspan="2">DNI/CE: {{$reclamo['dni']}}</td> --}}
+        {{-- <td colspan="4">TELEFONO/EMAIL: {{$reclamo['n_celular']}}</td> --}}
     </tr>
     <tr>
         <td id="datos" colspan="6">

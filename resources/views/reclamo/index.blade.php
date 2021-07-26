@@ -48,13 +48,13 @@
                         {{$reclamos->tienda_compra}}
                     </td>
                     <td>
-                        {{$reclamos->tipo->tipo}}
+                        {{$reclamos->tipo}}
                     </td>
                     <td>
                         {{$reclamos->monto_reclamado}}
                     </td>
                     <td>
-                        {{$reclamos->categoria->categoria}}
+                        {{$reclamos->categoria}}
                     </td>
                     <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{$reclamos->pedido}}

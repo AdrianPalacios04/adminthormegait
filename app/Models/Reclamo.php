@@ -22,12 +22,12 @@ class Reclamo extends Model
         return $this->belongsTo(Client::class,'id_usuario');
     }
 
-    public function Tipo()
-    {
-        return $this->belongsTo(TipoReclamo::class,'id_tipo');
-    }
-    public function Categoria()
-    {
-        return $this->belongsTo(TipoCategoria::class,'id_categoria');
-    }
+    // public function Tipo()
+    // {
+    //     return $this->belongsTo(TipoReclamo::class,'id_tipo');
+    // }
+    // public function Categoria()
+    // {
+    //     return $this->belongsTo(TipoCategoria::class,'id_categoria');
+    // }
 }
