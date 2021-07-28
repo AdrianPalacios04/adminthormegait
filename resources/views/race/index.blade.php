@@ -59,15 +59,11 @@
                         <th></th>
                         @endif
                         <th></th>
-                        
-                     
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($race as $races)
-                            
+                        @foreach ($race as $races)                        
                         <tr>
-                            
                             <th width="100px">
                                 {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y h:m' )}}
                             </th>
@@ -88,11 +84,20 @@
                                 {{$races->px_2}}
                             </td>
                             <td>
-                                {{$races->status->state_race}}
+                              @if ($races->race_state == 1 )
+                                
+                              <span class="badge bg-primary" style="color:white">En proceso</span>
+                                @elseif ($races->race_state == 2)
+                                <span class="badge" style="color:white;background-color: #2B8314">En ejecución</span>
+                                @elseif ($races->race_state == 3)
+                                <span class="badge bg-success" style="color:white">Resulta</span>
+                                @elseif ($races->race_state == 4)
+                                <span class="badge bg-danger" style="color:white">Finalizada</span>                                  
+                              @endif  
                             </td>
-                            
                             <td>
                                 @if ($races->race_state == 1)
+                               
                                 <form action="{{url('/race/'.$races->id)}}" method="post">
                                     @csrf
                                     
@@ -100,9 +105,7 @@
                                     
                                     </form>
                                 @endif
-                                
                             </td>
-                            
                         </tr>
                         @endforeach
                     </tbody>

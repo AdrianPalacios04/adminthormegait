@@ -65,19 +65,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">RESPUESTA N°1 <em>(Poner en mayúscula y sin signos)</em></h5>
-                      <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_pregunta2')}}" />
+                      <input type="text" name="t_respuesta1" class="form-control" value="{{old('t_pregunta2')}}" onkeyup="mayus(this)"/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">RESPUESTA N°2 <em>(Poner en mayúscula y sin signos)</em></h5>
-                      <input type="text" name="t_respuesta2" class="form-control"  value="{{old('t_respuesta2')}}" />
+                      <input type="text" name="t_respuesta2" class="form-control"  value="{{old('t_respuesta2')}}" onkeyup="mayus(this)" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">RESPUESTA N°3 <em>(Poner en mayúscula y sin signos)</em> </h5>
-                      <input type="text" name="t_respuesta3" class="form-control" value="{{old('t_pregunta3')}}" />
+                      <input type="text" name="t_respuesta3" class="form-control" value="{{old('t_pregunta3')}}" onkeyup="mayus(this)"/>
                     </div>
                 </div>
             </div>
@@ -85,19 +85,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">LLAVE N°1 <em>(Poner en mayúscula y sin signos)</em></h5>
-                      <input type="text" name="t_llave1" class="form-control" value="{{old('t_pregunta2')}}" />
+                      <input type="text" name="t_llave1" class="form-control" value="{{old('t_pregunta2')}}" onkeyup="mayus(this)"/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">LLAVE N°2 <em>(Poner en mayúscula y sin signos)</em></h5>
-                      <input type="text" name="t_llave2" class="form-control"  value="{{old('t_respuesta2')}}"/>
+                      <input type="text" name="t_llave2" class="form-control"  value="{{old('t_respuesta2')}}" onkeyup="mayus(this)"/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">LLAVE N°3 <em>(Poner en mayúscula y sin signos)</em> </h5>
-                      <input type="text" name="t_llave3" class="form-control" value="{{old('t_pregunta3')}}"/>
+                      <input type="text" name="t_llave3" class="form-control" value="{{old('t_pregunta3')}}" onkeyup="mayus(this)"/>
                     </div>
                 </div>
             </div>
@@ -105,10 +105,10 @@
         </form>
     </div>
 </div>
-
 <script>
-    function mayus(e) {
-        e.value = e.value.toUpperCase();
-    }
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+    e.value = e.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+}
 </script>
 @endsection
