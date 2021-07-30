@@ -13,5 +13,10 @@ class EstadoPublicidad extends Model
     protected $fillable = [
         'nom_estado'
     ];
+
+    public function Publicidad()
+    {
+        return $this->hasOne(Publicidad::class);
+    }
     
 }

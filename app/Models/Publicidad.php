@@ -14,4 +14,12 @@ class Publicidad extends Model
         'nombre','imagen','link','f_inicio','f_final','id_estado',
         'id_posicion','id_orientacion','id_pagina'
     ];
+    public function Pagina()
+    {
+        return $this->belongsTo(Pagina::class,'id_pagina');
+    }
+    public function Estado()
+    {
+        return $this->belongsTo(EstadoPublicidad::class,'id_estado');
+    }
 }

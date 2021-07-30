@@ -13,5 +13,10 @@ class Pagina extends Model
     protected $fillable = [
         'nom_pagina'
     ];
+
+    public function Publicidad()
+    {
+        return $this->hasOne(Pagina::class);
+    }
     
 }

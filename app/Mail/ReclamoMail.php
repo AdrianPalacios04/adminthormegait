@@ -22,6 +22,6 @@ class ReclamoMail extends Mailable
 
     public function build()
     {
-        return $this->view('reclamo.message');
+        return $this->subject('Reclamo')->view('reclamo.message');
     }
 }

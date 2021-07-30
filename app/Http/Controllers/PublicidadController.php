@@ -97,14 +97,6 @@ class PublicidadController extends Controller
         $pagina = Pagina::all();
         return view('.publicidad.publicidades.edit',compact('publicidad','estado','orientacion','posicion','pagina'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Publicidad  $publicidad
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
         $publicidad = Publicidad::find($id);
@@ -126,8 +118,8 @@ class PublicidadController extends Controller
             $publicidad->imagen = $filename;
             
          }else {
-            return $request;
-            $publicidad->imagen = '';
+           
+            unset($publicidad->imagen);
         }
         $publicidad->save();//UPDATE
         $notificacion = 'Se edito la publicidad se ha actualizado correctamente';

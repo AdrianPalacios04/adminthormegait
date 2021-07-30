@@ -36,9 +36,7 @@
                     <div class="form-group">
                         <label for="">Código</label>
                       <input type="text" name="codes" class="form-control" maxlength="50" id="codes" readonly>
-                     
                     </div>
-                    
                 </div>
                 <div class="col-md-1">
                     <div class="form-group">
@@ -57,13 +55,13 @@
                             $fechaActual = date('Y-m-d');
                             ?>
                         {{-- value="{{ date('Y-m-d\TH:i:s')}} --}}
-                      <input type="date" name="f_inicio" class="form-control" value="<?php  echo $fechaActual;?>"/>
+                      <input type="date" name="f_inicio" class="form-control" value="<?php  echo $fechaActual;?>" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Fecha Final</label>
-                      <input type="date" name="f_final" class="form-control" value="<?php  echo $fechaActual;?>"/>
+                      <input type="date" name="f_final" class="form-control" value="<?php  echo $fechaActual;?>" min="<?php  echo $fechaActual;?>"/>
                     </div>
                 </div>
             </div>

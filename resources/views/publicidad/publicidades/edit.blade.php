@@ -30,7 +30,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <h5 class="form-label" for="customFile">Imagen Publicitaria</h5>
-                        <input type="file" name="imagen" />
+                        <input type="file" name="imagen" value="{{old('imagen',$publicidad->imagen)}}"/>
                        
                     </div>
                 </div>
@@ -91,6 +91,7 @@
                     <div class="form-group">
                       <h5 for="">Pagina Web Relacionada</h5>
                       <select name="pagina" class="form-control">
+                        <option value="{{$publicidad->pagina->id}}">{{$publicidad->pagina->nom_pagina}}</option>
                           @foreach ($pagina as $paginas)
                               <option value="{{$paginas->id}}">{{$paginas->nom_pagina}}</option>
                           @endforeach
@@ -102,6 +103,7 @@
                     <div class="form-group">
                       <h5 for="">Estado</h5>
                       <select name="estado" class="form-control">
+                          <option value="{{$publicidad->estado->id}}">{{$publicidad->estado->nom_estado}}</option>
                           @foreach ($estado as $estados)
                               <option value="{{$estados->id}}">{{$estados->nom_estado}}</option>
                           @endforeach

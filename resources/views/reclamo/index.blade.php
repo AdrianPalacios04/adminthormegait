@@ -66,14 +66,14 @@
                         {{ \Carbon\Carbon::parse($reclamos->fecha_registro)->format('d M, Y')}}
                     </td>                    
                     <td>
-                       @if ($reclamos->estado == false)
+                       {{-- @if ($reclamos->estado == false) --}}
                         <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
                             @csrf
                             <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
                             data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
                             Responder</button>
                         </form>  
-                       @endif
+                       {{-- @endif --}}
                         
                     </td>
                 </tr>

@@ -26,10 +26,8 @@
     @foreach ($marca as $marcas)
       <div class="col-md-3">
         <a href="{{url('/publicidad/'.$marcas->id.'/view')}}">
-          <div class="card mx-sm-1 p-3 mb-3" id="cards">
-              <h3>{{$marcas->nom_pagina}}</h3>
-              <p>A curated set of ES5/ES6/TypeScript wrappers for plugins to easily add any native functionality to
-                  your Ionic apps.</p>
+          <div class="card mx-sm-1 p-3 mb-3" id="cards" style="text-decoration: none">
+              <h1 style="text-align: center;">{{$marcas->nom_pagina}}</h1>
           </div>
         </a>
       </div>
