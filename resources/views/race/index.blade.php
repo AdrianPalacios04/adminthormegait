@@ -29,7 +29,7 @@
                     </div>
                    
                 </div>
-            @include('race.modal')
+            {{-- @include('race.modal') --}}
         </div>
     </div>
 
@@ -65,7 +65,7 @@
                         @foreach ($race as $races)                        
                         <tr>
                             <th width="100px">
-                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y h:m' )}}
+                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y H:i' )}}
                             </th>
                             <td width="100px">
                                 {{$races->final}}
@@ -75,6 +75,7 @@
                                 {{-- {{$races->id_ax}} --}}
                             </td>
                             <td>
+                                {{-- {{$races}} --}}
                                 {{$races->premio->tipo}}
                             </td>
                             <td>

@@ -113,45 +113,12 @@
         </form>
     </div>
 </div>
-{{-- <script src="{{asset('js/ocultar.js')}}"></script> --}}
-{{-- <script>
-    function thisFileUpload() {
-        document.getElementById("file").click();
-    };
-</script> --}}
-{{-- <script>
-    $('#posicion').change(event => {
-        $.get(`towns/${event.target.value}`,function(res,sta) {
-            $('#orientacion').empty();
-            res.forEach(element => {
-               $("#orientacion").append(`<option value={res.id}>${res.t_orientacion}</option>`); 
-            });
-        });
-    });
-</script> --}}
-{{-- <script>
-    $(document).ready(function(){
-      $("#orientacion").change(function(){
-        var posicion = $(this).val();
-        $.get('twons/'+posicion, function(data){
-  //esta el la peticion get, la cual se divide en tres partes. ruta,variables y funcion
-          console.log(data);
-            var producto_select = 'Seleccione Porducto'
-              for (var i=0; i>+data[i].id;i++)
-  
-              $("#orientacion").html(producto_select);
-  
-        });
-      });
-    });
-</script> --}}
 <script type="text/javascript">
    var data = [];
     window.onload = function(){
         $("#posicion").change(function(){
             // debugger;
             $('#orientacion').html(' ');
-
             $.ajax({        
                 // le pido a la url '/utils/provincia' el liostado de loclaidades
                 url: "/twons/" + $(this).val(),

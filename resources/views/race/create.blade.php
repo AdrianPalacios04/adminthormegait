@@ -34,19 +34,20 @@
                         // Obteniendo la fecha actual del sistema con PHP
                         $fechaActual = date('Y-m-d\TH:i');
                         ?>
-                        <input type="datetime-local"  name="inicio"  class="form-control" value="<?php  echo $fechaActual;?>" />
+                        <input type="datetime-local"  name="inicio"  class="form-control" min="<?php 
+                        .0
+                        $fechaActual;?>" value="<?php  echo $fechaActual;?>" />
                     </div>
-                    <input type="text" name="intervalo" class="form-control" id="intervalo">
                     <div class="form-group">    
                         <h5>FECHA FINAL</h5>
-                        <input type="text" name="final" class="form-control" />
+                        <input type="datetime-local" name="final" class="form-control" min="<?php  $fechaActual;?>" value="<?php  echo $fechaActual;?>"/>
                     </div>
-                    <input type="button" value="CAMBIAR HORA" onclick="sumar_horas()" />
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <H5 for="">TIPO TICKET</H5>
-                        <select class="form-control" name="id_px">
+                        <select class="form-control" name="id_px" id="id_px">
+                            <option>Seleccion un tipo</option>
                             @foreach($type as $types)
                             <option value="{{$types->id}}">{{$types->tipo}}</option>
                             @endforeach
@@ -54,10 +55,8 @@
                     </div>
                     <div class="form-group">
                         <H5 for="">NOMBRE DEL ACERTIJO</H5>
-                        <select name="id_ax" class="form-control">
-                            @foreach ($name as $names)
-                                <option value="{{$names->i_id}}">{{$names->t_nombre}}</option>
-                            @endforeach
+                        <select name="id_ax" class="form-control" id="id_ax">
+                            
                         </select>
                     </div>  
                 </div>
@@ -132,4 +131,25 @@
     });
 });
 </script>
+<script type="text/javascript">
+    var data = [];
+     window.onload = function(){
+         $("#id_px").change(function(){
+             // debugger;
+             $('#id_ax').html(' ');
+             $.ajax({        
+                 // le pido a la url '/utils/provincia' el liostado de loclaidades
+                 url: "/tons/" + $(this).val(),
+                 method: 'GET',
+                 success: function(data) {
+                      for (let i = 0; i < data.length; i++) {
+                         $('#id_ax').append(data[i].html+"<option value="+data[i].i_id+">"+data[i].t_nombre+"</option>");    
+                        //  $("#id_ax").show();    
+                         console.log(data);          
+                      }
+                 }
+             });
+         });
+     }
+ </script>
 @endsection

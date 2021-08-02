@@ -16,8 +16,9 @@ class CarreraController extends Controller
     public function index(Request $request)
     {
     $race = Carrera::all();
-    $con = ConfigCarrera::find(1);
-    return view('race.index',compact('race','con'));
+    // dd($race);
+    // $con = ConfigCarrera::find(1);
+    return view('race.index',compact('race'));
     }
    
     public function create()
@@ -32,6 +33,7 @@ class CarreraController extends Controller
     {        
        $race = $request->all();
        
+    //    dd($race);
        Carrera::create($race);
 
        return redirect('/race')->with(compact('race'));
@@ -44,9 +46,11 @@ class CarreraController extends Controller
     public function edit(Request $request,$id)
     {
         $race = Carrera::find($id);
-       
-        $config = ConfigCarrera::all();  
-        return view('race.edit',compact('race','config'));
+        $type = TipoPremio::all();
+        $config = ConfigCarrera::all();
+        $name = ThorTicket::all();
+
+        return view('race.edit',compact('race','config','type','name'));
     }
     public function update(Request $request,$id)
     {
@@ -80,6 +84,25 @@ class CarreraController extends Controller
         $racet = CarreraTotal::orderBy('inicio', 'ASC')->paginate(25);
         $con = ConfigCarrera::find(1);
         return view('race.raceall',compact('racet','con'));
+    }
+    public function getAcertijo($id)
+    {
+        $find = TipoPremio::findOrFail($id);
+       
+        if ($find->id == 1) {
+            return ThorPaga::all();
+        }else{
+            return ThorTicket::all();
+        }
+        // // $exists = TipoPremio::whereId($id)->exists();
+        // // return $exists ? ThorTicket::all() : ThorPaga::all();
+        // if (TipoPremio::where('id',$find)) {
+        //     return "ticket amarillo";
+        // }elseif (TipoPremio::where('id',$find)) {
+        //     return 'ticket verde';
+        // }else{
+        //     return "No se encontro nada";
+        // }  
     }
 }
 

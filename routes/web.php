@@ -73,6 +73,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    
    Route::get('twons/{id}',[PublicidadController::class,'getPosicion']);
 
+   Route::get('tons/{id}',[CarreraController::class,'getAcertijo']);
+
    // reclamos
 
    Route::resource('reclamo', ReclamoController::class)->middleware(['auth','role:admin|adminreclamo']);
