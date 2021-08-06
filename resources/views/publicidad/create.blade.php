@@ -28,7 +28,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <h5 class="form-label" for="customFile">Imagen Publicitaria</h5>
-                        <input type="file" name="imagen" />
+                        <input type="file" name="imagen" class="form-control-form"/>
                        
                     </div>
                 </div>
