@@ -11,11 +11,16 @@
         </div>
         <div class="modal-body">
             {{-- <p><b>ID : </b><span>{{$acertijos->i_id}}</span></p> --}}
-            <p><b style="font-weight: bold" >Pregunta : </b><span >{{$acertijos->t_pregunta}}</span></p>
-            <p><b  style="font-weight: bold">Respuesta : </b><span >{{$acertijos->t_respuesta}}</span></p>
+            <p><b style="font-weight: bold;font-size: 16px" >Pregunta : </b><span >{{$acertijos->t_pregunta}}</span></p>
+            <p><b  style="font-weight: bold;">Respuesta : </b><span >
+                
+
+                   
+                
+                {{$acertijos->t_respuesta}}</span></p>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
     </div>
     </div>

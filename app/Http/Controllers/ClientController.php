@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ClientRequest;
 
 
 class ClientController extends Controller
@@ -31,14 +32,13 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClientRequest $request, $id)
     {
         $client = Client::find($id);
         $client->update([
             "t_username"=> $request->input('t_username'),
             "t_correoper"=> $request->input('t_correoper'),
             "n_celular"=> $request->input('n_celular'),
-            "t_password"=> Hash::make($request->input('t_password'))
 
         ]);
         // dd($reclamaciones);

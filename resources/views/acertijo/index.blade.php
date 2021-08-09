@@ -67,7 +67,9 @@
                                 @csrf
                                 @method('DELETE')
                                 {{-- @if ($acertijos->i_uso == false) --}}
-                                <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
+                         
+                                <a href="{{url('/acertijo/'.$acertijos->i_id.'/edit')}}" class="btn btn-sm btn-primary" title="Editar
+                                    ">Editar</a>
                                 {{-- @endif --}}
                                 {{-- <a href="{{url('/acertijo/'.$acertijos->id.'/edit')}}" class="btn btn-sm btn-primary" id="editar" >Editar</a> --}}
                                 <a  class="btn btn-sm btn-danger" type="submit" onclick="archiveRemove(this)"  i_id="{{$acertijos->i_id}}" 
