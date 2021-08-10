@@ -24,9 +24,9 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-     
+    //   dd($this->user);
         return [
-            't_correoper'=>['required', Rule::unique('mysql_connect_4.tc_usuario')->ignore($this->i_idusuario)]
+            't_correoper'=>['required', Rule::unique('mysql_connect_4.tc_usuario')->ignore($this->user,'i_idusuario')]
             // 'unique:mysql_connect_4.tc_usuario,t_correoper,' . request()->route('users')->i_idusuario
         ];
     }

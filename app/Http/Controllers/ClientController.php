@@ -21,7 +21,7 @@ class ClientController extends Controller
 
     public function edit($id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         return view('client.edit',compact('client'));
     }
 
@@ -32,9 +32,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, $id)
+    public function update(ClientRequest $request, $user)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($user);
         $client->update([
             "t_username"=> $request->input('t_username'),
             "t_correoper"=> $request->input('t_correoper'),
@@ -48,6 +48,7 @@ class ClientController extends Controller
             "c_dniper" => $request->input('c_dniper'),
             "d_nacimientoper" => $request->input('d_nacimientoper')
         ]);
+        // dd($client);
         $notificacion = " Se modifico correctamente";
         return redirect('/users')->with(compact('notificacion'));
     }
