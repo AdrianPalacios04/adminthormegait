@@ -42,7 +42,27 @@
                             {{$clients->email}}
                         </td>
                         <td>
-                            {{$clients->role}}
+                            @if ($clients->role == 'admin')
+                                Administrador General
+                            @elseif ($clients->role == 'acertijero')
+                                Acertijero
+                            @elseif($clients->role == 'supacertijero')
+                            Supervisor Acertijero
+                            @elseif($clients->role == 'adminpublicidad')
+                            Administrador de Publicidad
+                            @elseif($clients->role == 'adminusuario')
+                            Administrador de Usuarios
+                            @elseif($clients->role == 'adminticket')
+                            Administrador de Ticket
+                            @elseif($clients->role == 'adminreclamo')
+                            Adminstrador de Reclamos
+                            @elseif($clients->role == 'admincarrera')
+                            Administrador de Carrera
+                            @elseif($clients->role == 'supcarrera')
+                            Supervisor de Carrera
+                            @else
+                            Atención al Cliente
+                            @endif
                         </td>
                         <td>
                             <form action="{{url('/client/'.$clients->id.'/delete')}}" method="post" class="archiveItem">

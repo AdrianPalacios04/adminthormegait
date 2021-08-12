@@ -69,26 +69,42 @@
     </tr>
     <tr>
         <td>PRODUCTO</td>
-        <td></td>
+        <td style="text-align: center"> 
+            @if ($reclamo['id_categoria'] == 'PRODUCTO')
+            X
+            @endif
+        </td>
         <td colspan="4" rowspan="2">
             <p>MONTO RECLAMADO: {{$reclamo['monto_reclamado']}} </p>
         </td>
     </tr>
     <tr>
         <td>SERVICIO</td>
-        <td></td>
+        <td style="text-align: center"> 
+            @if ($reclamo['id_categoria'] == 'SERVICIO')
+            X
+            @endif
+        </td>
     </tr>
     <tr>
         <td id="datos" colspan="6">3.DETALLE DE LA RECLAMACION Y PEDIDO DEL CONSUMIDOR</td>
     </tr>
     <tr>
         <td>RECLAMO</td>
-        <td></td>
+
+        <td style="text-align: center">
+            @if ($reclamo['id_tipo'] == 'RECLAMO')
+            X
+            @endif
+           
+        </td>
         <td colspan="4" rowspan="2">DETALLE: {{$reclamo['detalle']}}</td>
     </tr>
     <tr>
         <td>QUEJA</td>
-        <td></td>
+        <td style="text-align: center"> @if ($reclamo['id_tipo'] == 'QUEJA')
+            X
+            @endif</td>
     </tr>
     <tr>
         <td colspan="5" rowspan="2">

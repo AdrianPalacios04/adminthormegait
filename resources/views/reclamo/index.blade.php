@@ -41,9 +41,9 @@
                             data-target="#exampleModal{{$reclamos->id_reclamaciones}}" >
                             <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                     </td>
-                    <td scope="row">
+                    {{-- <td scope="row">
                         {{$reclamos->clients->t_username}}
-                    </td>
+                    </td> --}}
                     <td>
                         {{$reclamos->tienda_compra}}
                     </td>

@@ -67,7 +67,7 @@ class PublicidadController extends Controller
         }
         //dd($publicidad);
         $publicidad->save();
-        $notificacion = "Se agrego la publicidad correctamente";
+        $notificacion = "Se agrego la publicidad correctamente en el modulo " . $publicidad->pagina->nom_pagina;
         return redirect('/publicidad')->with(compact('notificacion'));
     }
 

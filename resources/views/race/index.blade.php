@@ -18,14 +18,22 @@
                                 Filtro de Carreras 
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @if (auth()->user()->role == 'admincarrera')
                                 <a class="dropdown-item" href="{{url('race/create')}}">Nueva Carrera</a>
                                 <a class="dropdown-item" href="{{url('race')}}">Carreras del Día</a>
                                 <a class="dropdown-item" href="{{url('raceAll')}}">Carreras Totales</a>
+                                @else
+                                <a class="dropdown-item" href="{{url('race')}}">Carreras del Día</a>
+                                <a class="dropdown-item" href="{{url('raceAll')}}">Carreras Totales</a>
+                                @endif
                             </div>
                         </div>
+                        @if (auth()->user()->role == 'admincarrera')
                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" 
                         data-target="#exampleModal" >
                         Configuracion de Evento</button>
+                        @endif
+                       
                     </div>
                    
                 </div>

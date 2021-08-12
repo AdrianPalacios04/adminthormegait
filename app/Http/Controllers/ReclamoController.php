@@ -39,6 +39,8 @@ class ReclamoController extends Controller
         $data['celular'] = $request->n_celular;
         $data['monto_reclamado'] = $request->monto_reclamado;
         $data['detalle'] = $request->detalle;
+        $data['id_tipo'] = $request->id_tipo;
+        $data['id_categoria'] = $request->id_categoria;
         $data['pedido'] = $request->pedido;
         $data['respuesta'] = $request->respuesta;
         $pdf = PDF::loadView("reclamo.pdf.pdf",$data);
