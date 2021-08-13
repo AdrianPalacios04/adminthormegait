@@ -54,7 +54,7 @@ class CodeController extends Controller
                     // https://www.neoguias.com/if-abreviado-en-php-el-operador-ternario/
                    'f_inicio' => $request->get('f_inicio'),
                    'f_final' => $request->get('f_final'),
-                   'id_tipo' => $request->get('tipo_ticket'),
+                   'id_tipo' => $request->get('id_tipo'),
                    'cantidad' => $request->get('cantidad'),
                    'origen' => $request->get('origen'),
                    'uso' => $request->get('uso'),
@@ -88,7 +88,7 @@ class CodeController extends Controller
         $code = Code::findOrFail($id);
         $code->f_inicio = $request->input('f_inicio');
         $code->f_final = $request->input('f_final');
-        $code->tipo_ticket = $request->input('tipo_ticket');
+        $code->id_tipo = $request->input('tipo_ticket');
         $code->cantidad = $request->input('cantidad');
         $code->origen = $request->input('origen');
         $code->uso = $request->input('uso');

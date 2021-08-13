@@ -69,7 +69,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <label>Tipo Ticket</label>
-                        <select class="form-control" name="tipo_ticket">
+                        <select class="form-control" name="id_tipo">
                             @foreach($type as $types)
                             <option value="{{$types->id}}">{{$types->tipo}}</option>
                             @endforeach

@@ -65,7 +65,7 @@
                 <div class="col-md-3">
                     <div class="form-group" >
                         <label>Tipo Ticket</label>
-                        <select class="form-control" name="tipo_ticket">
+                        <select class="form-control" name="id_tipo">
                             <option value="verde" selected>Verde</option>
                             <option value="amarillo">Amarillos</option>
                         </select>
