@@ -29,16 +29,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="{{url('/home')}}">
-        <img src="{{asset('img/brand/thorlogo.png')}}" class="navbar-brand-img" alt="...">
-      </a>
+      {{-- <a class="navbar-brand pt-0" href="{{url('/home')}}"> --}}
+        <img src="{{asset('img/brand/thorlogo.png')}}" class="navbar-brand-img" alt="..." width="160" style="margin: auto">
+      {{-- </a> --}}
       <!-- User --><!-- modo celular -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                     <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{asset('img/theme/login.png')}}">
+                    <img alt="Image placeholder" src="{{asset('img/theme/login.png')}}" >
                     </span>
                     </div>
                 </a>

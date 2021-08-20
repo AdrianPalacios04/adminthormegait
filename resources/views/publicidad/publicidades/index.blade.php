@@ -54,14 +54,14 @@
               <p><b>Fecha Final: </b><span >{{\Carbon\Carbon::parse($item->f_final)->format('d M, Y')}}</span></p>
               {{-- <h5>Link:</h5><p style="line-height: 10px" class="card-text">{{$item->link}}</p> --}}
 
-                <div class="col text-right" style="display: inline-block">
-                  <form action="{{url('/publicidad/'.$item->id)}}" method="post">
+                <div class="col text-right" style="display: inline-block" >
+                  <form action="{{url('/publicidad/'.$item->id)}}" method="post" class="archiveItem">
                     @csrf
                     @method('DELETE')
                     <a href="{{url('/publicidad/'.$item->id.'/edit')}}" class="btn  btn-primary" ><i class="fas fa-edit"></i></a> 
                     {{-- <button>e</button> --}}
                     {{-- <button type="submit" class="btn btn-danger" id="buton"><i class="far fa-trash-alt"></i></button> --}}
-                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                    <a type="submit" class="btn btn-danger" onclick="archiveRemove(this)"  id="{{$item->id}}" style="color:white" ><i class="far fa-trash-alt"></i></a>
                   </form>
               </div>
             </div>
@@ -77,6 +77,29 @@
         event.preventDefault();
         $(this).ekkoLightbox();
       });
+      </script>
+
+      {{-- ///////// --}}
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        function archiveRemove(any) {
+              var click = $(any);
+              var id = click.attr("id");
+              swal.fire({
+                  title: '¿Seguro que quieres eliminarlo?',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Si, Eliminar!'
+              }).then((result) => {
+                  if (result.value) {
+                     $('a[id="' + id + '"]').parents(".archiveItem").submit();
+                  }else{
+                     
+                  }
+              })
+          }
       </script>
     
 @endsection
