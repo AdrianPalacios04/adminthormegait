@@ -15,7 +15,7 @@ class ReclamoController extends Controller
     public function index()
     {
         // $reclamo = Reclamo::with('clients')->get();
-        $reclamo = Reclamo::all();
+        $reclamo = Reclamo::paginate(10);
         return view('reclamo.index',compact('reclamo'));
     }
     public function store(Request $request)
@@ -46,10 +46,10 @@ class ReclamoController extends Controller
         $pdf = PDF::loadView("reclamo.pdf.pdf",$data);
         $correo = new ReclamoMail($request->all());
         $correo->attachData($pdf->output(),'Reclamo.pdf');
-        $envio = Mail::to($request->get('email'))->send($correo);
+        $envio = Mail::to($request->get('email'),'The Online Race')->send($correo);
 
         
-        Reclamo::where('email',$request->email)->where('estado', false)->update(['estado' => true]);
+        // Reclamo::where('email',$request->correo)->where('estado', false)->update(['estado' => true]);
         $notificacion = "Se envio el correo correctamente";
     
         return redirect('/reclamo')->with(compact('notificacion'));

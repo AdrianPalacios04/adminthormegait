@@ -1,5 +1,4 @@
 @foreach ($reclamo as $reclamos)
-
 <div class="modal fade" id="exampleModal1{{$reclamos->id_reclamaciones}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -11,7 +10,9 @@
         </div>
         <form action="{{route('message')}}" method="POST">
             @csrf
+            {{-- Para pasar los datos del correo --}}
             <div class="modal-body">
+               <input type="hidden" name="nombre" value="{{$reclamos->clients->persona->t_nombreper}}">
                 <input name="correlativo" type="hidden" value="{{$reclamos->correlativo}}">
                 <input name="fecha_registro" type="hidden" value="{{$reclamos->fecha_registro}}">
                
@@ -28,7 +29,7 @@
                 <input  name="id_categoria" type="hidden" value="{{$reclamos->id_categoria}}">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" value="{{$reclamos->email}}">
+                    <input type="email" class="form-control" name="email" value="{{$reclamos->correo}}" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Respuesta</label>

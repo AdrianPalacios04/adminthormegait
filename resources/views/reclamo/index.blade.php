@@ -21,10 +21,11 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>Correlativo</th>
                 <th scope="col">Usuario</th>
-                <th scope="col">tienda compra</th>
-                <th scope="col">tipo</th>
-                <th scope="col">monto</th>
+                <th>Contestar a</th>
+               <th>Tipo</th>
+               <th></th>
                 <th scope="col">categoria</th>
                 <th scope="col">pedido</th>
                 <th scope="col">detalle</th>
@@ -41,20 +42,23 @@
                             data-target="#exampleModal{{$reclamos->id_reclamaciones}}" >
                             <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                     </td>
-                    {{-- <td scope="row">
-                        {{$reclamos->clients->t_username}}
-                    </td> --}}
                     <td>
-                        {{$reclamos->tienda_compra}}
+                        {{$reclamos->correlativo}}
+                    </td>
+                    <td scope="row">
+                        {{$reclamos->clients->t_username}}
                     </td>
                     <td>
-                        {{$reclamos->tipo}}
+                        {{$reclamos->medio->medio_comunica}}
+                    </td>
+                    <td>
+                        {{$reclamos->tipo->tipo_reclamo}}
                     </td>
                     <td>
                         {{$reclamos->monto_reclamado}}
                     </td>
                     <td>
-                        {{$reclamos->categoria}}
+                        {{$reclamos->categoria->tipo_categoria}}
                     </td>
                     <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                         {{$reclamos->pedido}}
@@ -67,12 +71,12 @@
                     </td>                    
                     <td>
                        {{-- @if ($reclamos->estado == false) --}}
-                        <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
-                            @csrf
+                        {{-- <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
+                            @csrf --}}
                             <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
                             data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
                             Responder</button>
-                        </form>  
+                        {{-- </form>   --}}
                        {{-- @endif --}}
                         
                     </td>
@@ -83,9 +87,9 @@
         @include('reclamo.modal')
 
         @include('reclamo.envio')
-        {{-- <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             {{ $reclamo->links() }}
-        </div>   --}}
+        </div>  
     </div>
 </div>
     

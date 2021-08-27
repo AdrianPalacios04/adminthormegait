@@ -9,13 +9,13 @@ class TipoReclamo extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql_connect_4';
+    protected $connection = 'mysql_connect_5';
     protected $table = "tipo_reclamo";
-    protected $primaryKey = 'id_tipo';
+
     public $timestamps = false;
 
     protected $fillable = [
-        'tipo'
+        'tipo_reclamo'
     ];
 
     public function Reclamo()
