@@ -19,24 +19,24 @@
         <!-- Projects table -->
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr style="text-align: center">
                     <th></th>
                     <th>Correlativo</th>
-                <th scope="col">Usuario</th>
-                <th>Contestar a</th>
-               <th>Tipo</th>
-               <th></th>
-                <th scope="col">categoria</th>
-                <th scope="col">pedido</th>
-                <th scope="col">detalle</th>
-                <th scope="col">Fecha</th>
-                <th></th>
+                    <th scope="col">Usuario</th>
+                    <th>Contestar a</th>
+                    <th>Tipo Reclamo</th>
+                    <th scope="col">Monto Reclamado</th>
+                    <th>Tipo Categoria</th>
+                    <th scope="col">pedido</th>
+                    <th scope="col">detalle</th>
+                    <th scope="col">Fecha</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($reclamo as $reclamos)
                     
-                <tr>
+                <tr style="text-align: center">
                     <td>
                         <button type="button" class="btn btn-sm" data-toggle="modal" 
                             data-target="#exampleModal{{$reclamos->id_reclamaciones}}" >
@@ -54,8 +54,13 @@
                     <td>
                         {{$reclamos->tipo->tipo_reclamo}}
                     </td>
-                    <td>
-                        {{$reclamos->monto_reclamado}}
+                    <td >
+                        @if ($reclamos->monto_reclamado == null)
+                            Vacío
+                        @else
+                            {{$reclamos->monto_reclamado}}
+                        @endif
+                        {{-- {{$reclamos->monto_reclamado}} --}}
                     </td>
                     <td>
                         {{$reclamos->categoria->tipo_categoria}}
@@ -70,15 +75,9 @@
                         {{ \Carbon\Carbon::parse($reclamos->fecha_registro)->format('d M, Y')}}
                     </td>                    
                     <td>
-                       {{-- @if ($reclamos->estado == false) --}}
-                        {{-- <form action="{{url('/reclamo/'.$reclamos->id_reclamaciones)}}" method="post" >
-                            @csrf --}}
-                            <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
-                            data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
-                            Responder</button>
-                        {{-- </form>   --}}
-                       {{-- @endif --}}
-                        
+                        <button type="button" class="btn btn btn-sm btn-default" data-toggle="modal" 
+                        data-target="#exampleModal1{{$reclamos->id_reclamaciones}}" >
+                        Responder</button>
                     </td>
                 </tr>
                 @endforeach

@@ -56,11 +56,11 @@
         <td colspan="6">NOMBRE: {{$reclamo['nombre']}}</td>
     </tr>
     <tr>
-        <td colspan="6">DOMICILIO:</td>
+        <td colspan="6">DOMICILIO:{{$reclamo['domicilio']}}</td>
     </tr>
     <tr>
-        {{-- <td colspan="2">DNI/CE: {{$reclamo['dni']}}</td>
-        <td colspan="4">TELEFONO/EMAIL: {{$reclamo['n_celular']}}</td> --}}
+        <td colspan="2">DNI/CE: {{$reclamo['dni']}}</td>
+        <td colspan="4">TELEFONO/EMAIL: {{$reclamo['telefono']}}</td>
     </tr>
     <tr>
         <td id="datos" colspan="6">
@@ -70,7 +70,7 @@
     <tr>
         <td>PRODUCTO</td>
         <td style="text-align: center"> 
-            @if ($reclamo['id_categoria'] == 'PRODUCTO')
+            @if ($reclamo['id_categoria'] == 1)
             X
             @endif
         </td>
@@ -81,7 +81,7 @@
     <tr>
         <td>SERVICIO</td>
         <td style="text-align: center"> 
-            @if ($reclamo['id_categoria'] == 'SERVICIO')
+            @if ($reclamo['id_categoria'] == 2)
             X
             @endif
         </td>
@@ -93,7 +93,7 @@
         <td>RECLAMO</td>
 
         <td style="text-align: center">
-            @if ($reclamo['id_tipo'] == 'RECLAMO')
+            @if ($reclamo['id_tipo'] == 2)
             X
             @endif
            
@@ -102,7 +102,7 @@
     </tr>
     <tr>
         <td>QUEJA</td>
-        <td style="text-align: center"> @if ($reclamo['id_tipo'] == 'QUEJA')
+        <td style="text-align: center"> @if ($reclamo['id_tipo'] == 1)
             X
             @endif</td>
     </tr>
@@ -124,7 +124,7 @@
         <td>{{ \Carbon\Carbon::now()->format('d')}}</td>
         <td>{{ \Carbon\Carbon::now()->format('M')}}</td>
         <td>{{ \Carbon\Carbon::now()->format('Y')}}</td>
-        <td rowspan="2" style="height: 70px;"> {{ Auth::user()->name}}</td>
+        <td rowspan="2" style="font-weight: bold; font-size: 30px; font-family: Latin Modern Roman 10;font-style: oblique;"> {{ Auth::user()->name}}</td>
     </tr>
     <tr>
         <td id="pedido" colspan="5" rowspan="2">

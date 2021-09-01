@@ -31,6 +31,8 @@ class ReclamoController extends Controller
     {   
    
         // dd($request->all());
+        //inicio datos para enviar al pdf
+        $data['domicilio'] = $request->domicilio;
         $data['correlativo'] = $request->correlativo;
         $data['nombre'] = $request->nombre;
         $data['apellido'] = $request->apellido;
@@ -43,10 +45,14 @@ class ReclamoController extends Controller
         $data['id_categoria'] = $request->id_categoria;
         $data['pedido'] = $request->pedido;
         $data['respuesta'] = $request->respuesta;
+        $data['detalle'] = $request->detalle;
+        //fin de datos para enviar al pdf
+
         $pdf = PDF::loadView("reclamo.pdf.pdf",$data);
         $correo = new ReclamoMail($request->all());
-        $correo->attachData($pdf->output(),'Reclamo.pdf');
+        $correo->attachData($pdf->output(),'Respuesta del Reclamo.pdf');
         $envio = Mail::to($request->get('email'),'The Online Race')->send($correo);
+        // dd($correo);
 
         
         // Reclamo::where('email',$request->correo)->where('estado', false)->update(['estado' => true]);

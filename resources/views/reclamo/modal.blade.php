@@ -12,10 +12,15 @@
         <div class="modal-body">
             {{-- <p><b>ID : </b><span>{{$reclamos->i_id}}</span></p> --}}
             <p><b style="font-weight: bold" >Usuario : </b><span >{{$reclamos->clients->t_username}}</span></p>
-            <p><b  style="font-weight: bold">Tienda Compra : </b><span >{{$reclamos->tienda_compra}}</span></p>
-            <p><b style="font-weight: bold" >Tipo : </b><span >{{$reclamos->tipo}}</span></p>
-            <p><b  style="font-weight: bold">Categoria : </b><span >{{$reclamos->categoria}}</span></p>
+            <p><b  style="font-weight: bold">Contestar a : </b><span >{{$reclamos->medio->medio_comunica}}</span></p>
+            <p><b style="font-weight: bold" >Tipo : </b><span >{{$reclamos->tipo->tipo_reclamo}}</span></p>
+            <p><b  style="font-weight: bold">Categoria : </b><span >{{$reclamos->categoria->tipo_categoria}}</span></p>
             <p><b style="font-weight: bold" >Monto : </b><span >{{$reclamos->monto_reclamado}}</span></p>
+            <p><b style="font-weight: bold" >Monto : </b><span >@if ($reclamos->monto_reclamado == null)
+                Vacío
+            @else
+                {{$reclamos->monto_reclamado}}
+            @endif</span></p>
             <p><b style="font-weight: bold" >Pedido : </b><span >{{$reclamos->pedido}}</span></p>
             <p><b  style="font-weight: bold">Detalle : </b><span >{{$reclamos->detalle}}</span></p>
         </div>

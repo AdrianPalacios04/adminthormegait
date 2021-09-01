@@ -12,7 +12,8 @@
 <body>
     <table border="1" style="width: 100%">
         <tr>
-            <td  colspan="5" align="center" style="font-weight: bold;background-color: #c7cbd1;">LIBRO DE RECLAMACIONES</td>
+            <td  colspan="5" align="center" style="font-weight: bold;background-color: #c7cbd1;">
+                LIBRO DE RECLAMACIONES</td>
             <td  rowspan="2" align="center" style="font-weight: bold">HOJA DE RECLAMACIÓN
                 <br>
                 <?php 
@@ -46,13 +47,11 @@
             <td colspan="6"><b>NOMBRE:</b><span>{{$nombre}} {{$apellido}}</span> </td>
         </tr>
         <tr>
-            <td colspan="6"><b>DOMICILIO:<span></span></b></td>
+            <td colspan="6"><b>DOMICILIO:<span>{{$domicilio}}</span></b></td>
         </tr>
         <tr>
             <td colspan="2"><b>DNI/CE:</b><span>{{$dni}}</span></td>
             <td colspan="4"><b>TELEFONO/EMAIL:</b><span>{{$celular}}</span></td>
-            <!-- {{-- <td colspan="2">DNI/CE: {{$dni}}</td> --}}
-            {{-- <td colspan="4">TELEFONO/EMAIL: {{$n_celular}}</td> --}} -->
         </tr>
         <tr>
             <td  colspan="6"  style="font-weight: bold;background-color: #c7cbd1;">
@@ -60,9 +59,9 @@
             </td>
         </tr>
         <tr>
-            <td >PRODUCTO</td>
+            <td >QUEJA</td>
             <td style="text-align: center;font-weight: bold">
-                @if ($id_categoria == 'PRODUCTO')
+                @if ($id_categoria == 1)
                 X   
             @endif
              </td>
@@ -71,34 +70,35 @@
             </td>
         </tr>
         <tr>
-            <td>SERVICIO</td>
+            <td>RECLAMO</td>
             <td style="text-align: center;font-weight: bold">
-                @if ($id_categoria == 'SERVICIO')
+                @if ($id_categoria == 2)
                     X   
                 @endif
             </td>
         </tr>
         <tr>
-            <td  colspan="6"  style="font-weight: bold;background-color: #c7cbd1;">3.DETALLE DE LA RECLAMACION Y PEDIDO DEL CONSUMIDOR</td>
+            <td  colspan="6"  style="font-weight: bold;background-color: #c7cbd1;">
+                3.DETALLE DE LA RECLAMACION Y PEDIDO DEL CONSUMIDOR</td>
         </tr>
         <tr>
-            <td>RECLAMO</td>
+            <td>SERVICIO</td>
             <td style="text-align: center:font-weight: bold">
-                @if ($id_tipo == 'RECLAMO')
+                @if ($id_tipo == 2)
                     X   
                 @endif
                 
             </td>
             <td colspan="4" rowspan="2">
-                <b>DETALLE:</b>
+                <b>DETALLE:{{$detalle}}</b>
             </td>
 
             </td>
         </tr>
         <tr>
-            <td>QUEJA</td>
+            <td>PRODUCTO</td>
             <td style="text-align: center;font-weight: bold">
-                @if ($id_tipo == 'QUEJA')
+                @if ($id_tipo == 1)
                 X   
             @endif
             </td>
@@ -125,7 +125,9 @@
             {{-- <td>21</td>
             <td>jul</td>
             <td>2021</td> --}}
-            <td rowspan="2" style="font-weight: bold; font-size: 30px; font-family: Latin Modern Roman 10;font-style: oblique;"> {{ Auth::user()->name}}</td>
+            <td rowspan="2" 
+            style="font-weight: bold; font-size: 30px; font-family:Latin Modern Roman 10;font-style: oblique;"> 
+            {{ Auth::user()->name}}</td>
         </tr>
         <tr>
             <td colspan="5" rowspan="2">

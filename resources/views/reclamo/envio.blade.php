@@ -12,21 +12,24 @@
             @csrf
             {{-- Para pasar los datos del correo --}}
             <div class="modal-body">
-               <input type="hidden" name="nombre" value="{{$reclamos->clients->persona->t_nombreper}}">
-                <input name="correlativo" type="hidden" value="{{$reclamos->correlativo}}">
-                <input name="fecha_registro" type="hidden" value="{{$reclamos->fecha_registro}}">
-               
-                <input name="detalle" type="hidden" value="{{$reclamos->detalle}}">
-                <input name="estado" type="hidden" value="{{$reclamos->estado}}">
 
-                {{-- <input name="reclamo_id" type="hidden" value="{{$reclamos->id_reclamaciones}}"> --}}
-                <input name="monto_reclamado" type="hidden" value="{{$reclamos->monto_reclamado}}">
-                <input name="pedido" type="hidden" value="{{$reclamos->pedido}}">
-             
-                <input name="email" type="hidden" value="{{$reclamos->email}}">
+            {{-- Inicio datos que pasa para enviar al correo --}}
+                <input type="hidden" name="nombre" value="{{$reclamos->clients->persona->t_nombreper}}">
+                <input type="hidden" name="apellido" value="{{$reclamos->clients->persona->t_apellidoper}}">
+                <input type="hidden" name="domicilio" value="{{$reclamos->domicilio}}">
+                <input type="hidden" name="dni" value="{{$reclamos->clients->persona->c_dniper}}">
+                <input type="hidden" name="correlativo" value="{{$reclamos->correlativo}}">
+                <input type="hidden" name="telefono" value="{{$reclamos->clients->n_celular}}">
+                <input type="hidden"  name="fecha_registro" value="{{$reclamos->fecha_registro}}">
+                <input type="hidden" name="detalle" value="{{$reclamos->detalle}}">
+                <input type="hidden" name="estado" value="{{$reclamos->estado}}">
+                <input type="hidden" name="monto_reclamado" value="{{$reclamos->monto_reclamado}}">
+                <input type="hidden" name="pedido" value="{{$reclamos->pedido}}">
+                <input type="hidden" name="email" value="{{$reclamos->correo}}">
+                <input type="hidden" name="id_tipo" value="{{$reclamos->id_tipo}}">
+                <input type="hidden" name="id_categoria" value="{{$reclamos->id_categoria}}">
+            {{-- Fin de datos que pasa para enviar al correo --}}
 
-                <input  name="id_tipo" type="hidden" value="{{$reclamos->id_tipo}}">
-                <input  name="id_categoria" type="hidden" value="{{$reclamos->id_categoria}}">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
                     <input type="email" class="form-control" name="email" value="{{$reclamos->correo}}" readonly>
