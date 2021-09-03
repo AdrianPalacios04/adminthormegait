@@ -43,15 +43,6 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                 {{-- <tbody><tr>
-            <td>Minimum date:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>Maximum date:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-    </tbody> --}}
                 <!-- Projects table -->
                 <table class="table table-striped" id="usuarios">
                     <thead >
@@ -131,7 +122,7 @@
 <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
 <script>
     var table = $('#usuarios').DataTable({
-        "dom": '<"top"i>rt<"bottom"><"clear">',
+        paginate:false,
         responsive:true,
         autoWidth:false,
         "ordering":false,

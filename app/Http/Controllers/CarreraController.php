@@ -15,7 +15,7 @@ class CarreraController extends Controller
 {
     public function index(Request $request)
     {
-    $race = Carrera::all();
+    $race = CarreraTotal::all();
     // dd($race);
     // $con = ConfigCarrera::find(1);
     return view('race.index',compact('race'));
