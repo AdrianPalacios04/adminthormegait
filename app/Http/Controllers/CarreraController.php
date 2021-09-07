@@ -15,7 +15,7 @@ class CarreraController extends Controller
 {
     public function index(Request $request)
     {
-    $race = CarreraTotal::all();
+    $race = Carrera::all();
     // dd($race);
     // $con = ConfigCarrera::find(1);
     return view('race.index',compact('race'));
@@ -39,18 +39,16 @@ class CarreraController extends Controller
        return redirect('/race')->with(compact('race'));
 
     }
-    public function show(Carrera $carrera)
-    {
-        //
-    }
     public function edit(Request $request,$id)
     {
-        $race = Carrera::find($id);
-        $type = TipoPremio::all();
-        $config = ConfigCarrera::all();
-        $name = ThorTicket::all();
+        $race = Carrera::findOrfail($id);
 
-        return view('race.edit',compact('race','config','type','name'));
+        $thorticket = Thorticket::all();
+        $thorpaga = Thorpaga::all();
+        $findpx = $race->id_px;
+        $findax = $race->id_ax;
+        $type = TipoPremio::all();
+        return view('race.edit',compact('race','type','findpx','findax','thorpaga','thorticket'));
     }
     public function update(Request $request,$id)
     {
@@ -89,7 +87,7 @@ class CarreraController extends Controller
     {
         $find = TipoPremio::findOrFail($id);
        
-        if ($find->id == 1) {
+        if ($find->id == 2) {
             return ThorPaga::all();
         }else{
             return ThorTicket::all();

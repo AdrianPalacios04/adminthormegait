@@ -40,19 +40,27 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">TIPO TICKET</h5>
-                        <select class="form-control" name="id_px">
+                        <select class="form-control" name="id_px" id="id_px">
+
                             @foreach($type as $types)
-                            <option value="{{$types->id}}">{{$types->tipo}}</option>
+                            {{-- <option value="{{$types->id}}">{{$types->tipo}}</option> --}}
+                            <option value="{{$types->id}}"{{$findpx == $types->id ? 'selected="selected"':''}}>{{$types->tipo}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <h5 for="">NOMBRE DEL ACERTIJO</h5>
                       {{-- <input type="text" name="id_ax" class="form-control"value="{{old('id_ax',$race->id_ax)}}" /> --}}
-                      <select name="id_ax" class="form-control">
-                        @foreach ($name as $names)
-                        <option value="{{$names->i_id}}">{{$names->t_nombre}}</option>
-                        @endforeach
+                      <select name="id_ax" class="form-control" id="id_ax">
+                          @if ($findpx == 2)
+                            @foreach ($thorpaga as $team)
+                                <option value="{{$team->i_id}}"{{$findax == $team->i_id ? 'selected="selected"':''}}>{{$team->t_nombre}}</option>
+                            @endforeach
+                          @else
+                            @foreach ($thorticket as $teams)
+                                <option value="{{$teams->i_id}}"{{$findax == $teams->i_id ? 'selected="selected"':''}}>{{$teams->t_nombre}}</option>
+                            @endforeach
+                          @endif
                     </select>
                     </div>  
                 </div>
@@ -111,4 +119,25 @@
     });
 });
 </script>
+<script type="text/javascript">
+    var data = [];
+     window.onload = function(){
+         $("#id_px").change(function(){
+             // debugger;
+             $('#id_ax').html(' ');
+             $.ajax({        
+                 // le pido a la url '/utils/provincia' el liostado de loclaidades
+                 url: "/tons/" + $(this).val(),
+                 method: 'GET',
+                 success: function(data) {
+                      for (let i = 0; i < data.length; i++) {
+                         $('#id_ax').append(data[i].html+"<option value="+data[i].i_id+">"+data[i].t_nombre+"</option>");    
+                        //  $("#id_ax").show();    
+                        //  console.log(data);          
+                      }
+                 }
+             });
+         });
+     }
+ </script>
 @endsection

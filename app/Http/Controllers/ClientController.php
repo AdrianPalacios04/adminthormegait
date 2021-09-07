@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Persona;
+use App\Models\UserCarrera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ClientRequest;
@@ -18,7 +19,17 @@ class ClientController extends Controller
          //$client->load('Persona');
          return view('client.index',compact('client'));
     }
+    public function show($id)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         $client = Client::findOrFail($id);
@@ -51,6 +62,11 @@ class ClientController extends Controller
         // dd($client);
         $notificacion = " Se modifico correctamente";
         return redirect('/users')->with(compact('notificacion'));
+    }
+    public function UserWinner()
+    {
+        $winner = UserCarrera::all();
+        return view('client.ganadores.index',compact('winner'));
     }
     public function changeStatus(Request $request)
     {

@@ -15,7 +15,7 @@
         </li>
         <div class="nav-item">
             <div class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">00
                     <i class="fa fa-gavel" aria-hidden="true" ></i>  JUEGO THOR 
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
@@ -42,11 +42,25 @@
                 <i class="fab fa-adversal"></i> PUBLICIDAD
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/users">
-                <i class="fas fa-users"></i> PLAYER 
-            </a>
-        </li>
+        <div class="nav-item">
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
+                    <i class="fa fa-gavel" aria-hidden="true" ></i>  PLAYER
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <li>
+                        <a class="dropdown-item" href="/users">
+                            <i class="fas fa-ticket-alt"></i> Usuarios Web
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="userWinner">
+                            <i class="far fa-money-bill-alt"></i> Usuarios Ganadores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <li class="nav-item">
             <a class="nav-link" href="/codes">
                 <i class="fas fa-ticket-alt"></i> CÓDIGOS PROMOCIÓN 
@@ -123,11 +137,30 @@
         </li>
         {{-- ADMINISTRADOR DE USUARIOS DEL JUEGO --}}
         @elseif(auth()->user()->role == 'adminusuario') 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="/users">
                 <i class="fab fa-adversal"></i> PLAYER
             </a>
-        </li>
+        </li> --}}
+        <div class="nav-item">
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
+                    <i class="fa fa-gavel" aria-hidden="true" ></i>  PLAYER
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <li>
+                        <a class="dropdown-item" href="/users">
+                            <i class="fas fa-ticket-alt"></i> Usuarios Web
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/userswin">
+                            <i class="far fa-money-bill-alt"></i> Usuarios Ganadores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         {{-- ADMINISTRADOR DE CODIGOS TICKET PROMOCION --}}
         @elseif(auth()->user()->role == 'adminticket') 
         <li class="nav-item">

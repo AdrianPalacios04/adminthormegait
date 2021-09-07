@@ -70,8 +70,11 @@
                                 {{$races->final}}
                             </td>
                             <td width="100px">
-                                {{$races->ticket->t_nombre}}
-                                {{-- {{$races->id_ax}} --}}
+                                @if ($races->id_px == 2)
+                                    {{$races->paga->t_nombre}}
+                                @else
+                                    {{$races->ticket->t_nombre}}
+                                @endif
                             </td>
                             <td>
                                 {{-- {{$races}} --}}

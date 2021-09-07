@@ -29,5 +29,10 @@ class Carrera extends Model
     {
         return $this->belongsTo(ThorTicket::class,'id_ax');
     }
+    public function Paga()
+    {
+        return $this->belongsTo(ThorPaga::class,'id_ax');    
+    }
+
 
 }

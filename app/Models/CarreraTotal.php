@@ -28,4 +28,8 @@ class CarreraTotal extends Model
     {
         return $this->belongsTo(ThorTicket::class,'id_ax');
     }
+    public function Winner()
+    {
+        return $this->hasMany(UserCarrera::class,'id');
+    }
 }

@@ -38,6 +38,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    // administrador general
 
    Route::resource('client', AdminController::class)->middleware('auth','role:admin');
+  
    
    Route::get('changeStatus',[ClientController::class,'changeStatus'])->name('changeStatus');
    Route::put('client/{id}/delete',  [AdminController::class,'changeId']);
@@ -52,6 +53,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    //usuarios
    Route::resource('users', ClientController::class)->middleware(['auth','role:admin|adminusuario|acliente']);
+   Route::get('userWinner',[ClientController::class,'UserWinner'])->name('UserWinner');
    // Route::get('users',ClientController::class,'index');
 
    //carrera
