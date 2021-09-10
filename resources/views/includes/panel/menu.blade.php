@@ -15,7 +15,7 @@
         </li>
         <div class="nav-item">
             <div class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">00
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
                     <i class="fa fa-gavel" aria-hidden="true" ></i>  JUEGO THOR 
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">

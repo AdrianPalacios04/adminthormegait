@@ -33,6 +33,7 @@ class Carrera extends Model
     {
         return $this->belongsTo(ThorPaga::class,'id_ax');    
     }
+    
 
 
 }

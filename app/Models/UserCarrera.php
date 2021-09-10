@@ -18,7 +18,7 @@ class UserCarrera extends Model
     {
         return $this->belongsTo(Client::class,'idUsuario');
     }
-    public function Carrera()
+    public function Carrerat()
     {
         return $this->belongsTo(CarreraTotal::class,'idCarrera');
     }

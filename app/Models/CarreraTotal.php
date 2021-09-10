@@ -32,4 +32,12 @@ class CarreraTotal extends Model
     {
         return $this->hasMany(UserCarrera::class,'id');
     }
+    public function Oldticket()
+    {
+        return $this->belongsTo(ThorTicket::class,"id_ax","old_id");
+    }
+    public function Oldpaga()
+    {
+        return $this->belongsTo(ThorPaga::class,"id_ax");
+    }
 }

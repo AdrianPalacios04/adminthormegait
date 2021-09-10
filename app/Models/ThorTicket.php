@@ -14,7 +14,7 @@ class ThorTicket extends Model
     public $timestamps = false;
     protected $fillable = [
         "t_nombre","t_pregunta","t_respuesta","t_pregunta2","t_respuesta2",
-        "t_pregunta3","t_respuesta3","t_llave1","t_llave2","t_llave3","pistas_Ax","user_id",'i_uso'
+        "t_pregunta3","t_respuesta3","t_llave1","t_llave2","t_llave3","pistas_Ax","user_id","old_id","i_uso"
     ];
     
     public function User()
@@ -25,8 +25,10 @@ class ThorTicket extends Model
     {
         return $this->hasMany(Carrera::class);
     }
-    public function CarreraT()
+
+    // Relación de uno a muchos con diferentes columnas que no son ID
+    public function Carrerat()
     {
-        return $this->hasMany(CarreraTotal::class);
+        return $this->hasMany(CarreraTotal::class,"old_id");
     }
 }

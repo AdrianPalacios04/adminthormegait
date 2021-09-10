@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Persona;
 use App\Models\UserCarrera;
+use App\Models\CarreraTotal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ClientRequest;
@@ -52,7 +53,6 @@ class ClientController extends Controller
             "n_celular"=> $request->input('n_celular'),
 
         ]);
-        // dd($reclamaciones);
         $client->persona->update([
             "t_nombreper" => $request->input('t_nombreper'),
             "t_apellidoper" => $request->input("t_apellidoper"),
@@ -67,13 +67,5 @@ class ClientController extends Controller
     {
         $winner = UserCarrera::all();
         return view('client.ganadores.index',compact('winner'));
-    }
-    public function changeStatus(Request $request)
-    {
-        $client = Client::where('b_acepto', '=', $request->b_acepto)->update(array('b_acepto' => $request->b_acepto));
-        dd($client);
-
-        // return response()->json(['uso Activo']);
-
     }
 }

@@ -25,5 +25,9 @@ class ThorPaga extends Model
     {
         return $this->hasMany(Carrera::class);
     }
+    public function Carrerat()
+    {
+        return $this->hasMany(CarreraTotal::class);
+    }
 
 }

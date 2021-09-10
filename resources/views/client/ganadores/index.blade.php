@@ -22,7 +22,8 @@
                     <th scope="col">Correo Electronico</th>
                     <th scope="col">Carrera</th>
                     <th scope="col">Fecha Carrera</th>
-                    <th scope="col">Premio</th>
+                    <th>Tipo Premio</th>
+                    <th scope="col">Cantidad</th>
                     <th scope="col">Puesto</th>
                     </tr>
                 </thead>
@@ -30,29 +31,44 @@
                     @foreach ($winner as $winners)
                     <tr>
                         {{-- nombre del usuario --}}
-                        <th>
+                        <td>
                             {{$winners->usuario->persona->t_nombreper}}
-                        </th>
+                        </td>
                         {{-- dni del usuario --}}
-                        <th>
+                        <td>
                             {{$winners->usuario->persona->c_dniper}}
-                        </th>
+                        </td>
                         {{-- telefono del usuario --}}
-                        <th>{{$winners->usuario->n_celular}}</th>
+                        <td>{{$winners->usuario->n_celular}}</td>
                         {{-- correo electronico del usuario --}}
-                        <th>{{$winners->usuario->t_correoper}}</th>
+                        <td>{{$winners->usuario->t_correoper}}</td>
                         {{-- nombre de la carrera --}}
                         <td>
-                            {{$winners->carrera->ticket->t_nombre}}
+                            {{-- {{$winners->carrerat->id_px}} --}}
+                            @if ($winners->carrerat->id_px == 2)
+                            {{$winners->carrerat->oldpaga->t_nombre}}    
+                            @elseif($winners->carrerat->oldticket == null)
+                                {{$winners->carrerat->ticket->t_nombre}}
+                            @else
+                                {{$winners->carrerat->oldticket->t_nombre}}
+                            @endif
+                            {{-- {{$winners->carrerat->oldpaga}} --}}
                         </td>
                         {{-- fecha de la carrera --}}
-                        <td>{{$winners->carrera->inicio}}</td>
+                        <td>{{$winners->carrerat->inicio}}</td>
+
+                        <td>{{$winners->carrerat->premio->tipo}}</td>
                         {{-- premio de la carrera --}}
-                        <td>{{$winners->carrera->px_1}}</td>
+                        <td>{{$winners->carrerat->px_1}}</td>
                         {{-- resultado - hora de la carrera --}}
                         {{-- puesto de la carrera --}}
                         <td>
-                            <span class="badge badge-danger">Ganador</span>
+                            @if ($winners->puesto == 1)
+                                <span class="badge badge-danger">Ganador</span>
+                            @else
+                            <span class="badge badge-success">No gano</span>
+                            @endif
+                           
                         </td>
                     </tr>
                     @endforeach
@@ -74,7 +90,7 @@
     $('#usuarios').DataTable({
         responsive:true,
         autoWidth:false,
-        "ordering":false,
+        // "ordering":false,
         "lengthChange": false,
         "paging":false,
 
