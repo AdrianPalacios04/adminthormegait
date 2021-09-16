@@ -7,6 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Models\ThorPaga;
 use App\Models\User;
 use Auth;
+use App\Imports\ThorPagaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ThorPagaController extends Controller
 {
@@ -18,12 +20,12 @@ class ThorPagaController extends Controller
     public function index()
     {
         if (auth()->user()->role == 'admin') {
-            $thorpaga = ThorPaga::paginate(10);
+            $thorpaga = ThorPaga::all();
           }elseif(auth()->user()->role == 'supacertijero') {
             $thorpaga = ThorPaga::paginate(10);
         }else{
             $thorpaga = ThorPaga::where('user_id',Auth::id())->get();
-         }
+        }
         return view('thorpaga.index',compact('thorpaga'));
     }
 
@@ -117,4 +119,12 @@ class ThorPagaController extends Controller
     //     $acertijo->save();
     //     return response()->json(['success' => 'Uso Activo']);
     // }
+
+    public function Import(PostRequest $request)
+    {
+        // dd($request);
+         $import = new ThorPagaImport();
+         Excel::import($import,$request->file('file'));
+         return view('thorpaga.index',['numRows'=>$import->getRowCount()]);
+    }
 }

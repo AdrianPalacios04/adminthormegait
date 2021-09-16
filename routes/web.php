@@ -85,4 +85,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    Route::post('/message',[ReclamoController::class,'Message'])->name('message');
 
+   Route::post('thorpaga/import',[ThorPagaController::class,'Import'])->name('thorpaga.import');
+
    Route::post('/page',[PublicidadController::class,'storePagina'])->middleware('auth');
+
+   Route::get('/demo',[ClientController::class,'Winner']);

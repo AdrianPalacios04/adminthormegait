@@ -176,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -231,10 +232,13 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Helper' =>   App\Http\Helpers\Helper::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
-
+    // para pdf
     // composer require barryvdh/laravel-dompdf
+    // para el excel
+    //composer require maatwebsite/excel --ignore-platform-reqs
 
 ];

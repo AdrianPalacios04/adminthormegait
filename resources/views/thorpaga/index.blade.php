@@ -8,7 +8,9 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Acertijos Thor Paga</h3>
+                <h3 class="mb-0" style="display:inline-block">Acertijos Thor Paga</h3>
+                <button class="btn btn-sm btn-primary" style="display:inline-block" type="button" data-toggle="modal" 
+                data-target="#exampleModalImport"><i class="fas fa-upload"></i> Subir acertijos </button>
             </div>
             {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
             <div class="col text-right">
@@ -23,6 +25,17 @@
             {{session('notificacion')}}
         </div>
         @endif
+        @if ( $errors->any() )
+ 
+        <div class="alert alert-danger">
+            @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
+        </div>
+    @endif
+        @if(isset($numRows))
+        <div class="alert alert-sucess">
+            Se importaron {{$numRows}} registros.
+        </div>
+    @endif
         <div class="table-responsive">
             <!-- Projects table -->
             <table class="table table-striped" id="usuarios">
@@ -118,6 +131,7 @@
             </table>
             <!-- Modal -->
              @include('thorpaga.modal')
+             @include('thorpaga.importmodal')
              {{-- <div class="d-flex justify-content-center">
                 {{ $thorpaga->links() }}
             </div>   --}}

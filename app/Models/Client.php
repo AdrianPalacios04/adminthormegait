@@ -26,8 +26,8 @@ class Client extends Model
     {
         return $this->hasMany(Reclamo::class);
     }
-    public function Carrera()
+    public function Carrerat()
     {
-        return $this->hasMany(UserCarrera::class);
+        return $this->hasMany(UserCarrera::class,'i_idusuario');
     }
 }

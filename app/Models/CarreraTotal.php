@@ -28,10 +28,8 @@ class CarreraTotal extends Model
     {
         return $this->belongsTo(ThorTicket::class,'id_ax');
     }
-    public function Winner()
-    {
-        return $this->hasMany(UserCarrera::class,'id');
-    }
+    // para el segundo modal
+  
     public function Oldticket()
     {
         return $this->belongsTo(ThorTicket::class,"id_ax","old_id");
@@ -39,5 +37,9 @@ class CarreraTotal extends Model
     public function Oldpaga()
     {
         return $this->belongsTo(ThorPaga::class,"id_ax");
+    }
+    public function Winner()
+    {
+        return $this->hasOne(UserCarrera::class,'idCarrera');
     }
 }

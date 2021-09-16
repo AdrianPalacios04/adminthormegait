@@ -14,9 +14,9 @@ class ThorPaga extends Model
     public $timestamps = false;
     protected $fillable = [
         "t_nombre","t_pregunta1","t_respuesta1","t_pregunta2","t_respuesta2",
-        "t_pregunta3","t_respuesta3","t_llave1","t_llave2","t_llave3","pistas_Ax","user_id"
+        "t_pregunta3","t_respuesta3","t_llave1","t_llave2","t_llave3","pistas","user_id"
     ];
-
+    
     public function User()
     {
         return $this->belongsTo(User::class);

@@ -68,4 +68,9 @@ class ClientController extends Controller
         $winner = UserCarrera::all();
         return view('client.ganadores.index',compact('winner'));
     }
+    public function Winner()
+    {
+        $win = CarreraTotal::take(5)->get();
+        return view('client.ganadores.demo',compact('win'));
+    }
 }

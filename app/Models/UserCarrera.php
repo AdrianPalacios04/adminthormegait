@@ -20,6 +20,6 @@ class UserCarrera extends Model
     }
     public function Carrerat()
     {
-        return $this->belongsTo(CarreraTotal::class,'idCarrera');
+        return $this->belongsTo(CarreraTotal::class,'id_ax');
     }
 }
