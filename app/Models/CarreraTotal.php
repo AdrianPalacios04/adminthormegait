@@ -34,7 +34,7 @@ class CarreraTotal extends Model
     {
         return $this->belongsTo(ThorTicket::class,"id_ax","old_id");
     }
-    public function Oldpaga()
+    public function Paga()
     {
         return $this->belongsTo(ThorPaga::class,"id_ax");
     }

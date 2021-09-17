@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2021 a las 00:48:59
+-- Tiempo de generación: 18-09-2021 a las 01:52:27
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -169,7 +169,7 @@ CREATE TABLE `config_races_day` (
   `id_px` int(11) NOT NULL,
   `px_1` decimal(5,2) NOT NULL,
   `px_2` decimal(5,2) NOT NULL,
-  `race_state` int(1) NOT NULL
+  `race_state` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -185,7 +185,8 @@ INSERT INTO `config_races_day` (`id`, `inicio`, `final`, `id_ax`, `id_px`, `px_1
 (56, '2021-06-21 16:30:00', '2021-06-21 17:30:00', 10, 1, '30.00', '30.00', 4),
 (57, '2021-06-21 18:00:00', '2021-06-21 19:00:00', 2, 2, '30.00', '30.00', 4),
 (58, '2021-06-21 19:30:00', '2021-06-21 20:30:00', 6, 2, '50.00', '50.00', 1),
-(59, '2021-06-21 21:00:00', '2021-06-21 22:00:00', 4, 2, '30.00', '30.00', 1);
+(59, '2021-06-21 21:00:00', '2021-06-21 22:00:00', 4, 2, '30.00', '30.00', 1),
+(60, '2021-08-03 15:35:00', '2021-08-03 15:35:00', 5, 3, '12.00', '12.00', 1);
 
 -- --------------------------------------------------------
 
@@ -307,11 +308,11 @@ CREATE TABLE `pagina` (
 --
 
 INSERT INTO `pagina` (`id`, `nom_pagina`) VALUES
-(1, 'Carrera'),
-(2, 'Monedero'),
-(3, 'Partida'),
-(4, 'Perfil'),
-(5, 'Reclamaciones');
+(1, 'CARRERA'),
+(2, 'MONEDERO'),
+(3, 'PARTIDA'),
+(4, 'PERFIL'),
+(5, 'RECLAMACIONES');
 
 -- --------------------------------------------------------
 
@@ -368,8 +369,40 @@ CREATE TABLE `publicidad` (
 --
 
 INSERT INTO `publicidad` (`id`, `imagen`, `nombre`, `link`, `f_inicio`, `f_final`, `id_estado`, `id_posicion`, `id_orientacion`, `id_pagina`) VALUES
-(1, '1626883763.png', 'Publicidad', 'www.linkedin.com', '2021-07-21', '2021-07-21', 1, 1, 2, 2),
-(3, '1626989749.png', 'monedero', 'link', '2021-07-22', '2021-07-22', 2, 2, 3, 2);
+(5, '1628792278.jpg', 'Publicidad vertical', 'https://theonlinerace.com/', '2021-08-12', '2021-08-13', 1, 1, 1, 2),
+(7, '1628792429.jpg', 'Publicidad vertical 1', 'https://theonlinerace.com/', '2021-08-12', '2021-08-13', 1, 1, 1, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reclamaciones`
+--
+
+CREATE TABLE `reclamaciones` (
+  `id_reclamaciones` int(11) NOT NULL,
+  `correlativo` char(6) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `telefono_casa` char(9) NOT NULL,
+  `id_medioComunica` int(11) NOT NULL,
+  `correo` varchar(200) NOT NULL,
+  `domicilio` varchar(200) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `monto_reclamado` double DEFAULT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `pedido` text NOT NULL,
+  `detalle` text NOT NULL,
+  `fecha_registro` datetime NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `pdf_enviado` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reclamaciones`
+--
+
+INSERT INTO `reclamaciones` (`id_reclamaciones`, `correlativo`, `id_usuario`, `telefono_casa`, `id_medioComunica`, `correo`, `domicilio`, `id_tipo`, `monto_reclamado`, `id_categoria`, `pedido`, `detalle`, `fecha_registro`, `estado`, `pdf_enviado`) VALUES
+(1, '00001', 27, 'ssssss', 1, 'marjorieynumarivera@gmail.com', 'ddddddddddd', 1, NULL, 1, 'MI pedido es', 'Detalle del reclamo o queja:', '2021-08-25 00:00:00', 1, NULL),
+(2, '00002', 27, '1234566', 1, 'marjorieynumarivera@gmail.com', 'ddddddddddd', 1, NULL, 1, 'Pedido:', 'Detalle del reclamo o queja:', '2021-08-25 00:00:00', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -515,6 +548,66 @@ INSERT INTO `tc_usuario` (`i_idusuario`, `t_password`, `t_username`, `t_correope
 (6, '123@abc', 'mynuma3', 'marjorie2@gmail.com', NULL, 1, 1, 1, '923731607', 179, 0, 6),
 (24, '12345678', 'j', 'jcorreo@gmail.com', NULL, 1, 1, 1, '214748364', 179, 1, 25),
 (27, '987654321', 'maria', 'marjorieynumarivera@gmail.com', NULL, 1, 1, 1, '2147483647', 179, 1, 28);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_categoria_reclamo`
+--
+
+CREATE TABLE `tipo_categoria_reclamo` (
+  `id` int(11) NOT NULL,
+  `tipo_categoria` varchar(20) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_categoria_reclamo`
+--
+
+INSERT INTO `tipo_categoria_reclamo` (`id`, `tipo_categoria`, `estado`) VALUES
+(1, 'Producto', 1),
+(2, 'Servicio', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_medio_comunica`
+--
+
+CREATE TABLE `tipo_medio_comunica` (
+  `id` int(11) NOT NULL,
+  `medio_comunica` varchar(20) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_medio_comunica`
+--
+
+INSERT INTO `tipo_medio_comunica` (`id`, `medio_comunica`, `estado`) VALUES
+(1, 'Correo Electrónico', 1),
+(2, 'Domicilio', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_reclamo`
+--
+
+CREATE TABLE `tipo_reclamo` (
+  `id` int(11) NOT NULL,
+  `tipo_reclamo` varchar(20) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_reclamo`
+--
+
+INSERT INTO `tipo_reclamo` (`id`, `tipo_reclamo`, `estado`) VALUES
+(1, 'Queja', 1),
+(2, 'Reclamo', 1);
 
 -- --------------------------------------------------------
 
@@ -669,6 +762,17 @@ ALTER TABLE `publicidad`
   ADD KEY `fk_pagina_publicidad` (`id_pagina`);
 
 --
+-- Indices de la tabla `reclamaciones`
+--
+ALTER TABLE `reclamaciones`
+  ADD PRIMARY KEY (`id_reclamaciones`),
+  ADD UNIQUE KEY `correlativo` (`id_reclamaciones`),
+  ADD KEY `fk_reclamaciones_usuario` (`id_usuario`),
+  ADD KEY `fk_reclamaciones_medio` (`id_medioComunica`),
+  ADD KEY `fk_reclamaciones_tipo` (`id_tipo`),
+  ADD KEY `fk_reclamaciones_categoria` (`id_categoria`);
+
+--
 -- Indices de la tabla `reclamo`
 --
 ALTER TABLE `reclamo`
@@ -702,6 +806,24 @@ ALTER TABLE `tc_usuario`
   ADD UNIQUE KEY `t_correoper` (`t_correoper`),
   ADD UNIQUE KEY `celular` (`n_celular`),
   ADD KEY `i_idpersona` (`i_idpersona`);
+
+--
+-- Indices de la tabla `tipo_categoria_reclamo`
+--
+ALTER TABLE `tipo_categoria_reclamo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_medio_comunica`
+--
+ALTER TABLE `tipo_medio_comunica`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_reclamo`
+--
+ALTER TABLE `tipo_reclamo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -756,7 +878,7 @@ ALTER TABLE `config_event_carreras`
 -- AUTO_INCREMENT de la tabla `config_races_day`
 --
 ALTER TABLE `config_races_day`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `estado_publicidad`
@@ -792,7 +914,7 @@ ALTER TABLE `orientacion`
 -- AUTO_INCREMENT de la tabla `pagina`
 --
 ALTER TABLE `pagina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `posicion`
@@ -804,7 +926,13 @@ ALTER TABLE `posicion`
 -- AUTO_INCREMENT de la tabla `publicidad`
 --
 ALTER TABLE `publicidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `reclamaciones`
+--
+ALTER TABLE `reclamaciones`
+  MODIFY `id_reclamaciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `reclamo`
@@ -835,6 +963,24 @@ ALTER TABLE `tc_thorticket`
 --
 ALTER TABLE `tc_usuario`
   MODIFY `i_idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_categoria_reclamo`
+--
+ALTER TABLE `tipo_categoria_reclamo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_medio_comunica`
+--
+ALTER TABLE `tipo_medio_comunica`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_reclamo`
+--
+ALTER TABLE `tipo_reclamo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

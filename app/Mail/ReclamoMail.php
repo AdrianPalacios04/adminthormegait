@@ -13,6 +13,8 @@ class ReclamoMail extends Mailable
     use Queueable, SerializesModels;
 
     public $reclamo;
+
+    public $subject = "The online Race - Reclamo";
    
     public function __construct($reclamo)
     {
@@ -22,6 +24,7 @@ class ReclamoMail extends Mailable
 
     public function build()
     {
+        // 
         return $this->subject('The Online Race - Reclamos')->view('reclamo.message');
     }
 }

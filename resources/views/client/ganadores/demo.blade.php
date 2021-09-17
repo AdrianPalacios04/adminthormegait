@@ -65,11 +65,14 @@
                 <table class="table table-striped" id="usuarios">
                     <thead >
                         <tr>
-                        <th scope="col">inicio</th>
-                        <th scope="col">Nombre Acertijo</th>
-                        <th scope="col">Tipo ticket</th>
-                        <th scope="col">Premio</th>
-                        <th scope="col">Control</th>
+                            <th></th>
+                            <th scope="col">ID</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">NOMBRE DE LA CARRERA</th>
+                            <th scope="col">USUARIO</th>
+                            <th scope="col">TIPO PREMIO</th>
+                            <th>PREMIO</th>
+                            <th>CANTIDAD DE REGISTRO</th>
                         {{-- <th scope="col">Estado</th> --}}
                         </tr>
                     </thead>
@@ -78,23 +81,24 @@
                         <tr>
                             <th scope="row">
                                 <button type="button" class="btn btn-sm" data-toggle="modal" 
-                                    data-target="#exampleModal" >
+                                    data-target="#exampleModal{{$races->id}}" >
                                     <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                             </th>
-                            <td>
-                                {{$races->id}}
-                            </td>
                             <th width="100px">
                                 {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y H:i' )}}
                             </th>
                             <td width="100px">
-                                {{-- @if ($races->winner == null && $races->id_px == 2)
-                                    {{$races->oldticket}}
+                                @if ($races->id_px == 1)
+                                    {{$races->ticket->t_nombre}}
+                                @elseif($races->paga != null)
+                                    {{$races->paga->t_nombre}}
+                                @elseif($races->paga == null)
+                                    {{$races->oldticket->t_nombre}}
                                 @else
-                                    {{$races->paga}}
-                                @endif  --}}
-                                  {{$races->oldticket}}
-                                {{-- {{$races->id_ax}} --}}
+
+                                @endif 
+                                  {{-- {{$races->oldticket}} --}}
+                                 {{-- {{$races}} --}}
                             </td>
                             <td width="100px">
                                 @if ($races->winner == null)
@@ -129,6 +133,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @include('client.ganadores.modal')
             </div>
         </div>
       
