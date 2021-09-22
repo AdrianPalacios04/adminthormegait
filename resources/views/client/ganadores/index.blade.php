@@ -32,34 +32,34 @@
                     <tr>
                         {{-- nombre del usuario --}}
                         <td>
-                            {{$winners->usuario->persona->t_nombreper}}
+                            {{$winners->clients->t_username}}
                         </td>
-                        {{-- dni del usuario --}}
+                        {{-- dni del clients --}}
                         <td>
-                            {{$winners->usuario->persona->c_dniper}}
+                            {{$winners->clients->persona->c_dniper}}
                         </td>
-                        {{-- telefono del usuario --}}
-                        <td>{{$winners->usuario->n_celular}}</td>
-                        {{-- correo electronico del usuario --}}
-                        <td>{{$winners->usuario->t_correoper}}</td>
+                        {{-- telefono del clients --}}
+                        {{-- <td>{{$winners->clients->n_celular}}</td> --}}
+                        {{-- correo electronico del clients --}}
+                        {{-- <td>{{$winners->clients->t_correoper}}</td> --}}
                         {{-- nombre de la carrera --}}
                         <td>
                             {{-- {{$winners->carrerat->id_px}} --}}
-                            @if ($winners->carrerat->id_px == 2)
+                            {{-- @if ($winners->carrerat->id_px == 2)
                             {{$winners->carrerat->oldpaga->t_nombre}}    
                             @elseif($winners->carrerat->oldticket == null)
                                 {{$winners->carrerat->ticket->t_nombre}}
                             @else
                                 {{$winners->carrerat->oldticket->t_nombre}}
-                            @endif
+                            @endif --}}
                             {{-- {{$winners->carrerat->oldpaga}} --}}
                         </td>
                         {{-- fecha de la carrera --}}
-                        <td>{{$winners->carrerat->inicio}}</td>
+                        {{-- <td>{{$winners->carrerat->inicio}}</td>
 
-                        <td>{{$winners->carrerat->premio->tipo}}</td>
+                        <td>{{$winners->carrerat->premio->tipo}}</td> --}}
                         {{-- premio de la carrera --}}
-                        <td>{{$winners->carrerat->px_1}}</td>
+                        {{-- <td>{{$winners->carrerat->px_1}}</td> --}}
                         {{-- resultado - hora de la carrera --}}
                         {{-- puesto de la carrera --}}
                         <td>

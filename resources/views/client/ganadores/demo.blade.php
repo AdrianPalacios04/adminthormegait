@@ -66,7 +66,7 @@
                     <thead >
                         <tr>
                             <th></th>
-                            <th scope="col">ID</th>
+                           
                             <th scope="col">FECHA</th>
                             <th scope="col">NOMBRE DE LA CARRERA</th>
                             <th scope="col">USUARIO</th>
@@ -84,6 +84,7 @@
                                     data-target="#exampleModal{{$races->id}}" >
                                     <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                             </th>
+                            <td>{{$races->id}}</td>
                             <th width="100px">
                                 {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y H:i' )}}
                             </th>
@@ -101,26 +102,46 @@
                                  {{-- {{$races}} --}}
                             </td>
                             <td width="100px">
-                                @if ($races->winner == null)
+                                {{-- @if ($races->winner == null)
                                    no hay usuarios
                                 @else
-                                {{$races->winner->usuario->t_username}}
-                                @endif
+                                {{$races->winner->clients}}
+                                @endif --}}
+                               
                             </td>
-                            <td width="100px">
+                            {{-- <td width="100px">
                                 {{$races->premio->tipo}}
                             </td>
                             <td width="100px">
                                 {{$races->px_1}}
-                            </td>
+                            </td> --}}
+                            {{-- <td>
+                                {{$races->winner}}
+                            </td> --}}
                             <td>
+                                @if ($races->usercarrera->count()>0)
+                                @foreach ($races->usercarrera as $item)
+                                    {{$item->Clients->t_username}}
+                                @endforeach
+                                {{-- {{$races->usercarrera->each(function($usercarrera){
+                                    
+                                })}} --}}
+                                @else
+                                    No hay registro
+                                @endif
+
+                                
+                                {{-- {{$races->usercarrera}} --}}
+                               
+                            </td>
+                            {{-- <td>
                                 @if ($races->winner == null)
                                     Nadie se registro
                                 @else
-                                    {{$races->winner->usuario->t_username}}
+                                    {{$races->winner}}
                                 @endif
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 @if ($races->winner == null)
                                     No hay puestos
                                 @elseif($races->winner->puesto == 1)
@@ -128,9 +149,10 @@
                                 @else
                                     No Ganador
                                 @endif
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
+                        {{-- {{$user->clientuser}} --}}
                     </tbody>
                 </table>
                 @include('client.ganadores.modal')

@@ -147,7 +147,7 @@
         responsive:true,
         autoWidth:false,
         "ordering":false,
-        "paging":false,
+        // "paging":false,
         
 
         "language":{

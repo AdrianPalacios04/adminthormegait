@@ -12,7 +12,7 @@
         <div class="modal-body">
             {{-- <p><b>ID : </b><span>{{$acertijos->i_id}}</span></p> --}}
             <p><b style="font-weight: bold;font-size: 16px" >Pregunta : </b><span>
-                {{$races}}
+                {{$races->winner}}
                 
 
 
@@ -28,3 +28,5 @@
 </div>
     
 @endforeach
+
+

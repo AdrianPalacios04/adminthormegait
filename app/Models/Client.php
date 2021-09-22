@@ -22,12 +22,21 @@ class Client extends Model
         return $this->belongsTo(Persona::class,"i_idpersona");
     }
 
-    public function Reclamos()
+    // public function Reclamos()
+    // {
+    //     return $this->hasMany(Reclamo::class);
+    // }
+    // public function Carreratotal()
+    // {
+    //     return $this->belongsTo(UserCarrera::class,'i_idusuario');
+    // }
+    public function Usercarrera()
     {
-        return $this->hasMany(Reclamo::class);
+        return $this->hasMany(UserCarrera::class,'i_idusuario','idUsuario');
     }
-    public function Carrerat()
-    {
-        return $this->hasMany(UserCarrera::class,'i_idusuario');
-    }
+
+    // public function Races()
+    // {
+    //     return $this->belongsToMany(CarreraTotal::class,'usuario_carrera');
+    // }
 }

@@ -19,7 +19,6 @@ class CarreraTotal extends Model
     {
         return $this->belongsTo(EstadoPremio::class,'race_state');
     }
-
     public function Premio()
     {
         return $this->belongsTo(TipoPremio::class,'id_px');
@@ -38,8 +37,13 @@ class CarreraTotal extends Model
     {
         return $this->belongsTo(ThorPaga::class,"id_ax");
     }
-    public function Winner()
+    public function usercarrera()
     {
-        return $this->hasOne(UserCarrera::class,'idCarrera');
+        return $this->hasMany(UserCarrera::class,'idCarrera');
     }
+
+    // public function User()
+    // {
+    //     return $this->belongsToMany(Client::class,'usuario_carrera');
+    // }
 }
