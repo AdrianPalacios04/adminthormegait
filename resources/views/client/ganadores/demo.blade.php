@@ -66,10 +66,10 @@
                     <thead >
                         <tr>
                             <th></th>
-                           
+                            
                             <th scope="col">FECHA</th>
+                            <th>HORA</th>
                             <th scope="col">NOMBRE DE LA CARRERA</th>
-                            <th scope="col">USUARIO</th>
                             <th scope="col">TIPO PREMIO</th>
                             <th>PREMIO</th>
                             <th>CANTIDAD DE REGISTRO</th>
@@ -84,9 +84,11 @@
                                     data-target="#exampleModal{{$races->id}}" >
                                     <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                             </th>
-                            <td>{{$races->id}}</td>
                             <th width="100px">
-                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y H:i' )}}
+                                {{ \Carbon\Carbon::parse($races->inicio)->format('d M, Y' )}}
+                            </th>
+                            <th width="100px">
+                                {{ \Carbon\Carbon::parse($races->inicio)->format('H:i')}}
                             </th>
                             <td width="100px">
                                 @if ($races->id_px == 1)
@@ -96,60 +98,30 @@
                                 @elseif($races->paga == null)
                                     {{$races->oldticket->t_nombre}}
                                 @else
-
+                                    No se encontro
                                 @endif 
                                   {{-- {{$races->oldticket}} --}}
                                  {{-- {{$races}} --}}
                             </td>
                             <td width="100px">
-                                {{-- @if ($races->winner == null)
-                                   no hay usuarios
-                                @else
-                                {{$races->winner->clients}}
-                                @endif --}}
-                               
+                               {{$races->premio->tipo}}
                             </td>
-                            {{-- <td width="100px">
-                                {{$races->premio->tipo}}
-                            </td>
-                            <td width="100px">
-                                {{$races->px_1}}
-                            </td> --}}
-                            {{-- <td>
-                                {{$races->winner}}
-                            </td> --}}
                             <td>
-                                @if ($races->usercarrera->count()>0)
-                                @foreach ($races->usercarrera as $item)
-                                    {{$item->Clients->t_username}}
-                                @endforeach
-                                {{-- {{$races->usercarrera->each(function($usercarrera){
-                                    
-                                })}} --}}
+                                @if ($races->premio->id == 1 )
+                                 {{floatval($races->px_1)}} tickets
                                 @else
-                                    No hay registro
+                                S/. {{floatval($races->px_1)}}
                                 @endif
-
-                                
-                                {{-- {{$races->usercarrera}} --}}
-                               
                             </td>
-                            {{-- <td>
-                                @if ($races->winner == null)
+                            
+                            <td>
+                                @if ($races->usercarrera->count() == 0)
                                     Nadie se registro
                                 @else
-                                    {{$races->winner}}
+                                {{$races->usercarrera->count()}}     
                                 @endif
-                            </td> --}}
-                            {{-- <td>
-                                @if ($races->winner == null)
-                                    No hay puestos
-                                @elseif($races->winner->puesto == 1)
-                                    Ganador
-                                @else
-                                    No Ganador
-                                @endif
-                            </td> --}}
+                                
+                            </td>
                         </tr>
                         @endforeach
                         {{-- {{$user->clientuser}} --}}
@@ -193,7 +165,7 @@
     table.search($('#mySearchText').val()).draw();
   } );
   
- 
+//  https://laravel.com/docs/8.x/collections#available-methods
 
 </script>
 @endsection

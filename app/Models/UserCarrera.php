@@ -15,13 +15,9 @@ class UserCarrera extends Model
     protected $fillable = [
         'idUsuario','idCarrera','resultado_hora','puesto'
     ];
-    // public function Clients()
-    // {
-    //     return $this->belongsTo(Client::class,'idUsuario');
-    // }
     public function Carreratotal()
     {
-        return $this->hasMany(CarreraTotal::class,'id_ax','idCarrera');
+        return $this->belongsTo(CarreraTotal::class,'idCarrera');
     }
     public function Clients()
     {

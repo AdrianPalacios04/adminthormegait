@@ -12,10 +12,10 @@ use App\Http\Controllers\ThorPagaController;
 use App\Http\Controllers\PublicidadController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\CodeController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PremioController;
 
-use App\Mail\ReclamoMail;
-use Illuminate\Support\Facades\Mail;
+// use App\Mail\ReclamoMail;
+// use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,6 +87,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    Route::post('thorpaga/import',[ThorPagaController::class,'Import'])->name('thorpaga.import');
 
+   Route::get('export',[ClientController::class,'Export'])->name('export');
+
    Route::post('/page',[PublicidadController::class,'storePagina'])->middleware('auth');
 
    Route::get('/demo',[ClientController::class,'Winner']);
+
+   Route::get('/prize',[PremioController::class,'index']);

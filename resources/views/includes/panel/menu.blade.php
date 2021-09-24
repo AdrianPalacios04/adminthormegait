@@ -58,6 +58,11 @@
                             <i class="far fa-money-bill-alt"></i> Usuarios Ganadores
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" href="demo">
+                            <i class="far fa-money-bill-alt"></i> Usuarios / Carrera 
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -76,6 +81,30 @@
                 <i class="far fa-handshake"></i> RECLAMO
             </a>
         </li>
+        <div class="nav-item">
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink2">
+                    <i class="fa fa-gavel" aria-hidden="true" ></i>  BOLETERIA
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <li>
+                        <a class="dropdown-item" href="/prize">
+                            <i class="fas fa-ticket-alt"></i> PREMIO
+                        </a>
+                    </li>
+                    {{-- <li>
+                        <a class="dropdown-item" href="userWinner">
+                            <i class="far fa-money-bill-alt"></i> Usuarios Ganadores
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="demo">
+                            <i class="far fa-money-bill-alt"></i> Usuarios / Carrera 
+                        </a>
+                    </li> --}}
+                </ul>
+            </div>
+        </div>
         {{-- ACERTIJERO --}}
         @elseif(auth()->user()->role == 'acertijero')
         <li class="nav-item">

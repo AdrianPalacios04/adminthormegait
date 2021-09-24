@@ -7,6 +7,7 @@
         <div class="row justify-content-end">
             <div class="col">
                 <h3 class="mb-0">Usuarios WEB</h3>
+                <a href="{{route('export')}}" class="btn btn-primary">Exportar</a>
             </div>
         </div>
     </div>
@@ -16,20 +17,28 @@
             <table class="table table-striped" id="usuarios">
                 <thead>
                     <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo Electronico</th>
                     <th scope="col">Carrera</th>
-                    <th scope="col">Fecha Carrera</th>
                     <th>Tipo Premio</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Puesto</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- {{dd($winner)}} --}}
                     @foreach ($winner as $winners)
                     <tr>
+                        <td>
+                            {{ \Carbon\Carbon::parse($winners->carreratotal->inicio)->format('d M, Y' )}}
+                        </td>
+                        <td>
+                            {{ \Carbon\Carbon::parse($winners->carreratotal->inicio)->format('H:i' )}}              
+                        </td>
                         {{-- nombre del usuario --}}
                         <td>
                             {{$winners->clients->t_username}}
@@ -39,27 +48,24 @@
                             {{$winners->clients->persona->c_dniper}}
                         </td>
                         {{-- telefono del clients --}}
-                        {{-- <td>{{$winners->clients->n_celular}}</td> --}}
+                         <td>{{$winners->clients->n_celular}}</td>
                         {{-- correo electronico del clients --}}
-                        {{-- <td>{{$winners->clients->t_correoper}}</td> --}}
+                        <td>{{$winners->clients->t_correoper}}</td>
                         {{-- nombre de la carrera --}}
                         <td>
-                            {{-- {{$winners->carrerat->id_px}} --}}
-                            {{-- @if ($winners->carrerat->id_px == 2)
-                            {{$winners->carrerat->oldpaga->t_nombre}}    
-                            @elseif($winners->carrerat->oldticket == null)
-                                {{$winners->carrerat->ticket->t_nombre}}
+                            @if ($winners->carreratotal->id_px == 1)
+                                {{$winners->carreratotal->ticket->t_nombre}}
+                            @elseif($winners->carreratotal->paga != null)
+                                {{$winners->carreratotal->paga->t_nombre}}
+                            @elseif($winners->carreratotal->paga == null)
+                                {{$winners->carreratotal->oldticket->t_nombre}}
                             @else
-                                {{$winners->carrerat->oldticket->t_nombre}}
-                            @endif --}}
-                            {{-- {{$winners->carrerat->oldpaga}} --}}
+                            No se encontro
+                            @endif
                         </td>
-                        {{-- fecha de la carrera --}}
-                        {{-- <td>{{$winners->carrerat->inicio}}</td>
-
-                        <td>{{$winners->carrerat->premio->tipo}}</td> --}}
+                        <td>{{$winners->carreratotal->premio->tipo}}</td>
                         {{-- premio de la carrera --}}
-                        {{-- <td>{{$winners->carrerat->px_1}}</td> --}}
+                        <td>{{$winners->carreratotal->px_1}}</td>
                         {{-- resultado - hora de la carrera --}}
                         {{-- puesto de la carrera --}}
                         <td>
@@ -68,19 +74,14 @@
                             @else
                             <span class="badge badge-success">No gano</span>
                             @endif
-                           
                         </td>
+                        <td><button>pagado</button></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            
         </div>
-        {{-- <div class="d-flex justify-content-center">
-            {{ $client->links() }}
-        </div>  --}}
     </div>
-    
 </div>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
@@ -93,7 +94,7 @@
         // "ordering":false,
         "lengthChange": false,
         "paging":false,
-
+        "info": false,
         "language":{
             "lengthMenu":"Mostrar _MENU_ registros por página",
             "zeroRecords":"Nada encontrado",
