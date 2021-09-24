@@ -20,31 +20,28 @@
             <!-- Projects table -->
             <table class="table table-striped" id="usuarios">
                 <thead>
-                    <tr>
-                  
                     <th scope="col"> Usuario </th>
                     <th scope="col"> Monto </th>
                     <th scope="col"> Tipo de Banco </th>
                     <th scope="col"> Tipo de Cuenta </th>
                     <th scope="col"> Número de cuenta </th>
                     <th scope="col"> Número de CCI </th>
-                    </tr>
                 </thead>
                 <tbody>
-                    @foreach ($prize as $item)
+                    <tr>
+                        @foreach ($prize as $item)
                         <td>{{$item->id_usuario}}</td>
                         <td>{{$item->monto}}</td>
                         <td>{{$item->banking_entity}}</td>
                         <td>{{$item->account_type}}</td>
                         {{-- <td>{{$item->decryptAccount()}}</td> --}}
                         <td>{{$item->account_soles}}</td>
-
-                    @endforeach
+                        @endforeach
+                    </tr>
                 </tbody>
             </table>            
         </div> 
     </div>
-    
 </div>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>

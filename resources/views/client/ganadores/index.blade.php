@@ -5,9 +5,11 @@
 <div class="card shadow">
     <div class="card-header border-0">
         <div class="row justify-content-end">
-            <div class="col">
-                <h3 class="mb-0">Usuarios WEB</h3>
-                <a href="{{route('export')}}" class="btn btn-primary">Exportar</a>
+            <div class="col" >
+                <h3 class="mb-0" style="display: inline-block">Usuarios WEB</h3>
+                <a href="{{route('export')}}" class="btn btn-sm btn-secondary" style="display: inline-block;color:green" title="Exportar Excel">
+                    <i class="fas fa-file-excel"></i>
+                </a>
             </div>
         </div>
     </div>
