@@ -9,7 +9,7 @@ class ThorPaga extends Model
 {
     use HasFactory;
     protected $connection = 'mysql_connect_3';
-    protected $table = "tc_thorpaga";
+    protected $table = "tc_thorpaga_";
     protected $primaryKey = 'i_id';
     public $timestamps = false;
     protected $fillable = [

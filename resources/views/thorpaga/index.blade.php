@@ -70,7 +70,7 @@
                                 data-target="#exampleModal{{$thorpagas->i_id}}" >
                                 <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                         </td>
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thorpagas->t_nombre}}
                         </td>
                         <td  style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
@@ -79,26 +79,25 @@
                         {{-- <td>
                             {{$thorpagas->t_respuesta1}}
                         </td> --}}
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thorpagas->t_pregunta2}}
                         </td>
                         {{-- <td>
                             {{$thorpagas->t_respuesta2}}
                         </td> --}}
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thorpagas->t_pregunta3}}
                         </td>
                         {{-- <td>
                             {{$thorpagas->t_respuesta3}}
                         </td> --}}
-                        <td>
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thorpagas->t_llave1}}
-                        </td>
-                        <td>
+                        </td >
+                        <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">
                             {{$thorpagas->t_llave2}}
                         </td>
-                        
-                        <td>
+                        <td >
                             {{$thorpagas->t_llave3}}
                         </td>
                             @if (auth()->user()->role == 'admin' or auth()->user()->role == 'supacertijero')
@@ -213,3 +212,4 @@
 @endpush
 
     
+{{-- https://shareurcodes.com/blog/ajax%20live%20search%20table%20generation%20in%20laravel --}}

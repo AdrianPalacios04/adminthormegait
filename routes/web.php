@@ -13,6 +13,7 @@ use App\Http\Controllers\PublicidadController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\PremioController;
+use App\Http\Controllers\UsuarioDiaController;
 
 // use App\Mail\ReclamoMail;
 // use Illuminate\Support\Facades\Mail;
@@ -94,3 +95,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::get('/demo',[ClientController::class,'Winner']);
 
    Route::get('/prize',[PremioController::class,'index']);
+
+   Route::resource('userday',UsuarioDiaController::class);
+
+   Route::get('datatable/table',[ThorPagaController::class,'getindex'])->name('datatable.table');

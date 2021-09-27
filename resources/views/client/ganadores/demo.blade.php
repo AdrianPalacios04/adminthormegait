@@ -71,6 +71,7 @@
                             <th>HORA</th>
                             <th scope="col">NOMBRE DE LA CARRERA</th>
                             <th scope="col">TIPO PREMIO</th>
+                            <th>GANADORES</th>
                             <th>PREMIO</th>
                             <th>CANTIDAD DE REGISTRO</th>
                         {{-- <th scope="col">Estado</th> --}}
@@ -103,8 +104,18 @@
                                   {{-- {{$races->oldticket}} --}}
                                  {{-- {{$races}} --}}
                             </td>
+                            
                             <td width="100px">
                                {{$races->premio->tipo}}
+                            </td>
+                            <td>
+                                @foreach ($races->usercarrera as $item)
+                                    @if ($item->puesto == 1)
+                                        {{$item->clients->t_username}}
+                                    @else
+                                        No hay ganador
+                                    @endif
+                                @endforeach
                             </td>
                             <td>
                                 @if ($races->premio->id == 1 )
@@ -113,14 +124,13 @@
                                 S/. {{floatval($races->px_1)}}
                                 @endif
                             </td>
-                            
+                               
                             <td>
                                 @if ($races->usercarrera->count() == 0)
                                     Nadie se registro
                                 @else
                                 {{$races->usercarrera->count()}}     
                                 @endif
-                                
                             </td>
                         </tr>
                         @endforeach

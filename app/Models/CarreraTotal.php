@@ -12,6 +12,7 @@ class CarreraTotal extends Model
     protected $table = "config_races";
     protected $primaryKey = 'id';
     public $timestamps = false;
+    
     protected $fillable = [
         'inicio','final','id_ax','id_px','px_1','px_2','race_state'
     ];

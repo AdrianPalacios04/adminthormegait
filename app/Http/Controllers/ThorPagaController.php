@@ -28,6 +28,10 @@ class ThorPagaController extends Controller
         }
         return view('thorpaga.index',compact('thorpaga'));
     }
+    public function getindex()
+    {
+        
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ClientRequest;
 
-use App\Exports\GanadoresExport;
+use App\Exports\ReportGeneralEsxport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -74,11 +74,11 @@ class ClientController extends Controller
     public function Winner()
     {
         $win = CarreraTotal::all();
-        // $user = UserCarrera::all();
+        //  $user = UserCarrera::where('puesto',1)->get();
         return view('client.ganadores.demo',compact('win'));
     }
     public function Export()
     {
-        return Excel::download(new GanadoresExport, 'Ganadores.xlsx');
+        return Excel::download(new ReportGeneralEsxport, 'Ganadores.xlsx');
     }
 }
