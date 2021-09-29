@@ -38,8 +38,6 @@
                       {{-- <textarea name="t_pregunta" rows="8" class="form-control"></textarea> --}}
                     </div>
                 </div>
-                
-                
                 <div class="col-md-4">
                     <div class="form-group">
                         <h5 for="">SECUENCIA DE PISTAS</h5>
@@ -59,7 +57,6 @@
                     </div>   
                 </div>
             </div>
-           
                 <div class="col text-right">
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>

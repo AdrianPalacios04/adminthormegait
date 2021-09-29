@@ -32,7 +32,7 @@ Route::get('/', function () {
    return view('auth.login');
 });
 
-Auth::routes();
+Auth::routes(['register'=> false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -98,4 +98,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
    Route::resource('userday',UsuarioDiaController::class);
 
+   
    Route::get('datatable/table',[ThorPagaController::class,'getindex'])->name('datatable.table');

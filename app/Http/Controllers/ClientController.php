@@ -9,7 +9,7 @@ use App\Models\CarreraTotal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ClientRequest;
-
+use Carbon\Carbon;
 use App\Exports\ReportGeneralEsxport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -25,7 +25,7 @@ class ClientController extends Controller
     }
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -79,6 +79,7 @@ class ClientController extends Controller
     }
     public function Export()
     {
-        return Excel::download(new ReportGeneralEsxport, 'Ganadores.xlsx');
+        $day = Carbon::now();
+        return Excel::download(new ReportGeneralEsxport, 'Ganadores'. $day .'.xlsx');
     }
 }

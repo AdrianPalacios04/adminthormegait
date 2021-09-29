@@ -94,4 +94,10 @@ class AcertijoController extends Controller
         $acertijo->save();
         return response()->json(['success' => 'Uso Activo']);
     }
+    public function Import()
+    {
+        $import = new ThorPagaImport();
+        Excel::import($import,$request->file('file'));
+        return view('thorpaga.index',['numRows'=>$import->getRowCount()]);
+    }
 }

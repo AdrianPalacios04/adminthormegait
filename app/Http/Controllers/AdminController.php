@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleeare('auth')->only('create'); solo el metodo create va a estar protegido por usuario y constraseña
+    //     $this->middleeare('auth')->except('create');
+    // }
     public function index()
     {
         //dd(Auth::user()->role);

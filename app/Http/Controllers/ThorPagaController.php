@@ -12,11 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ThorPagaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         if (auth()->user()->role == 'admin') {
@@ -30,7 +25,8 @@ class ThorPagaController extends Controller
     }
     public function getindex()
     {
-        
+        $thorpaga = ThorPaga::all();
+        return datatables()->of($thorpaga)->toJson();
     }
 
     /**

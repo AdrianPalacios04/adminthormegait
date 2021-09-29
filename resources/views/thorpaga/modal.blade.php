@@ -1,4 +1,4 @@
-
+{{-- 
 @foreach ($thorpaga as $thorpagas)
 <div class="modal fade" tabindex="-1" id="exampleModal{{$thorpagas->i_id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -29,4 +29,4 @@
     </div>
 </div>
     
-@endforeach
+@endforeach --}}

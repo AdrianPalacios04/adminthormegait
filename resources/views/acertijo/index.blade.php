@@ -7,11 +7,16 @@
      <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">EQUILICUA</h3>
+                <h3 class="mb-0" style="display: inline-block">EQUILICUA</h3>
+                <button class="btn btn-sm btn-primary" style="display:inline-block" type="button" data-toggle="modal" 
+                data-target="#exampleModalImport"><i class="fas fa-upload"></i> Subir acertijos </button>
             </div>
+
+            @include('acertijo.import-modal')
              {{-- @if (auth()->user()->role == 'admin' or auth()->user()->role == 'acertijero') --}}
             <div class="col text-right">
                 <a href="{{url('acertijo/create')}}" class="btn btn-sm btn-primary">Nuevos Acertijos</a>
+                
             </div>
              {{-- @endif --}}
          </div>
